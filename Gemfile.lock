@@ -162,6 +162,7 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    pg (0.18.1)
     popper_js (2.9.3)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -195,6 +196,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (6.0.4.1)
       actionpack (= 6.0.4.1)
       activesupport (= 6.0.4.1)
@@ -277,9 +283,11 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
+  pg (= 0.18.1)
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.7)
+  rails_12factor
   sass-rails (>= 6)
   selenium-webdriver
   spring

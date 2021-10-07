@@ -1,0 +1,20 @@
+gem install cucumber
+gem 'cucumber'
+
+rails generate cucumber:install
+
+
+#Add these to application.js
+require("@rails/ujs").start();
+require("@rails/activestorage").start();
+require("channels");
+require("jquery");
+
+import "bootstrap";
+
+
+
+yarn add bootstrap jquery popper.js
+
+npm install @popperjs/core --save
+yarn add bootstrap@4.3.1 jquery popper.js
