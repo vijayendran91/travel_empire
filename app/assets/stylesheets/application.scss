@@ -17,3 +17,37 @@
 *= require_self
  */
 @import 'bootstrap/dist/css/bootstrap';
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(asset_path('glyphicons-halflings-regular.eot'));
+  src: url(asset_path('glyphicons-halflings-regular.eot?#iefix')) format('embedded-opentype'), url(asset_path('glyphicons-halflings-regular.woff')) format('woff'), url(asset_path('glyphicons-halflings-regular.ttf')) format('truetype'), url(asset_path('glyphicons-halflings-regular.svg#glyphicons_halflingsregular')) format('svg');
+}
+$font-family-sans-serif:
+  // Safari for OS X and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for OS X (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+// .body{
+//   background-image: image-url("te-logo.png");
+//   background-repeat: no-repeat;
+//   background-position: 50% 0%;
+//   background-attachment: fixed;
+// }
+
+#formContainer{
+  width: 90%;
+  height: auto;
+  margin-top: 30px;
+}
+
+.form-check{
+  padding-left: 4%;
+}

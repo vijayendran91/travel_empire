@@ -1,9 +1,9 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+$base-color-green : #334420;
 .navbar{
-  background-color: #334420 !important;
+  background-color: $base-color-green !important;
   color: white;
 }
 
@@ -19,4 +19,9 @@
 
 .nav-link{
   color: white !important;
+}
+
+#locationSwap{
+  background-color: $base-color-green;
+  border-color: $base-color-green;
 }
