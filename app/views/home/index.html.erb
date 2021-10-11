@@ -1,2 +1,18 @@
 <%= render :partial => 'home/cab_booking/navbar'%>
-<%=render :partial => 'home/cab_booking/cab_booking_form'%>
+<center>
+  <div id="formContainer" class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div id="initBtnCntnr">
+      <button type="button" id="bookCab" name="button" class="btn green-btn ">Book a Cab</button>
+      <%= link_to "Make a Payment", "https://pmny.in/aIlQzaGFxaIb", :class=> "btn green-btn"%>
+    </div>
+    <%=render :partial => 'home/cab_booking/cab_booking_form'%>
+  </div>
+
+</center>
+<script>
+  $(document).ready(function(){
+    $('#bookCab').on('click', function(){
+      $('.cabBookingForm').show();
+    });
+  });
+</script>

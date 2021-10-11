@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $base-color-green : #334420;
 $base-color-gold : #E6A620;
+
+.cabBookingForm{
+  display: none;
+  margin-top: 30px;
+}
+.green-btn{
+    background-color: $base-color-green !important;
+    color: white !important;
+}
+
 .navbar{
   background-color: $base-color-green !important;
   color: white;
@@ -29,4 +39,15 @@ $base-color-gold : #E6A620;
 
 #typeOfRides{
   display: flex;
+}
+
+#formContainer{
+  width: 80%;
+  height: auto;
+  min-height: 200px;
+  margin-top: 30px;
+}
+
+#initBtnCntnr{
+  margin-top: 55px;
 }
