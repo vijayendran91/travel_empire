@@ -1,18 +1,60 @@
-<%= render :partial => 'home/cab_booking/navbar'%>
+<%= render :partial => 'home/navbar_files/navbar'%>
 <center>
   <div id="formContainer" class="shadow-lg p-3 mb-5 bg-white rounded">
+
     <div id="initBtnCntnr">
-      <button type="button" id="bookCab" name="button" class="btn green-btn ">Book a Cab</button>
-      <%= link_to "Make a Payment", "https://pmny.in/aIlQzaGFxaIb", :class=> "btn green-btn"%>
+      <div class="form-row mt-4">
+        <div class="form-group col-md-6">
+          <button type="button" id="bookCab" name="button" class="btn green-btn ">Book a Cab</button>
+        </div>
+        <div class="form-group col-md-6">
+          <%= link_to "Make a Payment", "https://pmny.in/aIlQzaGFxaIb",:id => "makePayment", :class=> "btn green-btn"%>
+        </div>
+      </div>
     </div>
+
+    <%=render :partial => 'home/cab_booking/per_bus'%>
+
     <%=render :partial => 'home/cab_booking/cab_booking_form'%>
   </div>
-
 </center>
+
 <script>
   $(document).ready(function(){
+    var perOrBus = "";
+
+    $('.perOrBus').hide();
     $('#bookCab').on('click', function(){
+        $('#bookCab').hide();
+        $('#makePayment').hide();
+        $('.perOrBus').show();
+      // $('.cabBookingForm').show();
+    });
+
+
+
+    $('#personalRadio' || '#businessRadio').on('click',function(){
       $('.cabBookingForm').show();
+      perOrBus = $(this).val();
+    });
+
+
+
+    $('#oneWayRadio').on('click',function(){
+      $('#toDropdown').show();
+      $('#locationSwap').show();
+    });
+    $('#multiCityRadio').on('click',function(){
+      $('#toDropdown').hide();
+      $('#locationSwap').hide();
+    });
+    $('#roundTripRadio').on('click',function(){
+      $('#toDropdown').show();
+      $('#locationSwap').show();
+    });
+    $('#hourlyRadio').on('click',function(){
+      $('#toDropdown').hide();
+      $('#locationSwap').hide();
     });
   });
 </script>

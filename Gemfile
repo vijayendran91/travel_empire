@@ -28,7 +28,6 @@ gem 'jbuilder', '~> 2.7'
 
 #Bootstrap for UI
 gem 'bootstrap', '~> 5.1.0'
-
 #JQuery Rails
 gem 'jquery-rails'
 
