@@ -20,6 +20,8 @@
 </center>
 
 <script>
+  let porb = "";
+  let tor = "";
   $(document).ready(function(){
     var perOrBus = "";
 
@@ -31,30 +33,38 @@
       // $('.cabBookingForm').show();
     });
 
-
-
     $('#personalRadio' || '#businessRadio').on('click',function(){
       $('.cabBookingForm').show();
       perOrBus = $(this).val();
     });
 
-
-
-    $('#oneWayRadio').on('click',function(){
-      $('#toDropdown').show();
-      $('#locationSwap').show();
-    });
-    $('#multiCityRadio').on('click',function(){
-      $('#toDropdown').hide();
-      $('#locationSwap').hide();
-    });
-    $('#roundTripRadio').on('click',function(){
-      $('#toDropdown').show();
-      $('#locationSwap').show();
-    });
-    $('#hourlyRadio').on('click',function(){
-      $('#toDropdown').hide();
-      $('#locationSwap').hide();
+    $('#inlineFormCustomSelect').on('click', function()
+    {
+        tor =  $('#inlineFormCustomSelect :selected').text()
+        switch(tor){
+            case "One Way":
+                console.log("One Way");
+                $('#toLocation').show();
+                $('#locationSwap').show();
+                break;
+            case "Return Trip":
+                $('#locationSwap').show();
+                console.log("Return Trip");
+                break;
+            case "Round Trip":
+                console.log("Round Trip");
+                $('#locationSwap').hide();
+                $('#toLocation').hide();
+                break;
+            case "Multi Way":
+                console.log("Multi Way");
+                break;
+            case "Hourly":
+                console.log("Hourly");
+                $('#locationSwap').show();
+                $('#toLocation').hide();
+                break;
+        }
     });
   });
 </script>
