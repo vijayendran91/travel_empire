@@ -18,13 +18,11 @@
     <%=render :partial => 'home/cab_booking/cab_booking_form'%>
   </div>
 </center>
-
+<script type="text/javascript" src="data/districts.json"></script>
 <script>
   let porb = "";
   let tor = "";
   $(document).ready(function(){
-    var perOrBus = "";
-
     $('.perOrBus').hide();
     $('#bookCab').on('click', function(){
         $('#bookCab').hide();
@@ -37,7 +35,8 @@
       $('#gst').hide();
       $('#gstLabel').hide();
       $('.cabBookingForm').show();
-      perOrBus = $(this).val();
+      porb = $(this)[0].value;
+      $('#gst').show();
     });
 
     $('#businessRadio').on('click',function(){
@@ -75,5 +74,6 @@
                 break;
         }
     });
+
   });
 </script>
