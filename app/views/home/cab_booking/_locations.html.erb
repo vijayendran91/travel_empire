@@ -1,7 +1,7 @@
 <div class="fromAndToLocation">
   <div class="form-row mt-2">
     <div class="form-group col-md-6 ">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">Type of your trip</label>
+      <label class="mr-sm-2 form-label" for="inlineFormCustomSelect">Type of your trip</label>
       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
         <option selected>Choose...</option>
         <option value="ow">One Way</option>
@@ -13,14 +13,14 @@
     </div>
     <div class="form-group col-md-3">
       <div class="form-outline">
-        <label class="form-label" for="typeNumber">Adult</label>
-        <input type="number" id="typeNumber" class="form-control" />
+        <label class="form-label" for="adult">Adult</label>
+        <input type="number" id="adult" class="form-control" />
       </div>
     </div>
     <div class="form-group col-md-3">
       <div class="form-outline">
-        <label class="form-label" for="typeNumber">Children</label>
-        <input type="number" id="typeNumber" class="form-control" />
+        <label class="form-label" for="child">Children</label>
+        <input type="number" id="child" class="form-control" />
       </div>
     </div>
   </div>
@@ -39,6 +39,40 @@
   <div class="form-row mt-2">
     <div class="form-group col">
       <%= text_field_tag :toLocation, nil, autocomplete: :off, class: "form-control search-input", placeholder: "To" %>
+    </div>
+  </div>
+  <div class="form-row mt-2">
+    <div class="form-group col">
+      <div id="dateTime">
+        <label for="bookingTime text" class="dateTimeLabel">Pickup Date and Time</label>
+        <input type="datetime-local" class="bookingTime" id="bookingTime"
+          name="bookingTpartialime" value="2021-10-13T19:30"
+          min="2021-10-13T00:00" max="2021-10-13T00:00">
+      </div>
+    </div>
+  </div>
+
+  <div clas="form-row mt-2">
+    <div class="form-group col">
+      <form style="display:inline-flex" class="typeOfRide">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="bookNow" value="option1">
+          <label class="form-check-label" for="bookNow">
+           Book Now
+        </div>
+        <div class="form-check ml-3">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="advanceBooking" value="option2">
+          <label class="form-check-label" for="advanceBooking">
+          Book in Advance
+          </label>
+        </div>
+        <div class="form-check disabled ml-3">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="tentative" value="option3">
+          <label class="form-check-label" for="tentative">
+              Tentative - <div class="smallFont">Anytime within the next 7 days</div>
+          </label>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -43,10 +43,36 @@ $base-color-gold : #E6A620;
   width: 100%;
 }
 
-#dateTime{
-  margin-top: 3%;
-  margin-left: 1.5%;
+.bookingTime .datetime-input-edit-wrapper{
+  height:30px;
 }
+
+
+.dateTimeLabel{
+  float: left;
+}
+
+.typeOfRide{
+  float: left;
+}
+
+
+.smallFont{
+  font-size: 70%;
+  font-weight: 350;
+  color: #1c1c1c;
+  display: inline;
+}
+
+.form-label{
+  float:left;
+}
+
+.whatsapp_logo{
+  width: 30px;
+}
+
+
 
 
 #locationSwap{

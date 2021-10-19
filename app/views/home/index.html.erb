@@ -33,7 +33,16 @@
       // $('.cabBookingForm').show();
     });
 
-    $('#personalRadio' || '#businessRadio').on('click',function(){
+    $('#personalRadio').on('click',function(){
+      $('#gst').hide();
+      $('#gstLabel').hide();
+      $('.cabBookingForm').show();
+      perOrBus = $(this).val();
+    });
+
+    $('#businessRadio').on('click',function(){
+      $('#gst').show();
+      $('#gstLabel').show();
       $('.cabBookingForm').show();
       perOrBus = $(this).val();
     });
