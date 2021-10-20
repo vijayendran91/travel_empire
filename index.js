@@ -1,26 +1,5 @@
-<%= render :partial => 'home/navbar_files/navbar'%>
-<center>
-  <div id="formContainer" class="shadow-lg p-3 mb-5 bg-white rounded">
 
-    <div id="initBtnCntnr">
-      <div class="form-row mt-4">
-        <div class="form-group col-md-6">
-          <button type="button" id="bookCab" name="button" class="btn green-btn ">Book a Cab</button>
-        </div>
-        <div class="form-group col-md-6">
-          <%= link_to "Make a Payment", "https://pmny.in/aIlQzaGFxaIb",:id => "makePayment", :class=> "btn green-btn"%>
-        </div>
-      </div>
-    </div>
-
-    <%=render :partial => 'home/cab_booking/per_bus'%>
-
-    <%=render :partial => 'home/cab_booking/cab_booking_form'%>
-  </div>
-</center>
-<script type="text/javascript" src="data/districts.json"></script>
-<script>
-  let porb = "";
+let porb = "";
   let tor = "";
   let locs = 0;
   $(document).ready(function(){
@@ -94,4 +73,3 @@
       }
     });
   });
-</script>

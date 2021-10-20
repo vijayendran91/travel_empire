@@ -29,6 +29,13 @@
       <%= text_field_tag :fromLocation, nil, autocomplete: :off, class: "form-control search-input", placeholder: "From" %>
     </div>
   </div>
+  <div> 
+    <div class="form-row mt-8">
+      <div class="form-group col" id="multiLocations">
+         
+      </div>
+    </div>
+  </div>
   <center>
     <button type="button" id="locationSwap" class="btn btn-primary mb-2">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
@@ -39,6 +46,7 @@
   <div class="form-row mt-2">
     <div class="form-group col">
       <%= text_field_tag :toLocation, nil, autocomplete: :off, class: "form-control search-input", placeholder: "To" %>
+      <small><a id="addLocation" href="javascript:void(0)">Add more location</a></small>
     </div>
   </div>
   <div class="form-row mt-2">
@@ -77,5 +85,5 @@
   </div>
 </div>
 
-<script>
+<script> 
 </script>
