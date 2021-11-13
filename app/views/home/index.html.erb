@@ -45,44 +45,84 @@
       $('.cabBookingForm').show();
     });
 
-    $('#inlineFormCustomSelect').on('click', function()
-    {
-        tor =  $('#inlineFormCustomSelect :selected').text()
-        switch(tor){
-            case "One Way":
-                $('#addLocation').hide();
-                $('#toLocation').show();
-                $('#locationSwap').show();
-                $('.locations').hide();
-                break;
-            case "Return Trip":
-                $('#addLocation').hide();
-                $('#toLocation').show();
-                $('#locationSwap').show();
-                $('.locations').hide();
-                break;
-            case "Round Trip":
-                $('.locations').show(); 
-                $('#addLocation').show();
-                $('#locationSwap').hide();
-                $('#toLocation').hide();
-                break;
-            case "Multi Way":
-                $('.locations').show(); 
-                $('#addLocation').show();
-                $('#locationSwap').hide();
-                $('#toLocation').hide();
-                break;
-            case "Hourly":
-                $('.locations').hide();                
-                $('#addLocation').hide();
-                $('#locationSwap').hide();
-                $('#toLocation').hide();
-                break;
-          location.reload();
-        }
+    $( "#inlineFormCustomSelect" ).change(function() {
+      tor =  $(this).val();
+      console.log(tor);
+      switch(tor){
+          case "ow":
+              $('#addLocation').hide();
+              $('#toLocation').show();
+              $('#locationSwap').show();
+              $('.locations').hide();
+              break;
+          case "rtt":
+              $('#addLocation').hide();
+              $('#toLocation').show();
+              $('#locationSwap').show();
+              $('.locations').hide();
+              break;
+          case "rt":
+              $('.locations').show();
+              $('#addLocation').show();
+              $('#locationSwap').hide();
+              $('#toLocation').hide();
+              break;
+          case "my":
+              $('.locations').show();
+              $('#addLocation').show();
+              $('#locationSwap').hide();
+              $('#toLocation').hide();
+              break;
+          case "hy":
+              $('.locations').hide();
+              $('#addLocation').hide();
+              $('#locationSwap').hide();
+              $('#toLocation').hide();
+              break;
+        location.reload();
+      }
     });
-  
+
+    // $('#inlineFormCustomSelect').on('click', function(e)
+    // {
+    //     e.preventDefault();
+    //     tor =  $(this).val()
+    //     debugger
+    //     switch(tor){
+    //         case "One Way":
+    //             $('#addLocation').hide();
+    //             $('#toLocation').show();
+    //             $('#locationSwap').show();
+    //             $('.locations').hide();
+    //             break;
+    //         case "Return Trip":
+    //             $('#addLocation').hide();
+    //             $('#toLocation').show();
+    //             $('.locations').hide();
+    //             $('#locationSwap').show();
+    //             break;
+    //         case "Round Trip":
+    //             $('.locations').show();
+    //             $('#addLocation').show();
+    //             $('#locationSwap').hide();
+    //             $('#toLocation').hide();
+    //             break;
+    //         case "Multi Way":
+    //             $('.locations').show();
+    //             $('#addLocation').show();
+    //             $('#locationSwap').hide();
+    //             $('#toLocation').hide();
+    //             break;
+    //         case "Hourly":
+    //             $('.locations').hide();
+    //             $('#addLocation').hide();
+    //             $('#locationSwap').hide();
+    //             $('#toLocation').hide();
+    //             break;
+    //       location.reload();
+    //     }
+    // });
+
     $('#addLocation').on('click',function(){
       locs++;
       if(locs<5){
@@ -90,9 +130,9 @@
         input = document.createElement("input");
         input.setAttribute('type','text');
         input.setAttribute('class',"form-control mb-3 locations");
-        parElem.appendChild(input);   
+        parElem.appendChild(input);
       }else{
-        window.alert("You can add only maximum of 4 locations");  
+        window.alert("You can add only maximum of 4 locations");
       }
     });
   });
