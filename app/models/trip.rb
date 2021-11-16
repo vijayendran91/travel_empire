@@ -3,8 +3,8 @@ class Trip
 
   field :perbus, type: String
   field :tot, type: String
-  field :adult, type: String
-  field :chldrn, type: String
+  field :adult, type: Integer
+  field :chldrn, type: Integer
   field :pul, type: String
   field :pua, type: String
   field :put, type: DateTime

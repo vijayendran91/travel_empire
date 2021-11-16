@@ -12,10 +12,10 @@
         </div>
       </div>
     </div>
-
-    <%=render :partial => 'home/cab_booking/per_bus'%>
-
-    <%=render :partial => 'home/cab_booking/cab_booking_form'%>
+    <%=form_for Trip.new do |f|%>
+      <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
+      <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
+    <%end%>
   </div>
 </center>
 <script type="text/javascript" src="data/districts.json"></script>
