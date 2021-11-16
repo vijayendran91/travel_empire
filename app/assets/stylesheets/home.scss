@@ -47,6 +47,9 @@ $base-color-gold : #E6A620;
   height:30px;
 }
 
+#dateTime{
+  position: relative;
+}
 
 .dateTimeLabel{
   float: left;
@@ -112,4 +115,8 @@ $base-color-gold : #E6A620;
 
 #addLocation{
   // float: right;
+}
+
+.hr{
+  background: black;
 }
