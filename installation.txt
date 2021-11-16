@@ -21,4 +21,5 @@ yarn add bootstrap@4.3.1 jquery popper.js
 
 yarn add bootstrap-icons
 
-yarn add easy-autocomplete
+gem install bootstrap-timepicker-rails
+gem install bootstrap-select-rails -v 1.6.3

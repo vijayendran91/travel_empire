@@ -2,7 +2,6 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-//= require bootstrap
 //= require jquery3
 //= require jquery-ujs
 //= require jquery-ui
@@ -10,10 +9,14 @@
 //= require bootstrap-sprockets
 //= require jquery3
 //= require popper
+//= require bootstrap/alert
+//= require bootstrap/dropdown
+//= require bootstrap-select
+//= require bootstrap
 require("jquery");
 require("@rails/ujs").start();
 require("turbolinks").start();
-require("@rails/activestorage").start();
+// require("@rails/activestorage").start();
 require("channels");
 
 import "bootstrap";

@@ -8,6 +8,11 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4', group: :development
 gem 'pg', '0.18.1', group: :production
+
+
+gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
+
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -28,6 +33,8 @@ gem 'jbuilder', '~> 2.7'
 
 #Bootstrap for UI
 gem 'bootstrap', '~> 5.1.0'
+gem 'bootstrap-timepicker-rails', '~> 0.1.3'
+gem 'bootstrap-select-rails', '~> 1.6', '>= 1.6.3'
 #JQuery Rails
 gem 'jquery-rails'
 

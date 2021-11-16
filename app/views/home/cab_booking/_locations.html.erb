@@ -14,7 +14,7 @@
     <div class="form-group col-md-3">
       <div class="form-outline">
         <label class="form-label" for="adult">Adult</label>
-        <input type="number" id="adult" value="1"  min=1 max=7 step="1" class="form-control" />
+        <input type="number" pattern="\d*" id="adult" value="1"  min=1 max=7 step="1" class="form-control" />
       </div>
     </div>
     <div class="form-group col-md-3">
@@ -25,14 +25,21 @@
     </div>
   </div>
   <div class="form-row mt-8">
-    <div class="form-group col">
-      <%= text_field_tag :fromLocation, nil, autocomplete: :off, class: "form-control search-input", placeholder: "From" %>
+    <div class="form-group col-9">
+      <label class="mr-sm-2 form-label" for="fromDistSelect">Pick Up Location</label>
+      <select class=" custom-select mr-sm-2" id="fromDistSelect">
+        <option select="selected">Select District </option>
+      </select>
+    </div>
+    <div class="form-group col-3" id="fromArea">
+      <label class="mr-sm-2 form-label" for="fromArea">Area</label>
+      <%= text_field_tag :fromArea, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Area", id: "fromArea" %>
     </div>
   </div>
-  <div> 
+  <div>
     <div class="form-row mt-8">
       <div class="form-group col" id="multiLocations">
-         
+
       </div>
     </div>
   </div>
@@ -44,16 +51,23 @@
     </button>
   </center>
   <div class="form-row mt-2">
-    <div class="form-group col">
-      <%= text_field_tag :toLocation, nil, autocomplete: :off, class: "form-control search-input", placeholder: "To" %>
-      <small><a id="addLocation" href="javascript:void(0)">Add more location</a></small>
+    <div class="form-group col-9">
+      <label class="mr-sm-2 form-label" for="toDistSelect" id="toDistLabel">Pick Up Location</label>
+      <select class=" custom-select mr-sm-2" id="toDistSelect">
+        <option select="selected">Select District </option>
+      </select>
     </div>
+    <div class="form-group col-3" id="toArea">
+      <label class="mr-sm-2 form-label" for="toArea" id="toAreaLabel">Area</label>
+      <%= text_field_tag :toArea, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Area", id: "toArea" %>
+    </div>
+    <small><a id="addLocation" href="javascript:void(0)">Add more location</a></small>
   </div>
   <div class="form-row mt-2">
     <div class="form-group col">
       <div id="dateTime">
         <label for="bookingTime text" class="dateTimeLabel">Pickup Date and Time</label>
-        <input type="datetime-local" class="bookingTime" id="bookingTime"
+        <input type="datetime-local" class="bookingTime form-control timepicker" id="bookingTime"
           name="bookingTpartialime" value="2021-10-13T19:30"
           min="2021-10-13T00:00" max="2021-10-13T00:00">
       </div>
@@ -84,6 +98,3 @@
     </div>
   </div>
 </div>
-
-<script> 
-</script>

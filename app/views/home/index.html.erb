@@ -23,6 +23,8 @@
   let porb = "";
   let tor = "";
   let locs = 0;
+  let dist = JSON.stringify(districts);
+  districts_data = JSON.parse(dist)["data"];
   $(document).ready(function(){
     $('.perOrBus').hide();
     $('#addLocation').hide();
@@ -51,77 +53,52 @@
       switch(tor){
           case "ow":
               $('#addLocation').hide();
-              $('#toLocation').show();
+              $('#toDistSelect').show();
               $('#locationSwap').show();
+              $('#toAreaLabel').show();
+              $('#toDistLabel').show();
+              $('#toArea').show();
               $('.locations').hide();
               break;
           case "rtt":
               $('#addLocation').hide();
-              $('#toLocation').show();
+              $('#toDistSelect').show();
+              $('#toAreaLabel').show();
               $('#locationSwap').show();
               $('.locations').hide();
+              $('#toDistLabel').show();
+              $('#toArea').show();
               break;
           case "rt":
               $('.locations').show();
               $('#addLocation').show();
               $('#locationSwap').hide();
-              $('#toLocation').hide();
+              $('#toDistSelect').hide();
+              $('#toDistLabel').hide();
+              $('#toAreaLabel').hide();
+              $('#toArea').hide();
               break;
           case "my":
               $('.locations').show();
               $('#addLocation').show();
               $('#locationSwap').hide();
-              $('#toLocation').hide();
+              $('#toDistSelect').hide();
+              $('#toAreaLabel').hide();
+              $('#toDistLabel').hide();
+              $('#toArea').hide();
               break;
           case "hy":
               $('.locations').hide();
               $('#addLocation').hide();
               $('#locationSwap').hide();
-              $('#toLocation').hide();
+              $('#toDistSelect').hide();
+              $('#toAreaLabel').hide();
+              $('#toDistLabel').hide();
+              $('#toArea').hide();
               break;
         location.reload();
       }
     });
-
-    // $('#inlineFormCustomSelect').on('click', function(e)
-    // {
-    //     e.preventDefault();
-    //     tor =  $(this).val()
-    //     debugger
-    //     switch(tor){
-    //         case "One Way":
-    //             $('#addLocation').hide();
-    //             $('#toLocation').show();
-    //             $('#locationSwap').show();
-    //             $('.locations').hide();
-    //             break;
-    //         case "Return Trip":
-    //             $('#addLocation').hide();
-    //             $('#toLocation').show();
-    //             $('.locations').hide();
-    //             $('#locationSwap').show();
-    //             break;
-    //         case "Round Trip":
-    //             $('.locations').show();
-    //             $('#addLocation').show();
-    //             $('#locationSwap').hide();
-    //             $('#toLocation').hide();
-    //             break;
-    //         case "Multi Way":
-    //             $('.locations').show();
-    //             $('#addLocation').show();
-    //             $('#locationSwap').hide();
-    //             $('#toLocation').hide();
-    //             break;
-    //         case "Hourly":
-    //             $('.locations').hide();
-    //             $('#addLocation').hide();
-    //             $('#locationSwap').hide();
-    //             $('#toLocation').hide();
-    //             break;
-    //       location.reload();
-    //     }
-    // });
 
     $('#addLocation').on('click',function(){
       locs++;
@@ -135,5 +112,11 @@
         window.alert("You can add only maximum of 4 locations");
       }
     });
+
+    for(let i=0; i<districts_data.length;i++){
+      $("#fromDistSelect").append('<option value="'+districts_data[i]+'">' + districts_data[i] + '</option>');
+      $("#toDistSelect").append('<option value="'+districts_data[i]+'">' + districts_data[i] + '</option>');
+    }
+
   });
 </script>
