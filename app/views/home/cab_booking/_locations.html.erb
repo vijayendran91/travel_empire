@@ -2,25 +2,19 @@
   <div class="form-row mt-2">
     <div class="form-group col-md-6 ">
       <label class="mr-sm-2 form-label" for="inlineFormCustomSelect">Type of your trip</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Choose...</option>
-        <option value="ow">One Way</option>
-        <option value="rt">Return Trip</option>
-        <option value="rtt">Round Trip</option>
-        <option value="my">Multi Way</option>
-        <option value="hy">Hourly</option>
-      </select>
+      <%=f.select :tot, [['Choose...','ch'],['One Way', 'ow'],['Return Trip','rt'],['Round Trip','rtt'],['Multi Way','my'],['Hourly','hy']],{},{:class=> "custom-select mr-sm-2",:id=>"inlineFormCustomSelect", :selected=>'ch'}%>
     </div>
     <div class="form-group col-md-3">
       <div class="form-outline">
         <label class="form-label" for="adult">Adult</label>
-        <input type="number" pattern="\d*" id="adult" value="1"  min=1 max=7 step="1" class="form-control" />
+        <!-- <input type="number" pattern="\d*" id="adult" value="1"  min=1 max=7 step="1" class="form-control" /> -->
+        <%= f.number_field :adult, in: 1..7, step: 1,:default=> 0,:placeholder=> 0, :pattern => '\d*', :class=> "form-control",:id=>"adult" %>
       </div>
     </div>
     <div class="form-group col-md-3">
       <div class="form-outline">
-        <label class="form-label" for="child">Children</label>
-        <input type="number" class = "form-control"id = "child" value="0" min="1" max="7" step="1"/>
+        <label class="form-label" for="chldrn">Children</label>
+        <%= f.number_field :chldrn, in: 1..7, step: 1,:default=> 0,:placeholder=> 0, :pattern => '\d*', :class=> "form-control",:id=>"chldrn" %>
       </div>
     </div>
   </div>
@@ -28,9 +22,10 @@
   <div class="form-row mt-8">
     <div class="form-group col-6">
       <label class="mr-sm-2 form-label" for="fromDistSelect">Pick Up Location</label>
-      <select class=" custom-select mr-sm-2" id="fromDistSelect">
+      <!-- <select class=" custom-select mr-sm-2" id="fromDistSelect">
         <option select="selected">Select District </option>
-      </select>
+      </select> -->
+      <%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"fromDistSelect", :selected=>'sd'}%>
     </div>
     <div class="form-group col-6" id="fromArea">
       <label class="mr-sm-2 form-label" for="fromArea">Area</label>
@@ -41,9 +36,12 @@
     <div class="form-group col">
       <div id="dateTime">
         <label>Date and Time</label>
-        <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
+        <!-- <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
         name="bookingTpartialtime" value="2021-10-13T19:30"
-        min="2021-10-13T00:00" max="2021-10-13T00:00">
+        min="2021-10-13T00:00" max="2021-10-13T00:00"> -->
+        <%= f.datetime_local_field :put, :class=> "bookingTime form-control timepicker", :id=> "BookingTime",
+          :name=> "bookingTpartialtime", :value=> "2021-10-13T19:30", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
+        %>
       </div>
     </div>
   </div>
@@ -66,9 +64,10 @@
   <div class="form-row mt-2">
     <div class="form-group col-6">
       <label class="mr-sm-2 form-label" for="toDistSelect" id="toDistLabel">Destination</label>
-      <select class=" custom-select mr-sm-2" id="toDistSelect">
+      <!-- <select class=" custom-select mr-sm-2" id="toDistSelect">
         <option select="selected">Select District </option>
-      </select>
+      </select> -->
+      <%=f.select :drl, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"toDistSelect", :selected=>'sd'}%>
     </div>
     <div class="form-group col-6" id="toArea">
       <label class="mr-sm-2 form-label" for="toArea" id="toAreaLabel">Area</label>
@@ -80,9 +79,12 @@
     <div class="form-group col">
       <div id="dateTime">
         <label>Date and Time</label>
-        <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
+        <!-- <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
           name="bookingTpartialtime" value="2021-10-13T19:30"
-          min="2021-10-13T00:00" max="2021-10-13T00:00">
+          min="2021-10-13T00:00" max="2021-10-13T00:00"> -->
+        <%= f.datetime_local_field :put, :class=> "bookingTime form-control timepicker", :id=> "returnBookingTime",
+          :name=> "bookingTpartialtime", :value=> "2021-10-13T19:30", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
+        %>
       </div>
     </div>
   </div>
@@ -91,20 +93,24 @@
     <div class="form-group col">
       <form style="display:inline-flex" class="typeOfRide">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="bookNow" value="option1">
+          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="bookNow" value="option1"> -->
+          <%= f.radio_button :tob, "Book Now", :id=> "bookNow", :value=>"booknow", :class=> "form-check-input"%>
           <label class="form-check-label" for="bookNow">
            Book Now
+          </label>
         </div>
         <div class="form-check ml-3">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="advanceBooking" value="option2">
+          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="advanceBooking" value="option2"> -->
+          <%= f.radio_button :tob, "Book in Advance", :id=> "advanceBooking", :value=>"advanceBooking", :class=> "form-check-input"%>
           <label class="form-check-label" for="advanceBooking">
           Book in Advance
           </label>
         </div>
         <div class="form-check disabled ml-3">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="tentative" value="option3">
+          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="tentative" value="option3"> -->
+          <%= f.radio_button :tob, "Tentative", :id=> "tentativeBooking", :value=>"tentativeBooking", :class=> "form-check-input"%>
           <label class="form-check-label" for="tentative">
-          Tentative - <div class="smallFont">Only within the next 7 days</div>
+            Tentative - <div class="smallFont">Only within the next 7 days</div>
           </label>
         </div>
       </form>
