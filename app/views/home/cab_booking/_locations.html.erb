@@ -90,30 +90,29 @@
   </div>
   <hr>
   <div clas="form-row mt-2">
-    <div class="form-group col">
-      <form style="display:inline-flex" class="typeOfRide">
-        <div class="form-check">
-          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="bookNow" value="option1"> -->
-          <%= f.radio_button :tob, "Book Now", :id=> "bookNow", :value=>"booknow", :class=> "form-check-input"%>
-          <label class="form-check-label" for="bookNow">
-           Book Now
-          </label>
-        </div>
-        <div class="form-check ml-3">
-          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="advanceBooking" value="option2"> -->
-          <%= f.radio_button :tob, "Book in Advance", :id=> "advanceBooking", :value=>"advanceBooking", :class=> "form-check-input"%>
-          <label class="form-check-label" for="advanceBooking">
-          Book in Advance
-          </label>
-        </div>
-        <div class="form-check disabled ml-3">
-          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="tentative" value="option3"> -->
-          <%= f.radio_button :tob, "Tentative", :id=> "tentativeBooking", :value=>"tentativeBooking", :class=> "form-check-input"%>
-          <label class="form-check-label" for="tentative">
+    <div class="form-group col" style='display: flex;' >
+    <form class="typeOfRide">
+       <div class="form-check ml-3">
+        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="bookNow" value="option1"> -->
+        <%= f.radio_button :tob, "Book Now", :id=> "bookNow", :value=>"booknow", :class=> "form-check-input"%>
+        <label class="form-check-label" for="bookNow">
+          Book Now
+        </label>
+      </div>
+      <div class="form-check ml-3">
+        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="advanceBooking" value="option2"> -->
+        <%= f.radio_button :tob, "Book in Advance", :id=> "advanceBooking", :value=>"advanceBooking", :class=> "form-check-input"%>
+        <label class="form-check-label" for="advanceBooking">
+        Book in Advance
+        </label>
+      </div>
+      <div class="form-check disabled ml-3">
+        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="tentative" value="option3"> -->
+        <%= f.radio_button :tob, "Tentative", :id=> "tentativeBooking", :value=>"tentativeBooking", :class=> "form-check-input"%>
+        <label class="form-check-label" for="tentative">
             Tentative - <div class="smallFont">Only within the next 7 days</div>
-          </label>
-        </div>
-      </form>
-    </div>
+        </label>
+      </div>
+    </form>
   </div>
 </div>
