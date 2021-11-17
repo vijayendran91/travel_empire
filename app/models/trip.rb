@@ -16,4 +16,5 @@ class Trip
   field :lname, type: String
   field :phone, type: String
   field :email, type: String
+  field :gst, type: String
 end
