@@ -12,10 +12,11 @@
         </div>
       </div>
     </div>
-    <%= form_for(@trip, url: submit_trip_path) do |f| %>
+    <%=@trip.fname%>
+    <%= form_for(@trip,:as => 'trip', url: submit_trip_path(@trip)) do |f| %>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
       <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
-      <%=f.submit "Book Ride", :class=>"btn green-btn"%>
+      <%=f.submit "Book Ride", :class=>"btn ml-3 green-btn form-submit"%>
     <%end%>
   </div>
 </center>

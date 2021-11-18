@@ -14,11 +14,11 @@
   <div class="form-row">
       <div class="form-group col-md-6">
       <label class="form-label" for="phone"><%=image_tag("whatsapp_logo.png",:class=>"whatsapp_logo")%>Whatsapp Phone Number</label>
-      <%=f.telephone_field :phone, :id=>"phone", :class=>'form-control', :name=>'phone', :placeholder=>'123-45-678', :pattern=>"[0-9]{3}{10}", :required => true%>
+      <%=f.telephone_field :phone, :id=>"phone", :class=>'form-control', :placeholder=>'123-45-678', :pattern=>"[0-9]{3}{10}", :required => true%>
     </div>
     <div class="form-group col-md-6 emailCont">
         <label class="form-label" for="Email">Email</label>
-        <%=f.email_field :email, :id=>'email', :class=>'form-control', :name=> 'email', :placeholder=> 'john@msn.in'%>
+        <%=f.email_field :email, :class=>'form-control', :id=>'email', :placeholder=> 'john@msn.in'%>
     </div>
   </div>
   <div class="form-row">
@@ -43,7 +43,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label class="form-label" id="gstLabel" for="gst">GSTIN</label>
-      <%=f.text_field :gst, :id=>'gst', :class=> 'form-control', :name=>'gst', :placeholder=>'1A2C..'%>
+      <%=f.text_field :gst, :id=>'gst', :class=> 'form-control', :placeholder=>'1A2C..'%>
     </div>
   </div>
 </div>
