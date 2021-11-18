@@ -171,10 +171,9 @@ test:
 production:
   clients:
     default:
-      database: travel_empire_production
-      hosts:
-        - localhost:27017
+      uri: mongodb+srv://travelempire:Deva2007@travelempire.1wrop.mongodb.net/travelempire?retryWrites=true&w=majority
       options:
-        read:
-          mode: :primary
-        max_pool_size: 1
+          server_selection_timeout: 5
+
+options:
+  raise_not_found_error: false
