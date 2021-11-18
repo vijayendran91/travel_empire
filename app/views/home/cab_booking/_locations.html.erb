@@ -29,7 +29,7 @@
     </div>
     <div class="form-group col-6" id="fromArea">
       <label class="mr-sm-2 form-label" for="fromArea">Area</label>
-      <%= text_field_tag :fromArea, nil, autocomplete: :off, class: "form-control search-input", placeholder: "Area", id: "fromArea" %>
+      <%= f.text_field :pua, class: "form-control search-input", placeholder: "Area", id: "fromArea"%>
     </div>
   </div>
   <div class="form-row">
@@ -39,8 +39,8 @@
         <!-- <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
         name="bookingTpartialtime" value="2021-10-13T19:30"
         min="2021-10-13T00:00" max="2021-10-13T00:00"> -->
-        <%= f.datetime_local_field :put, :class=> "bookingTime form-control timepicker", :id=> "BookingTime",
-          :name=> "bookingTpartialtime", :value=> "2021-10-13T19:30", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
+        <%= f.datetime_local_field :piut, :class=> "bookingTime form-control timepicker", :id=> "BookingTime",
+          :name=> "put", :value=> "2021-10-13T00:00", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
         %>
       </div>
     </div>
@@ -83,7 +83,7 @@
           name="bookingTpartialtime" value="2021-10-13T19:30"
           min="2021-10-13T00:00" max="2021-10-13T00:00"> -->
         <%= f.datetime_local_field :put, :class=> "bookingTime form-control timepicker", :id=> "returnBookingTime",
-          :name=> "bookingTpartialtime", :value=> "2021-10-13T19:30", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
+          :name=> "bookingTpartialtime", :value=> "2021-10-13T00:00", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
         %>
       </div>
     </div>
