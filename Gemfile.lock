@@ -177,7 +177,6 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    pg (0.18.1)
     popper_js (2.9.3)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -254,7 +253,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     thor (1.1.0)
@@ -302,7 +300,6 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.2)
   mongoid!
-  pg (= 0.18.1)
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.7)
@@ -311,7 +308,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

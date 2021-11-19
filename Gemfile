@@ -5,10 +5,6 @@ ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4', group: :development
-gem 'pg', '0.18.1', group: :production
-
 
 gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
 
