@@ -12,6 +12,7 @@
         </div>
       </div>
     </div>
+    <%=render :partial => 'home/cab_booking/tot_modal.html.erb'%>
     <%=@trip.fname%>
     <%= form_for(@trip,:as => 'trip', url: submit_trip_path(@trip)) do |f| %>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
@@ -28,6 +29,7 @@
   let dist = JSON.stringify(districts);
   districts_data = JSON.parse(dist)["data"];
   $(document).ready(function(){
+    $('#totModal').hide();
     $('.perOrBus').hide();
     $('#addLocation').hide();
     $('#bookCab').on('click', function(){
@@ -49,11 +51,29 @@
       $('.cabBookingForm').show();
     });
 
+    function showModal(tor){
+      $('#totModal').on('show.bs.modal', function(event){
+          console.log(tor);
+          var modal = $(this);
+          var insertList = "";
+          switch(tor){
+            case "ow":
+                  insertList = "<ul><li>Your Journey Starts at Zero Km. and ends at one Destination Only (End or Drop Point). No returning Back again.</li><li>Waiting Charges Apply.</li><li>Billing Charges - Minimum 130 Kms.</li><li>Driver Bata Rs.500/- Govt. & Private Toll Entry Fee & Permit Fee Excluded.</li></ul>"
+              break; 
+          }
+  
+          modal.find('.modal-body-text').append(insertList);
+      });
+      $('#totModal').modal('show');  
+    }
+
+
     $( "#inlineFormCustomSelect" ).change(function() {
       tor =  $(this).val();
-      console.log(tor);
+      console.log(tor+" 1");
       switch(tor){
           case "ow":
+              showModal(tor);
               $('#addLocation').hide();
               $('#toDistSelect').show();
               $('#locationSwap').show();
@@ -61,6 +81,7 @@
               $('#toDistLabel').show();
               $('#toArea').show();
               $('.locations').hide();
+              $('#totModal').show();
               break;
           case "rtt":
               $('#addLocation').hide();
