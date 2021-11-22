@@ -52,30 +52,7 @@
       $('.cabBookingForm').show();
     });
 
-    function showModal(tor){
-      $('#totModal').on('show.bs.modal', function(event){
-        var modal = $(this);
-        var list_string = "<ul>";
-        console.log(tor);
-        modal.find('.modal-title').text(modal_texts[tor]['title']);
-        for(item in modal_texts[tor]){
-        if(item != "title"){
-            if(item == 'red'){
-                list_string += "<li class='modal-list-red'>"+modal_texts[tor][item]+"</li>"  
-              }
-              else{
-                list_string += "<li>"+modal_texts[tor][item]+"</li>"
-              }
-          }
-        }
-        list_string+="</ul>"
-        modal.find('.modal-body-text').html(list_string);
-        modal.find('.modal-body-image').html("<img src='/assets/"+tor+".png' class='modal-image'/>")
-      });
-      $('#totModal').modal('show'); 
-    }
-
-
+   
     $( "#inlineFormCustomSelect" ).change(function() {
       tor =  $(this).val();
       console.log(tor+" 1");
@@ -153,5 +130,65 @@
       $("#toDistSelect").append('<option value="'+districts_data[i]+'">' + districts_data[i] + '</option>');
     }
 
+    $('#adult,#chldrn').on('change', function(){
+      var value = errorMsg();
+      if(value.length > 0){
+        window.alert(value);
+      }  
+    });
+
+      
+    function noOfPass(){
+      return Number($('#adult').val())+Number($('#chldrn').val());
+    }
+
+    function errorMsg(){
+      var value = noOfPass();
+      var returnval = "";  
+      if(value > 7){
+        returnval="Number of passengers cannot be more than 7";
+      }
+      else if(value < 0){
+        returnval = "Number of passengers cannot be less than 0";
+      }
+      else{
+        returnval = "";
+      }
+      return returnval;
+    }
+    
+    function passValid(){
+      var value = errorMsg();
+      var returnvalue = false;  
+      if(value.length > 0){    
+        returnValue = true;
+      }
+      return ;
+    }
+
+    function showModal(tor){
+      $('#totModal').on('show.bs.modal', function(event){
+        var modal = $(this);
+        var list_string = "<ul>";
+        console.log(tor);
+        modal.find('.modal-title').text(modal_texts[tor]['title']);
+        for(item in modal_texts[tor]){
+        if(item != "title"){
+            if(item == 'red'){
+                list_string += "<li class='modal-list-red'>"+modal_texts[tor][item]+"</li>"  
+              }
+              else{
+                list_string += "<li>"+modal_texts[tor][item]+"</li>"
+              }
+          }
+        }
+        list_string+="</ul>"
+        modal.find('.modal-body-text').html(list_string);
+        modal.find('.modal-body-image').html("<img src='/assets/"+tor+".png' class='modal-image'/>")
+      });
+      $('#totModal').modal('show'); 
+    }
+
+      
   });
 </script>
