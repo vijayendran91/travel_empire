@@ -21,13 +21,14 @@
     <%end%>
   </div>
 </center>
-<script type="text/javascript" src="data/districts.json"></script>
+<script type="text/javascript" src="data/data.json"></script>
 <script>
   let porb = "";
   let tor = "";
   let locs = 0;
-  let dist = JSON.stringify(districts);
-  districts_data = JSON.parse(dist)["data"];
+  let json_data = JSON.stringify(data);
+  let modal_texts = JSON.parse(json_data)["modaltexts"];
+  let  districts_data = JSON.parse(json_data)["districts"];
   $(document).ready(function(){
     $('#totModal').hide();
     $('.perOrBus').hide();
@@ -53,18 +54,25 @@
 
     function showModal(tor){
       $('#totModal').on('show.bs.modal', function(event){
-          console.log(tor);
-          var modal = $(this);
-          var insertList = "";
-          switch(tor){
-            case "ow":
-                  insertList = "<ul><li>Your Journey Starts at Zero Km. and ends at one Destination Only (End or Drop Point). No returning Back again.</li><li>Waiting Charges Apply.</li><li>Billing Charges - Minimum 130 Kms.</li><li>Driver Bata Rs.500/- Govt. & Private Toll Entry Fee & Permit Fee Excluded.</li></ul>"
-              break; 
+        var modal = $(this);
+        var list_string = "<ul>";
+        console.log(tor);
+        modal.find('.modal-title').text(modal_texts[tor]['title']);
+        for(item in modal_texts[tor]){
+        if(item != "title"){
+            if(item == 'red'){
+                list_string += "<li class='modal-list-red'>"+modal_texts[tor][item]+"</li>"  
+              }
+              else{
+                list_string += "<li>"+modal_texts[tor][item]+"</li>"
+              }
           }
-  
-          modal.find('.modal-body-text').append(insertList);
+        }
+        list_string+="</ul>"
+        modal.find('.modal-body-text').html(list_string);
+        modal.find('.modal-body-image').html("<img src='/assets/"+tor+".png' class='modal-image'/>")
       });
-      $('#totModal').modal('show');  
+      $('#totModal').modal('show'); 
     }
 
 
@@ -84,6 +92,7 @@
               $('#totModal').show();
               break;
           case "rtt":
+              showModal(tor);
               $('#addLocation').hide();
               $('#toDistSelect').show();
               $('#toAreaLabel').show();
@@ -93,6 +102,7 @@
               $('#toArea').show();
               break;
           case "rt":
+              showModal(tor);
               $('.locations').show();
               $('#addLocation').show();
               $('#locationSwap').hide();
@@ -102,6 +112,7 @@
               $('#toArea').hide();
               break;
           case "my":
+              showModal(tor);
               $('.locations').show();
               $('#addLocation').show();
               $('#locationSwap').hide();
@@ -111,6 +122,7 @@
               $('#toArea').hide();
               break;
           case "hy":
+              showModal(tor);
               $('.locations').hide();
               $('#addLocation').hide();
               $('#locationSwap').hide();
