@@ -17,4 +17,15 @@ class Trip
   field :phone, type: String
   field :email, type: String
   field :gst, type: String
+
+
+  PERSONAL = :per
+  BUSINESS = :bus
+
+  TRIP_TYPE = { 
+                PERSONAL => "Personal",
+                BUSINESS => "Business"                
+              }
+  TRIP_TYPE_REV = TRIP_TYPE.invert
+
 end

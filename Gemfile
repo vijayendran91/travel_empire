@@ -66,6 +66,5 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#Unicorn for AWS Lightail
-
-gem 'unicorn'
+#HTTParty for RESTful API calls
+gem 'httparty'

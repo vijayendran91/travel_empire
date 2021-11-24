@@ -12,7 +12,8 @@
         </div>
       </div>
     </div>
-    <%=render :partial => 'home/cab_booking/tot_modal.html.erb'%>
+    <%=render :partial => 'home/modals/gst_details_modal.html.erb'%>
+    <%=render :partial => 'home/modals/tot_modal.html.erb'%>
     <%=@trip.fname%>
     <%= form_for(@trip,:as => 'trip', url: submit_trip_path(@trip)) do |f| %>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
@@ -52,7 +53,7 @@
       $('.cabBookingForm').show();
     });
 
-   
+
     $( "#inlineFormCustomSelect" ).change(function() {
       tor =  $(this).val();
       console.log(tor+" 1");
@@ -134,17 +135,17 @@
       var value = errorMsg();
       if(value.length > 0){
         window.alert(value);
-      }  
+      }
     });
 
-      
+
     function noOfPass(){
       return Number($('#adult').val())+Number($('#chldrn').val());
     }
 
     function errorMsg(){
       var value = noOfPass();
-      var returnval = "";  
+      var returnval = "";
       if(value > 7){
         returnval="Number of passengers cannot be more than 7";
       }
@@ -156,11 +157,11 @@
       }
       return returnval;
     }
-    
+
     function passValid(){
       var value = errorMsg();
-      var returnvalue = false;  
-      if(value.length > 0){    
+      var returnvalue = false;
+      if(value.length > 0){
         returnValue = true;
       }
       return ;
@@ -175,7 +176,7 @@
         for(item in modal_texts[tor]){
         if(item != "title"){
             if(item == 'red'){
-                list_string += "<li class='modal-list-red'>"+modal_texts[tor][item]+"</li>"  
+                list_string += "<li class='modal-list-red'>"+modal_texts[tor][item]+"</li>"
               }
               else{
                 list_string += "<li>"+modal_texts[tor][item]+"</li>"
@@ -186,9 +187,52 @@
         modal.find('.modal-body-text').html(list_string);
         modal.find('.modal-body-image').html("<img src='/assets/"+tor+".png' class='modal-image'/>")
       });
-      $('#totModal').modal('show'); 
+      $('#totModal').modal('show');
     }
 
-      
+
+    $('#gst').on('change', function(e){
+      var gst = $('#gst').val();
+      var gst_data = "";
+      if(gst.length == 15){
+        getGSTDetails(gst);
+      }
+    });
+
+
+
+    function getGSTDetails(gst){
+      $.ajax({
+        type: 'GET',
+        url: "https://appyflow.in/api/verifyGST",
+        data: "key_secret=XYhitWS1lrhpoKhDvyNo48d7BZL2&gstNo="+gst,
+        dataType: "json",
+        contentType: "application/json",
+        success: function(resultData){
+                  if(resultData["error"]){
+                    alert(resultData["message"])
+                  }
+                  else{
+                    showGSTModal(resultData);
+                  }
+                },
+        error: function(data){
+                console.log("jqXhr error"+data.status);
+              }
+      });
+    }
+
+    function showGSTModal(gstData){
+      var data = gstData["taxpayerInfo"];
+      var addr = data["pradr"]["addr"];
+      $('#gstModal').on('show.bs.modal', function(){
+        var modal = $(this);
+        var gstTable = "Company Name: <bold>"+gstData["taxpayerInfo"]["tradeNam"]+"</bold>";
+        modal.find('.modal-body-text').append(gstTable);
+        var address = "<br><br>Address: "+addr["bno"]+" "+addr["flno"]+" "+addr["st"]+" "+addr["loc"]+" "+addr["dst"]+" "+addr["stcd"]+" "+addr["pncd"];
+        modal.find('.modal-body-text').append(address);
+      });
+      $('#gstModal').modal('show');
+    }
   });
 </script>

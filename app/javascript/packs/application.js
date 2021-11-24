@@ -17,6 +17,7 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 // require("@rails/activestorage").start();
 require("channels");
+require("packs/gst_api_calls");
 
 import "bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css'
