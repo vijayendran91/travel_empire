@@ -236,10 +236,10 @@
       var addr = data["pradr"]["addr"];
       $('#gstModal').on('show.bs.modal', function(){
         var modal = $(this);
-        var gstTable = "Company Name: <bold>"+gstData["taxpayerInfo"]["tradeNam"]+"</bold>";
-        modal.find('.modal-body-text').append(gstTable);
-        var address = "<br><br>Address: "+addr["bno"]+" "+addr["flno"]+" "+addr["st"]+" "+addr["loc"]+" "+addr["dst"]+" "+addr["stcd"]+" "+addr["pncd"];
-        modal.find('.modal-body-text').append(address);
+        debugger;
+        var gstInfo = "<h5>"+data["tradeNam"]+"</h5>";
+        gstInfo += "<br><b>"+data["lgnm"]+"</b><br>Address:<br>"+addr["bno"]+" "+addr["flno"]+" "+addr["st"]+"<br> "+addr["loc"]+" "+addr["dst"]+"<br> "+addr["stcd"]+"-"+addr["pncd"];
+        modal.find('.modal-body-text').html(gstInfo);
       });
       $('#gstModal').modal('show');
     }
