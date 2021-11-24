@@ -20,6 +20,7 @@
       <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
       <%=f.submit "Book Ride", :class=>"btn ml-3 green-btn form-submit"%>
     <%end%>
+    <div class="loading-gif-modal"></div>
   </div>
 </center>
 <script type="text/javascript" src="data/data.json"></script>
@@ -30,6 +31,14 @@
   let json_data = JSON.stringify(data);
   let modal_texts = JSON.parse(json_data)["modaltexts"];
   let  districts_data = JSON.parse(json_data)["districts"];
+
+  $body = $("body");
+  $(document).on({
+      ajaxStart: function() { $body.addClass("loading");    },
+       ajaxStop: function() { $body.removeClass("loading"); }
+  });
+
+
   $(document).ready(function(){
     $('#totModal').hide();
     $('.perOrBus').hide();

@@ -139,3 +139,22 @@ $base-color-gold : #E6A620;
 .modal-list-red{
   color: red;
 }
+
+.loading-gif-modal{
+  display:    none;
+  position:   fixed;
+  z-index:    1000;
+  top:        0;
+  left:       0;
+  height:     100%;
+  width:      100%;
+  background: rgba( 255, 255, 255, .8 )
+              url('/assets/ajax-loader.gif')
+              50% 50%
+              no-repeat;
+}
+
+body.loading .loading-gif-modal {
+    overflow: hidden;
+    display: block;
+}
