@@ -12,10 +12,9 @@
         </div>
       </div>
     </div>
-    <%=render :partial => 'home/modals/gst_details_modal.html.erb'%>
-    <%=render :partial => 'home/modals/tot_modal.html.erb'%>
-    <%=@trip.fname%>
     <%= form_for(@trip,:as => 'trip', url: submit_trip_path(@trip)) do |f| %>
+      <%=render :partial => 'home/modals/gst_details_modal.html.erb', :locals => {:f => f}%>
+      <%=render :partial => 'home/modals/tot_modal.html.erb'%>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
       <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
       <%=f.submit "Book Ride", :class=>"btn ml-3 green-btn form-submit"%>
@@ -234,12 +233,17 @@
     function showGSTModal(gstData){
       var data = gstData["taxpayerInfo"];
       var addr = data["pradr"]["addr"];
+      var legal_name = data["lgnm"];
+      var full_addr =  addr["bno"]+" "+addr["flno"]+" "+addr["st"]+" "+addr["loc"]+" "+addr["dst"]+" "+addr["stcd"]+"-"+addr["pncd"]
       $('#gstModal').on('show.bs.modal', function(){
         var modal = $(this);
-        debugger;
         var gstInfo = "<h5>"+data["tradeNam"]+"</h5>";
         gstInfo += "<br><b>"+data["lgnm"]+"</b><br>Address:<br>"+addr["bno"]+" "+addr["flno"]+" "+addr["st"]+"<br> "+addr["loc"]+" "+addr["dst"]+"<br> "+addr["stcd"]+"-"+addr["pncd"];
         modal.find('.modal-body-text').html(gstInfo);
+          
+        //Hidden Fields for GST  
+        modal.find('.gst_lg_nm').val(legal_name);
+        modal.find('.gst_full_addr').val(full_addr);
       });
       $('#gstModal').modal('show');
     }
