@@ -23,6 +23,6 @@ class HomeController < ApplicationController
   private
   
   def get_trip_params()
-    params[:trip].permit(:perbus, :tot, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst)
+    params[:trip].permit(:perbus, :tot, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr)
   end
 end
