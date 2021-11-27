@@ -30,10 +30,11 @@
   let modal_texts = JSON.parse(json_data)["modaltexts"];
   let  districts_data = JSON.parse(json_data)["districts"];
 
+
   $body = $("body");
   $(document).on({
       ajaxStart: function() { $body.addClass("loading");    },
-       ajaxStop: function() { $body.removeClass("loading"); }
+      ajaxStop: function() { $body.removeClass("loading"); }
   });
 
 
@@ -220,7 +221,7 @@
           $('#flightTicket').hide();
         }
     });
-    
+
     function getGSTDetails(gst){
       $.ajax({
         type: 'GET',
@@ -252,8 +253,8 @@
         var gstInfo = "<h5>"+data["tradeNam"]+"</h5>";
         gstInfo += "<br><b>"+data["lgnm"]+"</b><br>Address:<br>"+addr["bno"]+" "+addr["flno"]+" "+addr["st"]+"<br> "+addr["loc"]+" "+addr["dst"]+"<br> "+addr["stcd"]+"-"+addr["pncd"];
         modal.find('.modal-body-text').html(gstInfo);
-          
-        //Hidden Fields for GST  
+
+        //Hidden Fields for GST
         modal.find('.gst_lg_nm').val(legal_name);
         modal.find('.gst_full_addr').val(full_addr);
       });
