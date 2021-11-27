@@ -1,7 +1,6 @@
 <%= render :partial => 'home/navbar_files/navbar'%>
 <center>
   <div id="formContainer" class="shadow-lg p-3 mb-5 bg-white rounded">
-
     <div id="initBtnCntnr">
       <div class="form-row mt-4">
         <div class="form-group col-md-6">
@@ -42,6 +41,9 @@
     $('#totModal').hide();
     $('.perOrBus').hide();
     $('#addLocation').hide();
+    $('#flightTicket').hide();
+
+
     $('#bookCab').on('click', function(){
         $('#bookCab').hide();
         $('#makePayment').hide();
@@ -208,7 +210,17 @@
     });
 
 
-
+    $('#flight').on('change', function(){
+        if($('#flight').prop("checked")==true){
+          $('#aadhaars').hide();
+          $('#flightTicket').show();
+        }
+        else if($('#flight').prop("checked")==false){
+          $('#aadhaars').show();
+          $('#flightTicket').hide();
+        }
+    });
+    
     function getGSTDetails(gst){
       $.ajax({
         type: 'GET',

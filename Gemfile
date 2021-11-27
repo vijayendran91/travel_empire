@@ -68,3 +68,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #HTTParty for RESTful API calls
 gem 'httparty'
+
+
+#Paperclip for storing files
+gem 'paperclip'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+
