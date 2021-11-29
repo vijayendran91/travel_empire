@@ -158,13 +158,18 @@
       var value = noOfPass();
       var returnval = "";
       if(value > 7){
-        returnval="Number of passengers cannot be more than 7";
+        window.alert("Number of passengers cannot be more than 7");
       }
-      else if(value < 0){
-        returnval = "Number of passengers cannot be less than 0";
+      else if(value <= 0){
+        window.alert("Number of passengers cannot be less than 0");  
       }
-      else{
-        returnval = "";
+      else if(value > 4 && value <= 7){
+        $('#4seater').hide();
+        $('#7seater').show();
+      }
+      else if(value <=4 && value >0){
+        $('#7seater').hide();
+        $('#4seater').show()
       }
       return returnval;
     }
@@ -244,6 +249,7 @@
     }
 
     function showGSTModal(gstData){
+      debugger;  
       var data = gstData["taxpayerInfo"];
       var addr = data["pradr"]["addr"];
       var legal_name = data["lgnm"];
