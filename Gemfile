@@ -74,3 +74,5 @@ gem 'httparty'
 gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
+gem "letter_opener", :group => :development
+

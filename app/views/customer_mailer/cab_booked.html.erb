@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h5><%="Dear "+@trip[:fname]%>,<br><br>
+    Greetings from Travel Empire(Cab Rental Services). You cab has been booked !</h5>
+    <center>
+      <%= image_tag(attachments["logo.jpg"].url, :style=> 'width:45%;') %>     
+      <br><h5>Please find the details below.</h5>
+      <table class="table table-striped" style="width:  75% !important;">
+        <tbody>
+          <tr>
+              <td><b>Booking Id</b></td>
+            <td><%=@trip[:id]%></td>
+          </tr>
+          <tr>
+              <td><b>Pick Up</b></td>
+            <td><%=@trip[:pul]+" - "+@trip[:pua]%></td>
+          </tr>
+          <tr>
+              <td><b>Drop Location</b></td>
+            <td><%=@trip[:drl]+" - "+@trip[:dra]%></td>
+          </tr>
+          <tr>
+              <td><b>Car Type</b></td>
+            <td>4 Seater/ 7 Seater -- To be made generic</td>
+          </tr>
+          <tr>
+              <td><b>Reporting Date and Time</b></td>
+            <td><%=@trip[:put]%></td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+      - 8 hours duty on <%=@trip[:put]%><br><br>
+
+      - Advance Payment will be adjusted 
+	  against the Bill Amount<br><br>
+
+      - Govt. & Private Toll Entry Fee & Permit Fee Excluded.<br><br>
+
+	- Particular trip Driver will pay all the Govt. & Private Toll Entry Fee & Permit Fee. 
+	  After Trip End Passenger has to pay back to the Driver Trip Amount along with
+	  Govt. & Private Toll Entry Fee & Permit Fee. <br><br> 
+
+	- Waiting time 1 hour allowed without any charges from Cab Reporting time. 
+	  After 1 hour Waiting charges Rs.200/- Per Hour is applicable.<br><br>
+
+	- Once particular Trip booking id has been closed Travel Empire does not hold any 
+	  responsibility for any losses incurred. [ Any party - Cab & Driver ]<br><br>
+
+	- Correct Pickup Location ( Whatsup -> Send your Location -> Option ) must be sent to the 
+	  Cab driver upon his request. Incase wrong Pickup Location is provided to the Cab
+	  driver Trip gets Cancelled without any notification. <br><br>
+
+	- Incase wrong Pickup Location given, then Charges will be started from wrong Pickup
+	  Location Only and not from the actual Pickup Location. <br><br>
+
+	- Any clarifications or doubts relating to Tariffs please contact Travel Empire - 98845 38873/ 
+	  83000 54444 before settling the amount<br><br>
+
+	- Pay the Tariff as per the agreed terms and conditions.<br><br>
+
+	- Any excess amount given Travel Empire does not hold any resposibility to refund the amount.<br><br>
+
+	- Food allowance, Driver Tips, Mercy tips will not be adjusted in Cab Bill Amount and 
+	  Driver Bata Amount.<br><br>
+
+	- Tariff details are basis on Current month and old digital rates and Last Quotes Rates, 
+	  Driver Quotated Rates, anyone Recommended Rates does not apply.<br><br>
+
+	- No discount is applicable.<br><br>
+
+	- Incase of any breakdown, Charges will be applicable from Pickup point Until breakdown Point.<br><br>
+
+	- Incase of any breakdown, and Customer is still intrested in continuing the Travel Empire
+	  services an alternative vehicle will be arranged from the Breakdown point until the Destination
+	  point.<br><br>
+
+	- Prices are not Standard. Rates are Flexible as per the current Operating Cost.<br><br>
+
+	- Please ensure you take care of your personal belongings. The Venue Management & Staff are
+	  not respondible for any Loss/Theft/Damage.<br><br>
+
+	- Trip Communication works only in Whatups.  Normal Message or Normal Phone will not work.
+	  All communication happen only via Whatsup. <br><br>
+
+	- For successfull Booking and Travel -  Travel passenger(s) must have Whatsup Communication facility.<br><br>
+
+	- Incase of Trip bill is required for the Travel Pasenger (s) , GST will applicable as per
+	  the Government norms.<br><br>
+
+	- Any Credit Card payment Addition charges applicable per the Current guideliness.<br><br>
+
+	Note : -<br><br>
+
+	a. Passenger has to share Current Location using Whatsup-> Send your Current Location
+	to Travel Empire Admin before 1 hour. What's Number  :  98845 38873 / 83000 54444<br><br>
+
+	b. Incase of any doubts or Cancellation or Any Tariff information or Bill Payment Information <br><br>
+
+	Contact :  Travel Empire Admin
+	Number  :  98845 38873 / 83000 54444
+	E-Mail id : chennai.travelempire@yahoo.co
+  </body>
+</html>
+<style>
+</style>

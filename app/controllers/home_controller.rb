@@ -16,6 +16,7 @@ class HomeController < ApplicationController
     end
     @trip = Trip.new(params)
     @trip.save
+    CustomerMailer.with(:trip=>@trip).cab_booked.deliver_now
     redirect_to root_path
   end
 
