@@ -14,27 +14,31 @@
     <center>
       <%= image_tag(attachments["logo.jpg"].url, :style=> 'width:45%;') %>     
       <br><h5>Please find the details below.</h5>
-      <table class="table table-striped" style="width:  95% !important;">
+      <table class="table table-striped" style="width:  95% !important; background-color: #334420; color: #ffffff !important;">
         <tbody>
           <tr>
-              <td><b>Booking Id</b></td>
-            <td><%=@trip[:id]%></td>
+            <td>Booking Id</td>
+            <td class="table-imp"><%=@trip[:id]%></td>
           </tr>
           <tr>
               <td><b>Pick Up</b></td>
             <td><%=@trip[:pul]+" - "+@trip[:pua]%></td>
           </tr>
           <tr>
-              <td><b>Drop Location</b></td>
-            <td><%=@trip[:drl]+" - "+@trip[:dra]%></td>
+            <td><b>Drop Location</b></td>
+            <td class="table-imp"><%=@trip[:drl]+" - "+@trip[:dra]%></td>
           </tr>
           <tr>
-              <td><b>Car Type</b></td>
-              <td><%=@trip[:str]%></td>
+            <td><b>Car Type</b></td>
+            <td><%=@trip[:str]%></td>
           </tr>
           <tr>
-              <td><b>Reporting Date and Time</b></td>
-            <td><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+            <td><b>Reporting Date and Time</b></td>
+            <td class="table-imp"><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+          </tr>
+          <tr>
+            <td><b>Type of Trip</b></td>
+            <td class="table-imp"><%=@tot%></td>
           </tr>
         </tbody>
       </table>
@@ -113,4 +117,12 @@
   </body>
 </html>
 <style>
+.table-imp{
+    font-weight: 900;
+    text-decoration: underline overline;
+  }
+  table{
+    background-color: #334420;
+    color: #ffffff !important;
+  } 
 </style>

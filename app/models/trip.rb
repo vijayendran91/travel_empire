@@ -41,4 +41,18 @@ class Trip
               }
   TRIP_TYPE_REV = TRIP_TYPE.invert
 
+  ONE_WAY = :ow
+  MULTI_WAY = :my
+  HOURLY = :hy
+  RETURN_TRIP = :rtt
+  ROUND_TRIP = :RT
+
+  TYPE_OF_TRIP = {
+                  ONE_WAY => "One Way",
+                  MULTI_WAY => "Multi Way",
+                  HOURLY => "Hourly",
+                  RETURN_TRIP => "Return Trip",
+                  ROUND_TRIP => "Round Trip"
+                }
+  TYPE_OF_TRIP_REV = TYPE_OF_TRIP.invert
 end
