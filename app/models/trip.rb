@@ -20,6 +20,7 @@ class Trip
   field :dra, type: String
   field :drt, type: DateTime
   field :tob, type: String
+  field :str, type: String
   field :fname, type: String
   field :lname, type: String
   field :phone, type: String

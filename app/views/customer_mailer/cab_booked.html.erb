@@ -30,11 +30,11 @@
           </tr>
           <tr>
               <td><b>Car Type</b></td>
-            <td>4 Seater/ 7 Seater -- To be made generic</td>
+              <td><%=@trip[:str]%></td>
           </tr>
           <tr>
               <td><b>Reporting Date and Time</b></td>
-            <td><%=@trip[:put]%></td>
+            <td><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
           </tr>
         </tbody>
       </table>
