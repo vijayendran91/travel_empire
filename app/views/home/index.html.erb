@@ -21,6 +21,9 @@
     <div class="loading-gif-modal"></div>
   </div>
 </center>
+
+
+
 <script type="text/javascript" src="data/data.json"></script>
 <script>
   let porb = "";
@@ -28,7 +31,8 @@
   let locs = 0;
   let json_data = JSON.stringify(data);
   let modal_texts = JSON.parse(json_data)["modaltexts"];
-  let  districts_data = JSON.parse(json_data)["districts"];
+  let districts_data = JSON.parse(json_data)["districts"];
+  let ist = null;
 
 
   $body = $("body");
@@ -39,11 +43,14 @@
 
 
   $(document).ready(function(){
+    setIST();
+
     $('#totModal').hide();
     $('.perOrBus').hide();
     $('#addLocation').hide();
     $('#flightTicket').hide();
-
+    $('#returnBookingTime').hide();
+    $('#returnDateTime').hide();
 
     $('#bookCab').on('click', function(){
         $('#bookCab').hide();
@@ -70,59 +77,82 @@
       console.log(tor+" 1");
       switch(tor){
           case "ow":
-              showModal(tor);
-              $('#addLocation').hide();
-              $('#toDistSelect').show();
-              $('#locationSwap').show();
-              $('#toAreaLabel').show();
-              $('#toDistLabel').show();
-              $('#toArea').show();
-              $('.locations').hide();
-              $('#totModal').show();
+              prepOneWay(tor);
               break;
           case "rtt":
-              showModal(tor);
-              $('#addLocation').hide();
-              $('#toDistSelect').show();
-              $('#toAreaLabel').show();
-              $('#locationSwap').show();
-              $('.locations').hide();
-              $('#toDistLabel').show();
-              $('#toArea').show();
+              prepReturnTrip();
               break;
           case "rt":
-              showModal(tor);
-              $('.locations').show();
-              $('#addLocation').show();
-              $('#locationSwap').hide();
-              $('#toDistSelect').hide();
-              $('#toDistLabel').hide();
-              $('#toAreaLabel').hide();
-              $('#toArea').hide();
+              prepRoundTrip();
               break;
           case "my":
-              showModal(tor);
-              $('.locations').show();
-              $('#addLocation').show();
-              $('#locationSwap').hide();
-              $('#toDistSelect').hide();
-              $('#toAreaLabel').hide();
-              $('#toDistLabel').hide();
-              $('#toArea').hide();
+              prepMultiCity();
               break;
           case "hy":
-              showModal(tor);
-              $('.locations').hide();
-              $('#addLocation').hide();
-              $('#locationSwap').hide();
-              $('#toDistSelect').hide();
-              $('#toAreaLabel').hide();
-              $('#toDistLabel').hide();
-              $('#toArea').hide();
+              prepHourly();
               break;
         location.reload();
       }
     });
+
+    function prepOneWay(tor){
+      setOneWayMinTime();
+      showModal(tor);
+      $('#addLocation').hide();
+      $('#toDistSelect').show();
+      $('#locationSwap').show();
+      $('#toAreaLabel').show();
+      $('#toDistLabel').show();
+      $('#toArea').show();
+      $('.locations').hide();
+      $('#totModal').show();
+
+    }
+
+    function prepReturnTrip(){
+      showModal(tor);
+      $('#addLocation').hide();
+      $('#toDistSelect').show();
+      $('#toAreaLabel').show();
+      $('#locationSwap').show();
+      $('.locations').hide();
+      $('#toDistLabel').show();
+      $('#toArea').show();
+    }
+
+    function prepRoundTrip(){
+      showModal(tor);
+      $('.locations').show();
+      $('#addLocation').show();
+      $('#locationSwap').hide();
+      $('#toDistSelect').hide();
+      $('#toDistLabel').hide();
+      $('#toAreaLabel').hide();
+      $('#toArea').hide();
+    }
+
+    function prepMultiCity(){
+      showModal(tor);
+      $('.locations').show();
+      $('#addLocation').show();
+      $('#locationSwap').hide();
+      $('#toDistSelect').hide();
+      $('#toAreaLabel').hide();
+      $('#toDistLabel').hide();
+
+      $('#toArea').hide();
+    }
+
+    function prepHourly(){
+      showModal(tor);
+      $('.locations').hide();
+      $('#addLocation').hide();
+      $('#locationSwap').hide();
+      $('#toDistSelect').hide();
+      $('#toAreaLabel').hide();
+      $('#toDistLabel').hide();
+      $('#toArea').hide();
+    }
 
     $('#addLocation').on('click',function(){
       locs++;
@@ -143,23 +173,76 @@
     }
 
     $('#adult,#chldrn').on('change', function(){
-      var value = errorMsg();
-        
+      var value = processPass();
     });
 
+    function getIST(){
+      var d1 = new Date(stringUTCTime(new Date()));
+      d1.setHours(d1.getHours()+5);
+      d1.setMinutes(d1.getMinutes()+30);
+      ist = stringTime(new Date(d1));
+      return ist
+    }
+
+    function setIST(){
+      $('#returnBookingTime, #BookingTime').val(getIST());
+    }
+
+    function getUTCTime(d){
+      var year = d.getUTCFullYear()
+      var month = (d.getUTCMonth()+1) < 10 ? "0"+(d.getUTCMonth()+1) : (d.getUTCMonth()+1);
+      var day = d.getUTCDate() < 10 ? "0"+d.getUTCDate() : d.getUTCDate();
+      var hour = d.getUTCHours() < 10 ? "0"+d.getUTCHours() : d.getUTCHours();
+      var min = d.getUTCMinutes() < 10 ? "0"+d.getUTCMinutes() : d.getUTCMinutes();
+      return [year, month, day, hour, min];
+    }
+
+    function getTime(d){
+      var year = d.getFullYear()
+      var month = (d.getMonth()+1) < 10 ? "0"+(d.getMonth()+1) : (d.getMonth()+1);
+      var day = d.getDate() < 10 ? "0"+d.getDate() : d.getDate();
+      var hour = d.getHours() < 10 ? "0"+d.getHours() : d.getHours();
+      var min = d.getMinutes() < 10 ? "0"+d.getMinutes() : d.getMinutes();
+      return [year, month, day, hour, min];
+    }
+
+
+    //returns UTC time in YY:MM::DDThh:mm format for html
+    function stringUTCTime(d){
+      var date_time_arr = getUTCTime(d);
+      return stringifyTime(date_time_arr[0],date_time_arr[1],date_time_arr[2],date_time_arr[3],date_time_arr[4]);
+    }
+
+
+
+    function stringTime(d){
+      var date_time_arr = getTime(d);
+      return stringifyTime(date_time_arr[0],date_time_arr[1],date_time_arr[2],date_time_arr[3],date_time_arr[4]);
+    }
+
+    function stringifyTime(year, month, day, hour, min){
+       return year+"-"+month+"-"+day+"T"+hour+":"+min;
+    }
+
+
+    function setOneWayMinTime(){
+      ist = getIST();
+      dist = new Date(ist);
+      owmt = stringTime(dist);
+    }
 
     function noOfPass(){
       return Number($('#adult').val())+Number($('#chldrn').val());
     }
 
-    function errorMsg(){
+    function processPass(){
       var value = noOfPass();
       var returnval = "";
       if(value > 7){
         window.alert("Number of passengers cannot be more than 7");
       }
       else if(value <= 0){
-        window.alert("Number of passengers cannot be less than 0");  
+        window.alert("Number of passengers cannot be less than 0");
       }
       else if(value > 4 && value <= 7){
         $('#4seater').hide();
@@ -175,7 +258,7 @@
     }
 
     function passValid(){
-      var value = errorMsg();
+      var value = processPass();
       var returnvalue = false;
       if(value.length > 0){
         returnValue = true;
@@ -249,7 +332,6 @@
     }
 
     function showGSTModal(gstData){
-      debugger;  
       var data = gstData["taxpayerInfo"];
       var addr = data["pradr"]["addr"];
       var legal_name = data["lgnm"];
@@ -266,5 +348,7 @@
       });
       $('#gstModal').modal('show');
     }
+
+
   });
 </script>
