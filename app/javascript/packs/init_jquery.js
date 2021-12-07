@@ -50,5 +50,9 @@ $(document).ready(function(){
       }
   });
 
-
+  
+  $('#gst').keyup(function(){
+    this.value = this.value.toUpperCase();
+  });
+ 
 });
