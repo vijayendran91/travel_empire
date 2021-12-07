@@ -55,7 +55,7 @@ export function setRoundTripDT(){
         start_max_time = addHoursToCT(start_min_time, 8);
         $('#BookingTime').attr('min',stringTime(start_min_time));
         $('#BookingTime').attr('max',"");
-        $('#returnBookingTime').attr('min', "");
+        $('#returnBookingTime').attr('min', stringTime(start_min_time));
         $('#returnBookingTime').attr('max', "");
         break;
      case "tb":
@@ -101,7 +101,7 @@ export function setReturnTripDT(){
         start_max_time = addHoursToCT(start_min_time, 8);
         $('#BookingTime').attr('min',stringTime(start_min_time));
         $('#BookingTime').attr('max',"");
-        $('#returnBookingTime').attr('min', "");
+        $('#returnBookingTime').attr('min', stringTime(start_min_time));
         $('#returnBookingTime').attr('max', "");
         break;
      case "tb":
@@ -147,7 +147,7 @@ export function setMultiCityDT(){
         start_max_time = addHoursToCT(start_min_time, 8);
         $('#BookingTime').attr('min',stringTime(start_min_time));
         $('#BookingTime').attr('max',"");
-        $('#returnBookingTime').attr('min', "");
+        $('#returnBookingTime').attr('min', stringTime(start_min_time));
         $('#returnBookingTime').attr('max', "");
         break;
      case "tb":
