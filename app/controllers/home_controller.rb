@@ -21,7 +21,18 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
 
+  def our_policy
+  
+  end
 
+
+  def about_us
+  
+  
+  end
+
+  def pricing
+  end
   private
   
   def get_trip_params()

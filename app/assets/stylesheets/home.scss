@@ -89,7 +89,7 @@ $base-color-gold : #E6A620;
   display: flex;
 }
 
-#formContainer{
+.formContainer{
   width: 90%;
   height: auto;
   min-height: 200px;
@@ -163,4 +163,10 @@ body.loading .loading-gif-modal {
   width: 50%;
 }
 
+.left-text{
+  text-align: left
+}
 
+.pricing-images{
+    height: 600px;
+}

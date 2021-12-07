@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   post '/', :to => 'home#submit'
   post '/submit_trip', :to => 'home#submit_trip'
   get '/chennai106', :to => 'admin#home'
+  get '/policy', :to => 'home#our_policy'
+  get '/about_us', :to => 'home#about_us'
+  get '/pricing', :to => 'home#pricing'
 end
