@@ -29,6 +29,192 @@ export function setOneWayMinTime(){
 
 }
 
+export function setRoundTripDT(){
+  var ist = getIST();
+  var dist = new Date(ist);
+  var owmt = stringTime(dist);
+  var tob = typeOfBooking();
+  var start_min_time = null;
+  var start_max_time = null;
+  var end_min_time = null;
+  var end_max_time = null;
+  switch(tob){
+    case "bn":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        end_min_time = start_min_time;
+        end_max_time = addDaysToCD(end_min_time, 7);
+        end_max_time = addHoursToCT(end_max_time,8);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+     case "ab":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',"");
+        $('#returnBookingTime').attr('min', "");
+        $('#returnBookingTime').attr('max', "");
+        break;
+     case "tb":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addDaysToCD(start_min_time, 7)
+        end_min_time = addHoursToCT(start_min_time,8);
+        end_max_time = addDaysToCD(end_min_time, 14);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+    default:
+        //window.alert("Please select one of the types of booking eg: 'Book Now', 'Book in Advance' etc.");
+        break;
+  }
+
+}
+
+
+export function setReturnTripDT(){
+  var ist = getIST();
+  var dist = new Date(ist);
+  var owmt = stringTime(dist);
+  var tob = typeOfBooking();
+  var start_min_time = null;
+  var start_max_time = null;
+  var end_min_time = null;
+  var end_max_time = null;
+  switch(tob){
+    case "bn":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        end_min_time =  start_min_time;
+        end_max_time = addHoursToCT(end_min_time, 32);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+     case "ab":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',"");
+        $('#returnBookingTime').attr('min', "");
+        $('#returnBookingTime').attr('max', "");
+        break;
+     case "tb":
+        start_min_time = addHoursToCT(owmt, 1);
+        end_min_time = addHoursToCT(start_min_time, 24);
+        end_max_time = addHoursToCT(start_max_time,24); 
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+    default:
+        //window.alert("Please select one of the types of booking eg: 'Book Now', 'Book in Advance' etc.");
+        break;
+  }
+
+}
+
+
+export function setMultiCityDT(){
+  var ist = getIST();
+  var dist = new Date(ist);
+  var owmt = stringTime(dist);
+  var tob = typeOfBooking();
+  var start_min_time = null;
+  var start_max_time = null;
+  var end_min_time = null;
+  var end_max_time = null;
+  switch(tob){
+    case "bn":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        end_min_time = start_min_time;
+        end_max_time = addDaysToCD(end_min_time, 7);
+        end_max_time = addHoursToCT(end_max_time,8);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+     case "ab":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',"");
+        $('#returnBookingTime').attr('min', "");
+        $('#returnBookingTime').attr('max', "");
+        break;
+     case "tb":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addDaysToCD(start_min_time, 7)
+        end_min_time = addHoursToCT(start_min_time,8);
+        end_max_time = addDaysToCD(end_min_time, 14);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+    default:
+        //window.alert("Please select one of the types of booking eg: 'Book Now', 'Book in Advance' etc.");
+        break;
+  }
+}
+
+
+export function setHourlyDT(){
+  var ist = getIST();
+  var dist = new Date(ist);
+  var owmt = stringTime(dist);
+  var tob = typeOfBooking();
+  var start_min_time = null;
+  var start_max_time = null;
+  var end_min_time = null;
+  var end_max_time = null;
+  switch(tob){
+    case "bn":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        end_min_time = start_min_time;
+        end_max_time = addHoursToCT(end_min_time, 16);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+     case "ab":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
+        end_min_time = start_min_time;
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',"");
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', "");
+        break;
+     case "tb":
+        start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addDaysToCD(start_min_time, 7)
+        end_min_time = addHoursToCT(start_min_time,8);
+        end_max_time = addHoursToCT(start_max_time,8);
+        $('#BookingTime').attr('min',stringTime(start_min_time));
+        $('#BookingTime').attr('max',stringTime(start_max_time));
+        $('#returnBookingTime').attr('min', stringTime(end_min_time));
+        $('#returnBookingTime').attr('max', stringTime(end_max_time));
+        break;
+    default:
+        //window.alert("Please select one of the types of booking eg: 'Book Now', 'Book in Advance' etc.");
+        break;
+  }
+}
+
+
+
+
 function getIST(){
   var d1 = new Date(stringUTCTime(new Date()));
   d1.setHours(d1.getHours()+5);
@@ -104,12 +290,9 @@ $(document).ready(function(){
   function setIST(){
     $('#returnBookingTime, #BookingTime').val(getIST());
   }
-<<<<<<< HEAD
 
   $('#BookingTime').on('change', function(e){
     
   });
 
-=======
->>>>>>> 5fb2ab8ee573e5aa548cc55d5a464288bc04e074
 });

@@ -4,7 +4,6 @@ $(document).ready(function(){
   $('.perOrBus').hide();
   $('#addLocation').hide();
   $('#flightTicket').hide();
-  $('#returnBookingTime').hide();
   $('#returnDateTime').hide();
 
   $('#bookCab').on('click', function(){

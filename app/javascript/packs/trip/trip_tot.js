@@ -1,4 +1,8 @@
 import {setOneWayMinTime} from './date_time.js'
+import {setRoundTripDT} from './date_time.js'
+import {setReturnTripDT} from './date_time.js'
+import {setMultiCityDT} from './date_time.js'
+import {setHourlyDT} from './date_time.js'
 let tor = "";
 let json_data = JSON.stringify(data);
 let modal_texts = JSON.parse(json_data)["modaltexts"];
@@ -42,6 +46,7 @@ $(document).ready(function(){
 
   function prepReturnTrip(){
     showModal(tor);
+    setReturnTripDT();
     $('#addLocation').hide();
     $('#toDistSelect').show();
     $('#toAreaLabel').show();
@@ -49,33 +54,39 @@ $(document).ready(function(){
     $('.locations').hide();
     $('#toDistLabel').show();
     $('#toArea').show();
+    $('#returnDateTime').show();
+
   }
 
   function prepRoundTrip(){
     showModal(tor);
-    $('.locations').show();
-    $('#addLocation').show();
-    $('#locationSwap').hide();
-    $('#toDistSelect').hide();
-    $('#toDistLabel').hide();
-    $('#toAreaLabel').hide();
-    $('#toArea').hide();
+    setRoundTripDT();
+    $('#addLocation').hide();
+    $('#toDistSelect').show();
+    $('#toAreaLabel').show();
+    $('#locationSwap').show();
+    $('.locations').hide();
+    $('#toDistLabel').show();
+    $('#toArea').show();
+    $('#returnDateTime').show();
   }
 
   function prepMultiCity(){
     showModal(tor);
+    setMultiCityDT();
     $('.locations').show();
     $('#addLocation').show();
     $('#locationSwap').hide();
     $('#toDistSelect').hide();
     $('#toAreaLabel').hide();
     $('#toDistLabel').hide();
-
+    $('#returnDateTime').show();
     $('#toArea').hide();
   }
 
   function prepHourly(){
     showModal(tor);
+    setHourlyDT();
     $('.locations').hide();
     $('#addLocation').hide();
     $('#locationSwap').hide();
@@ -83,6 +94,7 @@ $(document).ready(function(){
     $('#toAreaLabel').hide();
     $('#toDistLabel').hide();
     $('#toArea').hide();
+    $('#returnDateTime').show();
   }
 
 
