@@ -21,7 +21,8 @@ export function setOneWayMinTime(){
          break;
      case "tb":
          start_min_time = addHoursToCT(owmt, 1);
-         start_max_time = addDaysToCD(start_min_time, 7)
+         start_max_time = addDaysToCD(start_min_time, 7);
+         start_max_time = addHoursToCT(start_max_time, 8);
          $('#BookingTime').attr('min',stringTime(start_min_time));
          $('#BookingTime').attr('max',stringTime(start_max_time));
          break;
@@ -63,6 +64,7 @@ export function setRoundTripDT(){
         start_max_time = addDaysToCD(start_min_time, 7)
         end_min_time = addHoursToCT(start_min_time,8);
         end_max_time = addDaysToCD(end_min_time, 14);
+        end_max_time = addHoursToCT(end_max_time, 8);
         $('#BookingTime').attr('min',stringTime(start_min_time));
         $('#BookingTime').attr('max',stringTime(start_max_time));
         $('#returnBookingTime').attr('min', stringTime(end_min_time));
@@ -106,6 +108,7 @@ export function setReturnTripDT(){
         break;
      case "tb":
         start_min_time = addHoursToCT(owmt, 1);
+        start_max_time = addHoursToCT(start_min_time, 8);
         end_min_time = addHoursToCT(start_min_time, 24);
         end_max_time = addHoursToCT(start_max_time,24); 
         $('#BookingTime').attr('min',stringTime(start_min_time));
@@ -155,6 +158,7 @@ export function setMultiCityDT(){
         start_max_time = addDaysToCD(start_min_time, 7)
         end_min_time = addHoursToCT(start_min_time,8);
         end_max_time = addDaysToCD(end_min_time, 14);
+        end_max_time = addHoursToCT(end_max_time, 8);
         $('#BookingTime').attr('min',stringTime(start_min_time));
         $('#BookingTime').attr('max',stringTime(start_max_time));
         $('#returnBookingTime').attr('min', stringTime(end_min_time));
@@ -200,7 +204,7 @@ export function setHourlyDT(){
         start_min_time = addHoursToCT(owmt, 1);
         start_max_time = addDaysToCD(start_min_time, 7)
         end_min_time = addHoursToCT(start_min_time,8);
-        end_max_time = addHoursToCT(start_max_time,8);
+        end_max_time = addHoursToCT(start_max_time,16);
         $('#BookingTime').attr('min',stringTime(start_min_time));
         $('#BookingTime').attr('max',stringTime(start_max_time));
         $('#returnBookingTime').attr('min', stringTime(end_min_time));
