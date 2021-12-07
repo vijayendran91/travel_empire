@@ -13,6 +13,13 @@
 
   <body class="body">
     <div class="bgImage">
+      <script type="text/javascript" src="data/data.json"></script>
+      <%= javascript_pack_tag 'trip/date_time' %>
+      <%= javascript_pack_tag 'trip/districts_load'%>
+      <%= javascript_pack_tag 'init_jquery'%>
+      <%= javascript_pack_tag 'trip/trip_tot'%>
+      <%= javascript_pack_tag 'trip/passenger'%>
+      <%= javascript_pack_tag 'personal/gst_modal'%>
       <%= yield %>
     </div>
   </body>
