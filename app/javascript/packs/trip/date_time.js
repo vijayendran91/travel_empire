@@ -1,4 +1,5 @@
 let ist = null;
+
 export function setOneWayMinTime(){
   var ist = getIST();
   var dist = new Date(ist);
@@ -97,14 +98,18 @@ function addDaysToCD(time, days){
   return (new Date(temp));
 }
 
+
 $(document).ready(function(){
   setIST();
   function setIST(){
     $('#returnBookingTime, #BookingTime').val(getIST());
   }
+<<<<<<< HEAD
 
   $('#BookingTime').on('change', function(e){
     
   });
 
+=======
+>>>>>>> 5fb2ab8ee573e5aa548cc55d5a464288bc04e074
 });
