@@ -33,6 +33,25 @@ $(document).ready(function(){
     }
   });
 
+
+  $('#locationSwap').on('click', function(){
+    //Source & Destination Swap
+    var temp = $('#fromDistSelect').val();
+    $('#fromDistSelect').val($('#toDistSelect').val());
+    $('#toDistSelect').val(temp);
+  
+    //Area Swap
+    temp = $('.pua').val();
+    $('.pua').val($('.dra').val());
+    $('.dra').val(temp);
+
+    temp = $('#BookingTime').val();
+    $('#BookingTime').val($('#returnBookingTime').val());
+    $('#returnBookingTime').val(temp);
+
+  });
+
+
   $('#addLocation').on('click',function(){
     locs++;
     var tot = $('#inlineFormCustomSelect').val();

@@ -64,7 +64,7 @@
     </div>
     <div class="form-group col-6" id="fromArea">
       <label class="mr-sm-2 form-label" for="fromArea">Area</label>
-      <%= f.text_field :pua, class: "form-control search-input", placeholder: "Area", id: "fromArea"%>
+      <%=f.text_field :pua, :class=>'form-control pua', :id=>'fromArea', :placeholder=>'Area'%>
     </div>
   </div>
   <div class="form-row">
@@ -113,7 +113,7 @@
     </div>
     <div class="form-group col-6" id="toArea">
       <label class="mr-sm-2 form-label" for="toArea" id="toAreaLabel">Area</label>
-      <%= f.text_field :dra, class: "form-control search-input", placeholder: "Area", id: "toArea" %>
+      <%=f.text_field :dra, :class=>'form-control dra', :id=>'toArea', :placeholder=>'Area'%>
     </div>
   </div>
   <div id="addLocation">
