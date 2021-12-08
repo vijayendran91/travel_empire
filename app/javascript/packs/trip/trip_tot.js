@@ -61,14 +61,14 @@ $(document).ready(function(){
   function prepRoundTrip(){
     showModal(tor);
     setRoundTripDT();
-    $('#addLocation').hide();
-    $('#toDistSelect').show();
-    $('#toAreaLabel').show();
-    $('#locationSwap').show();
-    $('.locations').hide();
-    $('#toDistLabel').show();
-    $('#toArea').show();
+    $('.locations').show();
+    $('#addLocation').show();
+    $('#locationSwap').hide();
+    $('#toDistSelect').hide();
+    $('#toAreaLabel').hide();
+    $('#toDistLabel').hide();
     $('#returnDateTime').show();
+    $('#toArea').hide();
   }
 
   function prepMultiCity(){
