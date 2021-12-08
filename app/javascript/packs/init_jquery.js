@@ -5,7 +5,7 @@ $(document).ready(function(){
   $('#addLocation').hide();
   $('#flightTicket').hide();
   $('#returnDateTime').hide();
-
+  $('#roundtripDest').hide();
   $('#bookCab').on('click', function(){
       $('#bookCab').hide();
       $('#makePayment').hide();
@@ -26,13 +26,22 @@ $(document).ready(function(){
   });
 
 
+  $('#fromDistSelect').on('change', function(){
+    var tot = $('#inlineFormCustomSelect').val();
+    if(tot == 'rt'){
+      $('#roundtripDestText').attr('placeholder', $('#fromDistSelect').val());
+    }
+  });
+
   $('#addLocation').on('click',function(){
     locs++;
+    var tot = $('#inlineFormCustomSelect').val();
+    var parElem = document.getElementById('multiLocations');
+    var input = document.createElement("input");
     if(locs<5){
-      parElem = document.getElementById('multiLocations');
-      input = document.createElement("input");
       input.setAttribute('type','text');
       input.setAttribute('class',"form-control mb-3 locations");
+      input.setAttribute('id',''+locs+'');
       parElem.appendChild(input);
     }else{
       window.alert("You can add only maximum of 4 locations");

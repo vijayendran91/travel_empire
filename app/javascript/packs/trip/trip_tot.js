@@ -41,7 +41,7 @@ $(document).ready(function(){
     $('#toArea').show();
     $('.locations').hide();
     $('#totModal').show();
-
+    $('#roundtripDest').hide();
   }
 
   function prepReturnTrip(){
@@ -55,7 +55,7 @@ $(document).ready(function(){
     $('#toDistLabel').show();
     $('#toArea').show();
     $('#returnDateTime').show();
-
+    $('#roundtripDest').hide();
   }
 
   function prepRoundTrip(){
@@ -69,6 +69,7 @@ $(document).ready(function(){
     $('#toDistLabel').hide();
     $('#returnDateTime').show();
     $('#toArea').hide();
+    $('#roundtripDest').show();
   }
 
   function prepMultiCity(){
@@ -82,6 +83,7 @@ $(document).ready(function(){
     $('#toDistLabel').hide();
     $('#returnDateTime').show();
     $('#toArea').hide();
+    $('#roundtripDest').hide();
   }
 
   function prepHourly(){
@@ -95,6 +97,7 @@ $(document).ready(function(){
     $('#toDistLabel').hide();
     $('#toArea').hide();
     $('#returnDateTime').show();
+    $('#roundtripDest').hide();
   }
 
 
