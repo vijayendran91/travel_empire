@@ -45,9 +45,10 @@ $(document).ready(function(){
     $('.pua').val($('.dra').val());
     $('.dra').val(temp);
 
-    temp = $('#BookingTime').val();
-    $('#BookingTime').val($('#returnBookingTime').val());
-    $('#returnBookingTime').val(temp);
+    //time swap
+    //temp = $('#BookingTime').val();
+    //$('#BookingTime').val($('#returnBookingTime').val());
+    //$('#returnBookingTime').val(temp);
 
   });
 
