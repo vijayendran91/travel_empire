@@ -6,6 +6,8 @@ $(document).ready(function(){
   $('#flightTicket').hide();
   $('#returnDateTime').hide();
   $('#roundtripDest').hide();
+
+
   $('#bookCab').on('click', function(){
       $('#bookCab').hide();
       $('#makePayment').hide();
@@ -13,16 +15,21 @@ $(document).ready(function(){
     // $('.cabBookingForm').show();
   });
 
+  
+
+
   $('#personalRadio').on('click',function(){
     $('#gst').hide();
     $('#gstLabel').hide();
     $('.cabBookingForm').show();
+    $('#email').attr('required', false);
   });
 
   $('#businessRadio').on('click',function(){
     $('#gst').show();
     $('#gstLabel').show();
     $('.cabBookingForm').show();
+    $('#email').attr('required', true);
   });
 
 
