@@ -13,11 +13,15 @@ export function setOneWayMinTime(){
          start_max_time = addHoursToCT(start_min_time, 8)
          $('#BookingTime').attr('min',stringTime(start_min_time));
          $('#BookingTime').attr('max',stringTime(start_max_time));
+         $('#returnBookingTime').attr('min', "");
+         $('#returnBookingTime').attr('max', "");
          break;
      case "ab":
          start_min_time = addHoursToCT(owmt, 1);
          $('#BookingTime').attr('min',stringTime(start_min_time));
          $('#BookingTime').attr('max',"");
+         $('#returnBookingTime').attr('min', "");
+         $('#returnBookingTime').attr('max', "");
          break;
      case "tb":
          start_min_time = addHoursToCT(owmt, 1);
@@ -25,6 +29,8 @@ export function setOneWayMinTime(){
          start_max_time = addHoursToCT(start_max_time, 8);
          $('#BookingTime').attr('min',stringTime(start_min_time));
          $('#BookingTime').attr('max',stringTime(start_max_time));
+         $('#returnBookingTime').attr('min', "");
+         $('#returnBookingTime').attr('max', "");
          break;
   }   
 

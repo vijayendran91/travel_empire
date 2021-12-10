@@ -7,32 +7,41 @@ let tor = "";
 let json_data = JSON.stringify(data);
 let modal_texts = JSON.parse(json_data)["modaltexts"];
 $(document).ready(function(){
+  
   $( "#inlineFormCustomSelect" ).change(function() {
-    tor =  $(this).val();
-    console.log(tor+" 1");
-    switch(tor){
-        case "ow":
-            prepOneWay(tor);
-            break;
-        case "rtt":
-            prepReturnTrip();
-            break;
-        case "rt":
-            prepRoundTrip();
-            break;
-        case "my":
-            prepMultiCity();
-            break;
-        case "hy":
-            prepHourly();
-            break;
-      location.reload();
-    }
+    typeOfTrip(true);
   });
 
-  function prepOneWay(tor){
+});
+
+
+
+export function typeOfTrip(showModal=false){
+  tor =  $('#inlineFormCustomSelect').val();
+  switch(tor){
+    case "ow":
+      prepOneWay(tor, showModal);
+      break;
+    case "rtt":
+      prepReturnTrip(tor, showModal);
+      break;
+    case "rt":
+      prepRoundTrip(tor, showModal);
+      break;
+    case "my":
+      prepMultiCity(tor, showModal);
+      break;
+    case "hy":
+      prepHourly(tor, showModal);
+      break;
+  }
+}
+
+ function prepOneWay(tor, modal){
     setOneWayMinTime();
-    showModal(tor);
+    if(modal){
+      showModal(tor);
+    } 
     $('#addLocation').hide();
     $('#toDistSelect').show();
     $('#locationSwap').show();
@@ -42,10 +51,13 @@ $(document).ready(function(){
     $('.locations').hide();
     $('#totModal').show();
     $('#roundtripDest').hide();
+    $('#returnDateTime').hide();
   }
 
-  function prepReturnTrip(){
-    showModal(tor);
+  function prepReturnTrip(tor, modal){
+   if(modal){
+      showModal(tor);
+    } 
     setReturnTripDT();
     $('#addLocation').hide();
     $('#toDistSelect').show();
@@ -58,8 +70,10 @@ $(document).ready(function(){
     $('#roundtripDest').hide();
   }
 
-  function prepRoundTrip(){
-    showModal(tor);
+  function prepRoundTrip(tor, modal){
+    if(modal){
+      showModal(tor);
+    } 
     setRoundTripDT();
     $('.locations').show();
     $('#addLocation').show();
@@ -72,8 +86,10 @@ $(document).ready(function(){
     $('#roundtripDest').show();
   }
 
-  function prepMultiCity(){
-    showModal(tor);
+  function prepMultiCity(tor, modal){
+    if(modal){
+      showModal(tor);
+    }
     setMultiCityDT();
     $('.locations').show();
     $('#addLocation').show();
@@ -86,8 +102,10 @@ $(document).ready(function(){
     $('#roundtripDest').hide();
   }
 
-  function prepHourly(){
-    showModal(tor);
+  function prepHourly(tor, modal){
+    if(modal){
+      showModal(tor);
+    }
     setHourlyDT();
     $('.locations').hide();
     $('#addLocation').hide();
@@ -123,5 +141,3 @@ $(document).ready(function(){
     });
     $('#totModal').modal('show');
   }
-
-});

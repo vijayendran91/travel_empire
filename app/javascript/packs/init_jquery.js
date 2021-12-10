@@ -1,3 +1,4 @@
+import {typeOfTrip} from './trip/trip_tot.js'
 let locs = 0;
 $(document).ready(function(){
   $('#totModal').hide();
@@ -15,7 +16,6 @@ $(document).ready(function(){
     // $('.cabBookingForm').show();
   });
 
-  
 
 
   $('#personalRadio').on('click',function(){
@@ -24,6 +24,7 @@ $(document).ready(function(){
     $('.cabBookingForm').show();
     $('#email').attr('required', false);
   });
+
 
   $('#businessRadio').on('click',function(){
     $('#gst').show();
@@ -91,4 +92,9 @@ $(document).ready(function(){
     this.value = this.value.toUpperCase();
   });
  
+
+  $('#bookNow, #advanceBooking, #tentativeBooking').on('change', function(){
+    debugger; 
+    typeOfTrip(false);
+  });
 });
