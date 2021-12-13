@@ -16,7 +16,7 @@
       <%=render :partial => 'home/modals/tot_modal.html.erb'%>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
       <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
-      <%=f.submit "Book Ride", :class=>"btn ml-3 green-btn form-submit"%>
+      <%=f.submit "Book Ride",:class=>"btn ml-3 green-btn form-submit", :id=>"bookRide"%>
     <%end%>
     <div class="loading-gif-modal"></div>
   </div>
