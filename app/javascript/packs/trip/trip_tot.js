@@ -15,8 +15,7 @@ $(document).ready(function(){
 });
 
 
-
-export function typeOfTrip(showModal=false){
+export function typeOfTrip(showModal){
   tor =  $('#inlineFormCustomSelect').val();
   switch(tor){
     case "ow":

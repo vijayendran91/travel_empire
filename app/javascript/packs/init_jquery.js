@@ -94,7 +94,6 @@ $(document).ready(function(){
  
 
   $('#bookNow, #advanceBooking, #tentativeBooking').on('change', function(){
-    debugger; 
     typeOfTrip(false);
   });
 });
