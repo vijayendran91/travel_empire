@@ -7,7 +7,7 @@ let tor = "";
 let json_data = JSON.stringify(data);
 let modal_texts = JSON.parse(json_data)["modaltexts"];
 $(document).ready(function(){
-  
+
   $( "#inlineFormCustomSelect" ).change(function() {
     typeOfTrip(true);
   });
@@ -40,7 +40,7 @@ export function typeOfTrip(showModal){
     setOneWayMinTime();
     if(modal){
       showModal(tor);
-    } 
+    }
     $('#addLocation').hide();
     $('#toDistSelect').show();
     $('#locationSwap').show();
@@ -48,7 +48,6 @@ export function typeOfTrip(showModal){
     $('#toDistLabel').show();
     $('#toArea').show();
     $('.locations').hide();
-    $('#totModal').show();
     $('#roundtripDest').hide();
     $('#returnDateTime').hide();
   }
@@ -56,7 +55,7 @@ export function typeOfTrip(showModal){
   function prepReturnTrip(tor, modal){
    if(modal){
       showModal(tor);
-    } 
+    }
     setReturnTripDT();
     $('#addLocation').hide();
     $('#toDistSelect').show();
@@ -72,7 +71,7 @@ export function typeOfTrip(showModal){
   function prepRoundTrip(tor, modal){
     if(modal){
       showModal(tor);
-    } 
+    }
     setRoundTripDT();
     $('.locations').show();
     $('#addLocation').show();
