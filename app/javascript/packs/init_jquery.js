@@ -9,6 +9,13 @@ $(document).ready(function(){
   $('#roundtripDest').hide();
 
 
+  //make flight ticket require if he is submitting one
+  $('#flight').on('click', function(){
+    $('#flight_ticket').attr('required', true); 
+  });
+
+
+
   $('#bookCab').on('click', function(){
       $('#bookCab').hide();
       $('#makePayment').hide();
