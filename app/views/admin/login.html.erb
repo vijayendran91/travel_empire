@@ -1,0 +1,11 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %> role="alert">
+     <%= value %>
+  </div>
+<% end %>
+
+
+<%=form_for(@admin , :url => admin_login_path) do |f|%>
+  <%=f.password_field :password%>
+  <%= f.submit :Login%>
+<%end%>

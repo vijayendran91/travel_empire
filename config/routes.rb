@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root :to => 'home#index'
   post '/', :to => 'home#submit'
   post '/submit_trip', :to => 'home#submit_trip'
+  get '/admin/login', :to => 'admin#login'
+  post '/admin/login', :to => 'admin#login'
   get '/chennai106', :to => 'admin#home'
   get '/policy', :to => 'home#our_policy'
   get '/about_us', :to => 'home#about_us'
