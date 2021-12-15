@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/admin/login', :to => 'admin#login'
   post '/admin/login', :to => 'admin#login'
   get '/chennai106', :to => 'admin#home'
-  get '/policy', :to => 'home#our_policy'
+  get '/tc', :to => 'home#terms_conditions'
   get '/about_us', :to => 'home#about_us'
   get '/pricing', :to => 'home#pricing'
 end
