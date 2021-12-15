@@ -15,6 +15,9 @@ $(document).ready(function(){
   });
 
 
+  $("#new_trip").on("submit", function(){
+    $("body").addClass("loading");
+  }); 
 
   $('#bookCab').on('click', function(){
       $('#bookCab').hide();
