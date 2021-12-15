@@ -11,7 +11,7 @@
   <body>
       <h5><%="Dear Admin"%>,<br><br></h5>
     <center>
-      <%= image_tag(attachments["logo.jpg"].url, :style=> 'width:45%;') %>     
+      <%= image_tag(attachments["logo.jpg"].url, :style=> 'width:45%;') %>
       <br><h5>Please find the details below.</h5>
       <table class="table table-striped" style="width:  95% !important; background-color: #334420; color: #ffffff !important;">
         <tbody>
@@ -47,39 +47,57 @@
             <td><b>Type of Trip</b></td>
             <td class="table-imp"><%=@tot%></td>
           </tr>
+          <tr>
+            <td><b>Customer Message</b></td>
+            <td><%=@trip[:msg]%></td>
+          </tr>
+          <%if(@trip[:perbus].to_s == 'bus')%>
+            <tr>
+              <td><b>GST</b></td>
+              <td><%=@trip[:gst]%></td>
+            </tr>
+            <tr>
+              <td><b>GST Legal Name</b></td>
+              <td><%=@trip[:gst_lg_nm]%></td>
+            </tr>
+            <tr>
+              <td><b>GST Address</b></td>
+              <td><%=@trip[:gst_full_addr]%></td>
+            </tr>
+          <%end%>
         </tbody>
       </table>
     </center><br><br>
       - 8 hours duty on <%=@pick_up_time%><br><br>
-      
+
       - Govt. & Private Toll Entry Fee & Permit Fee Excluded.<br><br>
-      
-      - Particular trip Driver will pay all the Govt. & Private Toll Entry Fee & Permit Fee. 
+
+      - Particular trip Driver will pay all the Govt. & Private Toll Entry Fee & Permit Fee.
         After Trip End Passenger has to pay back to the Driver Trip Amount along with
         Govt. & Private Toll Entry Fee & Permit Fee.<br><br>
-        
+
       - Driver should maintain cleaniness ( Face and Neatness ) with full dignity. <br><br>
-      
+
       - Cab should be well cleaned and good ambience must be followed before reporting to the Client Location.<br><br>
 
       -All the Vehicle documents and Driving Licence should be kept inside the Cab. <br><br>
 
       - Usage of Alcohol/Drugs are prohibited.<br><br>
-      
+
       - Usage of Headphones are prohibited<br><br>
-      
+
       - 1 Litre Sealed water bottle should be kept inside the Cab.<br><br>
-      
+
       - First Aid Kit, Umbrella and Torch Light should be kept inside the Cab.<br><br>
 
       - Keep Cellphone is active mode not in busy mode, switch off mode, not reachable mode.<br><br>
-      
+
       - Report 15 before in the Client Pickup Point. No excuses and reasons permitted.<br><br>
 
       Note :-
 
         a. Incase of Vehicle Breakdown or Driver Not well or Driver Not Interested
-           for Particular Trip please inform to Travel Empire Admin immediately within 
+           for Particular Trip please inform to Travel Empire Admin immediately within
            the Scheduled Trip Start Date and Time.<br><br>
 
 
@@ -87,7 +105,7 @@
            further trips remain Cancelled and future prospects will not be recommended. <br><br>
 
 
-        c. Incase of any doubts or Cancellation or Any Tariff information 
+        c. Incase of any doubts or Cancellation or Any Tariff information
            or Bill Payment Information <br><br>
 
 
@@ -104,5 +122,5 @@
   table{
     background-color: #334420;
     color: #ffffff !important;
-  } 
+  }
 </style>
