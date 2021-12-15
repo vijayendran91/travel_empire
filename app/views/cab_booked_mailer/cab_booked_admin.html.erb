@@ -28,9 +28,39 @@
             <td class="table-imp"><%=@trip[:phone]%></td>
           </tr>
           <tr>
+            <td><b>Type of Trip</b></td>
+            <td class="table-imp"><%=@tot%></td>
+          </tr>
+          <tr>
             <td><b>Pick Up Location</b></td>
             <td class="table-imp"><%=@trip[:pul]+" - "+@trip[:pua]%></td>
           </tr>
+          <%if(@trip[:tot].to_s == 'my' || @trip[:tot].to_s == 'rt')%>
+            <%if(@trip[:locs1])%>
+              <tr>
+                <td>Location 1</td>
+                <td><%=@trip[:locs1]%></td>
+              </tr>
+            <%end%>
+            <%if(@trip[:locs2])%>
+              <tr>
+                <td>Location 2</td>
+                <td><%=@trip[:locs2]%></td>
+              </tr>
+            <%end%>
+            <%if(@trip[:locs3])%>
+              <tr>
+                <td>Location 3</td>
+                <td><%=@trip[:locs3]%></td>
+              </tr>
+            <%end%>
+            <%if(@trip[:locs4])%>
+              <tr>
+                <td>Location 4</td>
+                <td><%=@trip[:locs4]%></td>
+              </tr>
+            <%end%>
+          <%end%>
           <tr>
             <td><b>Drop Location</b></td>
             <td class="table-imp"><%=@trip[:drl]+" - "+@trip[:dra]%></td>
@@ -43,10 +73,7 @@
             <td><b>Reporting Date and Time</b></td>
             <td class="table-imp"><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
           </tr>
-          <tr>
-            <td><b>Type of Trip</b></td>
-            <td class="table-imp"><%=@tot%></td>
-          </tr>
+
           <tr>
             <td><b>Customer Message</b></td>
             <td><%=@trip[:msg]%></td>

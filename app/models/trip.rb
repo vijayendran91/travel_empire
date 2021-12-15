@@ -48,7 +48,7 @@ class Trip
   MULTI_WAY = :my
   HOURLY = :hy
   RETURN_TRIP = :rtt
-  ROUND_TRIP = :RT
+  ROUND_TRIP = :rt
 
   TYPE_OF_TRIP = {
                   ONE_WAY => "One Way",
