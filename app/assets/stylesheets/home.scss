@@ -37,6 +37,7 @@ $base-color-gold : #E6A620;
   margin-top: 10px;
 }
 
+
 .bookingTime{
   color: #7e7e80;
   border-radius: 6px;
@@ -169,4 +170,21 @@ body.loading .loading-gif-modal {
 
 .pricing-images{
     height: 600px;
+}
+
+.upi{
+  height: 100%;
+  width: 60%;
+}
+
+.payumoney{
+  width: 75%;
+}
+
+.qr{
+  height: 35%;
+}
+
+#qrs{
+  display: none;
 }

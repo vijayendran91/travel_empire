@@ -7,7 +7,7 @@
           <button type="button" id="bookCab" name="button" class="btn green-btn ">Book a Cab</button>
         </div>
         <div class="form-group col-md-6">
-          <%= link_to "Make a Payment", "https://pmny.in/aIlQzaGFxaIb",:id => "makePayment", :class=> "btn green-btn"%>
+          <%= link_to "Make a Payment", payment_methods_path, :id => "makePayment", :class=> "btn green-btn"%>
         </div>
       </div>
     </div>
@@ -29,5 +29,3 @@
 <%= javascript_pack_tag 'trip/passenger'%>
 <%= javascript_pack_tag 'personal/gst_modal'%>
 <%= javascript_pack_tag 'all_value_validations'%>
-
-

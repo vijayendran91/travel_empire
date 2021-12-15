@@ -33,6 +33,10 @@ class HomeController < ApplicationController
 
   def pricing
   end
+
+  def payment_methods
+  end
+
   private
 
   def get_trip_params()

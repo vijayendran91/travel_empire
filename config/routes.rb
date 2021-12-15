@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/tc', :to => 'home#terms_conditions'
   get '/about_us', :to => 'home#about_us'
   get '/pricing', :to => 'home#pricing'
+  get '/payment_methods', :to => 'home#payment_methods'
 end
