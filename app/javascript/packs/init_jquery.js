@@ -11,13 +11,13 @@ $(document).ready(function(){
 
   //make flight ticket require if he is submitting one
   $('#flight').on('click', function(){
-    $('#flight_ticket').attr('required', true); 
+    $('#flight_ticket').attr('required', true);
   });
 
 
   $("#new_trip").on("submit", function(){
     $("body").addClass("loading");
-  }); 
+  });
 
   $('#bookCab').on('click', function(){
       $('#bookCab').hide();
@@ -57,7 +57,7 @@ $(document).ready(function(){
     var temp = $('#fromDistSelect').val();
     $('#fromDistSelect').val($('#toDistSelect').val());
     $('#toDistSelect').val(temp);
-  
+
     //Area Swap
     temp = $('.pua').val();
     $('.pua').val($('.dra').val());
@@ -77,9 +77,13 @@ $(document).ready(function(){
     var parElem = document.getElementById('multiLocations');
     var input = document.createElement("input");
     if(locs<5){
+      // var input = "<%=f.text_field :loc"+locs+", :class=>'form-control', :id=>'loc"+locs+"', :placeholder=>'Location "+locs+"'%>"
       input.setAttribute('type','text');
       input.setAttribute('class',"form-control mb-3 locations");
       input.setAttribute('id',''+locs+'');
+      input.setAttribute('name', 'trip[locs'+locs+']')
+      input.setAttribute('placeholder', "Location"+locs);
+      // console.log(input);
       parElem.appendChild(input);
     }else{
       window.alert("You can add only maximum of 4 locations");
@@ -97,11 +101,11 @@ $(document).ready(function(){
       }
   });
 
-  
+
   $('#gst').keyup(function(){
     this.value = this.value.toUpperCase();
   });
- 
+
 
   $('#bookNow, #advanceBooking, #tentativeBooking').on('change', function(){
     typeOfTrip(false);
