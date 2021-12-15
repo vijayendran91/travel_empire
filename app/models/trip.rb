@@ -33,6 +33,7 @@ class Trip
   field :locs2, type: String
   field :locs3, type: String
   field :locs4, type: String
+  field :msg, type: String
 
   PERSONAL = :per
   BUSINESS = :bus
