@@ -1,25 +1,29 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Pick Up Location</th>
-      <th scope="col">Pick Up Date and Time</th>
-      <th scope="col">Drop Location</th>
-      <th scope="col">Drop Time</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <%(0..@trips.length()-1).each do |i|%>
+<script type="text/javascript" src="/data/ad_pwd.json"></script>
+<%= javascript_pack_tag 'admin/home'%>
+<div id="admin_container">
+  <table class="table">
+    <thead>
       <tr>
-        <th scope="row"><%=i+1%></th>
-        <td><%=@trips[i].fname%></td>
-        <td><%=@trips[i].pul%></td>
-        <td><%=@trips[i][:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
-        <td><%=@trips[i].drl%></td>
-        <td><%=@trips[i][:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Pick Up Location</th>
+        <th scope="col">Pick Up Date and Time</th>
+        <th scope="col">Drop Location</th>
+        <th scope="col">Drop Time</th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%(0..@trips.length()-1).each do |i|%>
+        <tr>
+          <th scope="row"><%=i+1%></th>
+          <td><%=@trips[i].fname%></td>
+          <td><%=@trips[i].pul%></td>
+          <td><%=@trips[i][:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+          <td><%=@trips[i].drl%></td>
+          <td><%=@trips[i][:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+
