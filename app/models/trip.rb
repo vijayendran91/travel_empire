@@ -7,7 +7,7 @@ class Trip
   validates_attachment :photoproof1, :presence => true, :size => { :in => 0..5.megabytes }
   validates_attachment_content_type :photoproof1, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_content_type :photoproof2, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
+  attr_accessor :start_date, :end_date
 
   field :perbus, type: String
   field :tot, type: String

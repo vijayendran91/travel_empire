@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/about_us', :to => 'home#about_us'
   get '/pricing', :to => 'home#pricing'
   get '/payment_methods', :to => 'home#payment_methods'
+  post '/chennai106', :to => 'admin#home', :format => 'xlsx'
 end

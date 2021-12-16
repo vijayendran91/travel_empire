@@ -27,6 +27,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+
+gem 'axlsx'
+gem 'caxlsx_rails'
+
+
 #Bootstrap for UI
 gem 'bootstrap', '~> 5.1.0'
 gem 'bootstrap-timepicker-rails', '~> 0.1.3'
@@ -75,4 +80,3 @@ gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 gem "letter_opener", :group => :development
-
