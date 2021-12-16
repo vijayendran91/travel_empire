@@ -14,14 +14,6 @@ class AdminController < ApplicationController
     end
   end
 
-  def download_xlsx
-    @trips = Trip.all
-    respond_to do |format|
-      format.html
-      format.xlsx
-    end
-  end
-
   def login
     @admin = Admin.new
     @admin_password = Admin.first
