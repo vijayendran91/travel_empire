@@ -23,6 +23,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Booking Id</th>
         <th scope="col">Name</th>
         <th scope="col">Pick Up Location</th>
         <th scope="col">Pick Up Date and Time</th>
@@ -34,6 +35,7 @@
       <%(0..@trips.length()-1).each do |i|%>
         <tr>
           <th scope="row"><%=i+1%></th>
+          <th scopr="row"><%=link_to @trips[i].id, admin_trip_details_path(:id => @trips[i].id), :method => :get%></th>
           <td><%=@trips[i].fname%></td>
           <td><%=@trips[i].pul%></td>
           <td><%=@trips[i][:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
