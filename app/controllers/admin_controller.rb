@@ -18,7 +18,9 @@ class AdminController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Trips from"'+params[:start_date]+" - "+params[:end_date]+'".xlsx"'
+      }
     end
   end
 
