@@ -171,7 +171,7 @@ test:
 production:
   clients:
     default:
-      uri: mongodb+srv://travelempire:Deva2007@travelempire.1wrop.mongodb.net/travelempire?retryWrites=true&w=majority
+      uri: mongodb+srv://travelempire:<%=ENV['MONGODB']%>@travelempire.1wrop.mongodb.net/travelempire?retryWrites=true&w=majority
       options:
           server_selection_timeout: 5
 

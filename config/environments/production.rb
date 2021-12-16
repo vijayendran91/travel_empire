@@ -65,7 +65,7 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  
+
 
   config.action_mailer.raise_delivery_errors = false
 
@@ -81,9 +81,9 @@ Rails.application.configure do
     :port => 587,
     :authentication => :plain,
     :user_name => "chennai.travelempire",
-    :password => "nfyevymbjqwvnvok"
+    :password => ENV["GMAIL_APP_KEY"]
   }
-  
+
   config.action_mailer.perform_deliveries = true
 
 
