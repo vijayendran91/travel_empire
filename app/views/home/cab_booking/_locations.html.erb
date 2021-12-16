@@ -2,7 +2,7 @@
   <h3>Trip Details</h3>
   <div class="form-row mt-2">
     <div class="form-group col-md-6 ">
-      <label class="mr-sm-2 form-label" for="inlineFormCustomSelect">Type of your trip</label>
+      <label class="mr-sm-2 form-label" for="inlineFormCustomSelect">Type of your trip <div class="req">*</div></label>
       <%=f.select :tot, [['Choose...','ch'],['One Way', 'ow'],['Return Trip','rtt'],['Round Trip','rt'],['Multi Way','my'],['Hourly','hy']],{},{:class=> "custom-select mr-sm-2",:id=>"inlineFormCustomSelect", :selected=>'ch'}%>
     </div>
     <div class="form-group col-md-3">
@@ -56,7 +56,7 @@
   <hr>
   <div class="form-row mt-8">
     <div class="form-group col-6">
-      <label class="mr-sm-2 form-label" for="fromDistSelect">Pick Up Location</label>
+      <label class="mr-sm-2 form-label" for="fromDistSelect">Pick Up Location<div class="req">*</div></label>
       <!-- <select class=" custom-select mr-sm-2" id="fromDistSelect">
         <option select="selected">Select District </option>
       </select> -->
@@ -71,7 +71,7 @@
   <div class="form-row">
     <div class="form-group col">
       <div id="dateTime">
-        <label>Trip Start Date and Time (IST)</label>
+        <label>Trip Start Date and Time (IST) <div class="req">*</div></label>
         <!-- <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
         name="bookingTpartialtime" value="2021-10-13T19:30"
         min="2021-10-13T00:00" max="2021-10-13T00:00"> -->
@@ -106,7 +106,7 @@
 
   <div class="form-row mt-2">
     <div class="form-group col-6">
-      <label class="mr-sm-2 form-label" for="toDistSelect" id="toDistLabel">Destination</label>
+      <label class="mr-sm-2 form-label" for="toDistSelect" id="toDistLabel">Destination <div class="req">*</div></label>
       <!-- <select class=" custom-select mr-sm-2" id="toDistSelect">
         <option select="selected">Select District </option>
       </select> -->
@@ -123,7 +123,7 @@
   <div class="form-row">
     <div class="form-group col">
       <div id="returnDateTime">
-        <label>Trip End Date and Time (IST)</label>
+        <label>Trip End Date and Time (IST) <div class="req">*</div></label>
         <%= f.datetime_local_field :drt, :class=> "bookingTime form-control timepicker", :id=> "returnBookingTime",
             :value=> "2021-10-13T00:00", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
         %>
