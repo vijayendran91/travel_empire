@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 
     end
     @trip = Trip.new(params)
+    @trip[:created_at] = Date.today
     @trip.save
     CabBookedMailer.with(:trip=>@trip).cab_booked_passenger.deliver_now
     CabBookedMailer.with(:trip=>@trip).cab_booked_admin.deliver_now
@@ -40,7 +41,7 @@ class HomeController < ApplicationController
   private
 
   def get_trip_params()
-    params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg)
+    params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at)
   end
 
 end

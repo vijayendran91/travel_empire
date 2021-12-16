@@ -1,11 +1,19 @@
 class AdminController < ApplicationController
 
   def home
-    @admin = Admin.first
-    @trips_obj = Trip.all
-    @trips = []
-    @trips_obj.each do |trip|
-      @trips.push(trip)
+    if params[:format] == "xlsx"
+      params = get_params()
+      @trips = Trip.where(:created_at.gte => params[:start_date], :created_at.lte => params[:end_date])
+      @tot = []
+      (0..@trips.length-1).each do |i|
+        @tot[i] = Trip::TYPE_OF_TRIP[@trips[i][:tot].to_sym]
+      end
+    else
+      @trips_obj = Trip.all
+      @trips = []
+      @trips_obj.each do |trip|
+        @trips.push(trip)
+      end
     end
 
     respond_to do |format|
@@ -33,10 +41,7 @@ class AdminController < ApplicationController
   end
 
   private
-  def get_params()
-      params[:admin].permit(:password)
-  end
-
-
-
+    def get_params()
+        params[:trip].permit(:start_date, :end_date)
+    end
 end

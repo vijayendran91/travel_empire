@@ -1,7 +1,16 @@
 wb = xlsx_package.workbook
-
+sps_img = File.expand_path(Rails.root+'app/assets/images/Travel_Empire_Logo_1.jpg')
 wb.add_worksheet(name: "Trips") do |sheet|
-  @trips.each do |trip|
-    sheet.add_row [trip.fname, trip.lname, trip.tot, trip.pul, trip.pua, trip.put, trip.drl, trip.dra, trip.drt]
+  sheet.add_image(:image_src => sps_img) do |image|
+    image.start_at 0, 0
+    image.end_at 3, 6
+  end
+  headers = sheet.styles.add_style(b: true);
+  8.times do
+    sheet.add_row
+  end
+  sheet.add_row ["First Name", "Last Name", "Type of Trip", "Pick Up Location", "Pick Up Area", "Pick Up Time", "Drop Location", "Drop Area"], :style => headers
+  (0..@trips.length-1).each do |i|
+    sheet.add_row [@trips[i].fname, @trips[i].lname, @tot[i], @trips[i].pul, @trips[i].pua, @trips[i].put, @trips[i].drl, @trips[i].dra, @trips[i].drt]
   end
 end
