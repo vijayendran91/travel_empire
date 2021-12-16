@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Trips") do |sheet|
+  @trips.each do |trip|
+    sheet.add_row [trip.fname, trip.lname, trip.tot, trip.pul, trip.pua, trip.put, trip.drl, trip.dra, trip.drt]
+  end
+end
