@@ -9,17 +9,15 @@ class HomeController < ApplicationController
   def submit_trip
     params=get_trip_params()
     perbus = params[:perbus]
-    if(perbus.to_sym == Trip::PERSONAL)
-
-    else
-
-    end
     @trip = Trip.new(params)
     @trip[:created_at] = Date.today
-    @trip.save
-    CabBookedMailer.with(:trip=>@trip).cab_booked_passenger.deliver_now
-    CabBookedMailer.with(:trip=>@trip).cab_booked_admin.deliver_now
-    redirect_to root_path
+    if @trip.save
+      CabBookedMailer.with(:trip=>@trip).cab_booked_passenger.deliver_now
+      CabBookedMailer.with(:trip=>@trip).cab_booked_admin.deliver_now
+      redirect_to root_path
+    else
+      redirect_to root_path, alert: "Something went wrong. Please try again"
+    end
   end
 
   def terms_conditions

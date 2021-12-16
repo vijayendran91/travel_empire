@@ -60,7 +60,8 @@
       <!-- <select class=" custom-select mr-sm-2" id="fromDistSelect">
         <option select="selected">Select District </option>
       </select> -->
-      <%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"fromDistSelect", :selected=>'sd'}%>
+
+      <%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"fromDistSelect", :selected=>'sd', :required => true}%>
     </div>
     <div class="form-group col-6" id="fromArea">
       <label class="mr-sm-2 form-label" for="fromArea">Area</label>
@@ -109,7 +110,7 @@
       <!-- <select class=" custom-select mr-sm-2" id="toDistSelect">
         <option select="selected">Select District </option>
       </select> -->
-      <%=f.select :drl, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"toDistSelect", :selected=>'sd'}%>
+      <%=f.select :drl, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"toDistSelect", :selected=>'sd', :required => true}%>
     </div>
     <div class="form-group col-6" id="toArea">
       <label class="mr-sm-2 form-label" for="toArea" id="toAreaLabel">Area</label>
@@ -130,4 +131,3 @@
     </div>
   </div>
   <hr>
-

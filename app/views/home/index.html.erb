@@ -1,6 +1,9 @@
 <%= render :partial => 'home/navbar_files/navbar'%>
 <center>
   <div class="formContainer shadow-lg p-3 mb-5 bg-white rounded">
+    <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <div id="initBtnCntnr">
       <div class="form-row mt-4">
         <div class="form-group col-md-6">

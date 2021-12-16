@@ -9,12 +9,6 @@ $(document).ready(function(){
   $('#roundtripDest').hide();
 
 
-  //make flight ticket require if he is submitting one
-  $('#flight').on('click', function(){
-    $('#flight_ticket').attr('required', true);
-  });
-
-
   $("#new_trip").on("submit", function(){
     $("body").addClass("loading");
   });
@@ -94,10 +88,14 @@ $(document).ready(function(){
       if($('#flight').prop("checked")==true){
         $('#aadhaars').hide();
         $('#flightTicket').show();
+        $('#aadhaarFront').attr('required', false);
+        $('#flight_ticket').attr('required', true);
       }
       else if($('#flight').prop("checked")==false){
         $('#aadhaars').show();
         $('#flightTicket').hide();
+        $('#aadhaarFront').attr('required', true);
+        $('#flight_ticket').attr('required', false);
       }
   });
 
