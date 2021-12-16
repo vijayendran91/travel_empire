@@ -2,7 +2,6 @@ class AdminController < ApplicationController
 
   def home
     @admin = Admin.first
-    binding.pry
     @trips_obj = Trip.all
     @trips = []
     @trips_obj.each do |trip|
