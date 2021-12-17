@@ -6,11 +6,13 @@ wb.add_worksheet(name: "Trips") do |sheet|
     image.end_at 3, 6
   end
   headers = sheet.styles.add_style(b: true);
+  date_cell = sheet.styles.add_style(format_code: "yyyy-mm-dd hh:mm")
   8.times do
     sheet.add_row
   end
-  sheet.add_row ["First Name", "Last Name", "Type of Trip", "Pick Up Location", "Pick Up Area", "Pick Up Time", "Drop Location", "Drop Area"], :style => headers
+  sheet.add_row ["S.No.","Created On","Booking Id", "TR Number","Cab Model", "Per /Bus", "First Name", "Last Name", "Type of Trip", "Pick Up Location", "Pick Up Area", "Pick Up Time", "Drop Location", "Drop Area", "Drop Time"], :style => headers
   (0..@trips.length-1).each do |i|
-    sheet.add_row [@trips[i].fname, @trips[i].lname, @tot[i], @trips[i].pul, @trips[i].pua, @trips[i].put, @trips[i].drl, @trips[i].dra, @trips[i].drt]
+    sheet.add_row [i+1,@trips[i].created_at, @trips[i].id, " ", @trips[i].str, @perbus[i], @trips[i].fname, @trips[i].lname, @tot[i], @trips[i].pul, @trips[i].pua, @trips[i].put.strftime("%F %T"), @trips[i].drl, @trips[i].dra, @trips[i].drt.strftime("%F %T")],
+    style: [nil, date_cell, nil, nil,nil, nil, nil, nil, nil, nil, nil, date_cell, nil, nil, date_cell]
   end
 end
