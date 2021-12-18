@@ -84,7 +84,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
 
-
+  config.serve_static_assets = true
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
