@@ -5,8 +5,10 @@ class AdminController < ApplicationController
       params = get_params()
       @trips = Trip.where(:created_at.gte => params[:start_date], :created_at.lte => params[:end_date])
       @tot = []
+      @perbus = []
       (0..@trips.length-1).each do |i|
         @tot[i] = Trip::TYPE_OF_TRIP[@trips[i][:tot].to_sym]
+        @perbus[i] = Trip::TRIP_TYPE[@trips[i][:perbus].to_sym]
       end
     else
       @trips_obj = Trip.all
@@ -27,7 +29,7 @@ class AdminController < ApplicationController
   def trip_details
     params.permit(:id)
     @trip =  Trip.find_by(:id => params[:id])
-    
+
   end
 
 
