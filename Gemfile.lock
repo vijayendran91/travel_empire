@@ -73,7 +73,6 @@ GEM
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.4.1)
       rubyzip (>= 0.9.5)
-    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -326,7 +325,6 @@ PLATFORMS
 
 DEPENDENCIES
   axlsx
-  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   bootstrap (~> 5.1.0)
   bootstrap-select-rails (~> 1.6, >= 1.6.3)
