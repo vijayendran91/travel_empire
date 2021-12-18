@@ -80,3 +80,5 @@ gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 gem "letter_opener", :group => :development
+
+gem "rails_serve_static_assets"
