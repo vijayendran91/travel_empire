@@ -10,9 +10,9 @@ wb.add_worksheet(name: "Trips") do |sheet|
   8.times do
     sheet.add_row
   end
-  sheet.add_row ["S.No.","Created On","Booking Id", "TR Number","Cab Model", "Per /Bus", "Full  Name","Whatsapp Number", "Type of Trip", "Pick Up Location", "Pick Up Area", "Pick Up Time", "Drop Location", "Drop Area", "Drop Time"], :style => headers
+  sheet.add_row ["S.No.","Created On","Booking Id", "TR Number","Cab Model", "Per /Bus", "Full  Name","Whatsapp Number","Email", "Type of Trip", "Pick Up Location", "Pick Up Area", "Pick Up Time", "Drop Location", "Drop Area", "Drop Time"], :style => headers
   (0..@trips.length-1).each do |i|
-    sheet.add_row [i+1,@trips[i].created_at, @trips[i].id, " ", @trips[i].str, @perbus[i], @trips[i].fname+" "+@trips[i].lname,@trips[i].phone, @tot[i], @trips[i].pul, @trips[i].pua, @trips[i].put.strftime("%F %T"), @trips[i].drl, @trips[i].dra, @trips[i].drt.strftime("%F %T")],
-    style: [nil, date_cell, nil, nil,nil, nil, nil, nil, nil, nil, nil, date_cell, nil, nil, date_cell]
+    sheet.add_row [i+1,@trips[i].created_at, @trips[i].id, " ", @trips[i].str, @perbus[i], @trips[i].fname+" "+@trips[i].lname,@trips[i].phone,@trips[i].email ,@tot[i], @trips[i].pul, @trips[i].pua, @trips[i].put.strftime("%F %T"), @trips[i].drl, @trips[i].dra, @trips[i].drt.strftime("%F %T")],
+    style: [nil, date_cell, nil, nil,nil, nil, nil, nil,nil, nil, nil, nil, date_cell, nil, nil, date_cell]
   end
 end

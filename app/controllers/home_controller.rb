@@ -33,6 +33,9 @@ class HomeController < ApplicationController
   def pricing
   end
 
+  def contact_us
+  end
+
   def payment_methods
   end
 

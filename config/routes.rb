@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   root :to => 'home#index'
   post '/', :to => 'home#submit'
   post '/submit_trip', :to => 'home#submit_trip'
-  get '/admin/login', :to => 'admin#login'
-  post '/admin/login', :to => 'admin#login'
   get '/chennai106', :to => 'admin#home'
   get '/tc', :to => 'home#terms_conditions'
   get '/about_us', :to => 'home#about_us'
   get '/pricing', :to => 'home#pricing'
   get '/payment_methods', :to => 'home#payment_methods'
+  get '/contact_us', :to => 'home#contact_us'
+
+
   post '/chennai106', :to => 'admin#home', :format => 'xlsx'
+  post '/admin/login', :to => 'admin#login'
+  get '/admin/login', :to => 'admin#login'
   get 'admin/trip_details/', :to => 'admin#trip_details'
 end
