@@ -50,7 +50,7 @@ Rails.application.configure do
     :port => 587,
     :authentication => :plain,
     :user_name => "chennai.travelempire",
-    :password => "nfyevymbjqwvnvok"
+    :password => ""
   }
 
   config.action_mailer.perform_deliveries = true

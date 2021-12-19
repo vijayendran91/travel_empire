@@ -100,7 +100,7 @@ $(document).ready(function(){
   });
 
 
-  $('#gst').keyup(function(){
+  $('#gst, #firstName, #lastName').keyup(function(){
     this.value = this.value.toUpperCase();
   });
 
