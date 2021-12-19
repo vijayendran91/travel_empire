@@ -25,9 +25,9 @@ function validate_form(){
     alert("Please select a proper district");
   }
 
-  if($("#aadhaarFront").val() == ""){
-    alert("Please Upload Photo Proof");
-  }
+  // if($("#aadhaarFront").val() == ""){
+  //   alert("Please Upload Photo Proof");
+  // }
 
 }
 
