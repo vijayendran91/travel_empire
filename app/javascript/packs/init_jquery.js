@@ -88,14 +88,10 @@ $(document).ready(function(){
       if($('#flight').prop("checked")==true){
         $('#aadhaars').hide();
         $('#flightTicket').show();
-        $('#aadhaarFront').attr('required', false);
-        $('#flight_ticket').attr('required', true);
       }
       else if($('#flight').prop("checked")==false){
         $('#aadhaars').show();
         $('#flightTicket').hide();
-        $('#aadhaarFront').attr('required', true);
-        $('#flight_ticket').attr('required', false);
       }
   });
 
