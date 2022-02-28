@@ -73,9 +73,17 @@
         <td><b>Email</b></td>
       <td><%=@trip[:email]%></td>
     </tr>
-    <tr>
-      <td><b>Photoproof 1</b></td>
-      <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
-    </tr>
+    <% if @trip.photoproof1.url%>
+      <tr>
+        <td><b>Photoproof 1</b></td>
+        <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
+      </tr>
+    <%end%>
+    <% if @trip.photoproof2.url%>
+      <tr>
+        <td><b>Photoproof 2</b></td>
+        <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
+      </tr>
+    <%end%>
   </tbody>
 </table>
