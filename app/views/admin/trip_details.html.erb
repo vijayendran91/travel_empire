@@ -81,7 +81,7 @@
     <%end%>
     <% if @trip.photoproof2.url %>
       <tr>
-          <td><b>Photoproof 2<%=ENV[S3_BUCKET_NAME]%></b></td>
+          <td><b>Photoproof 2<%=ENV.fetch('AWS_REGION')%></b></td>
         <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
       </tr>
     <%end%>
