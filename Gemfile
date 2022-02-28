@@ -39,7 +39,8 @@ gem 'bootstrap-select-rails', '~> 1.6', '>= 1.6.3'
 #JQuery Rails
 gem 'jquery-rails'
 
- gem 'rails_12factor', group: :production
+
+gem 'rails_12factor', group: :production
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -78,7 +79,7 @@ gem 'httparty'
 #Paperclip for storing files
 gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
-
+gem 'aws-sdk',   :require => "aws-sdk"
 gem "letter_opener", :group => :development
 
 gem "rails_serve_static_assets"

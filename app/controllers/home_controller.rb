@@ -10,6 +10,7 @@ class HomeController < ApplicationController
     params=get_trip_params()
     perbus = params[:perbus]
     @trip = Trip.new(params)
+
     @trip[:created_at] = Time.now
     if @trip.save
       CabBookedMailer.with(:trip=>@trip).cab_booked_passenger.deliver_now
