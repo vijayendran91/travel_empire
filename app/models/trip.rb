@@ -5,7 +5,7 @@ class Trip
   has_mongoid_attached_file :photoproof1
   has_mongoid_attached_file :photoproof2
   validates_attachment :photoproof1, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "application/pdf"] }
-  validates_attachment :photoproof2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  validates_attachment :photoproof2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "application/pdf"] }
 
   attr_accessor :start_date, :end_date
   field :perbus, type: String

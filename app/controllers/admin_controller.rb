@@ -29,7 +29,6 @@ class AdminController < ApplicationController
   def trip_details
     params.permit(:id)
     @trip =  Trip.find_by(:id => params[:id])
-
   end
 
 

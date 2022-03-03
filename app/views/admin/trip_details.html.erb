@@ -80,17 +80,25 @@
           <td><embed src=<%=@trip.photoproof1.url%>, width="500px" height="500px" /></td>
         </tr>
       <%else%>
-      <tr>
-        <td><b>Photoproof 1</b></td>
-        <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
-      </tr>
+        <tr>
+          <td><b>Photoproof 1</b></td>
+          <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
+        </tr>
       <%end%>
     <%end%>
     <% if @trip[:photoproof2_file_name] != nil %>
-      <tr>
-          <td><b>Photoproof 2</b></td>
-        <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
-      </tr>
+      <%=@trip[:photoproof_content_type]%><%= @trip.photoproof2.url%>
+      <%if @trip[:photoproof2_content_type] == "application/pdf"%>
+        <tr>
+          <td><b>Photoproof 2 </b></td>
+          <td><embed src=<%=@trip.photoproof2.url%>, width="500px" height="500px" /></td>
+        </tr>
+      <%else%>
+        <tr>
+          <td><b>Photoproof 2 debug data<%=@trip[:photoproof2_content_type] == "application/pdf"%><%= @trip.photoproof2.url%></b></td>
+          <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
+        </tr>
+      <%end%>
     <%end%>
   </tbody>
 </table>
