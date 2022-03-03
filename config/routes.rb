@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 
   post '/chennai106', :to => 'admin#home', :format => 'xlsx'
-  post '/admin/login', :to => 'admin#login'
-  get '/admin/login', :to => 'admin#login'
+  get '/admin_login', :to => 'admin#login'
+  post '/admin_login', :to => 'sessions#login'
   get 'admin/trip_details/', :to => 'admin#trip_details'
 end

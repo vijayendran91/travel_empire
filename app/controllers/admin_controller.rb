@@ -31,6 +31,12 @@ class AdminController < ApplicationController
     @trip =  Trip.find_by(:id => params[:id])
   end
 
+  def login
+    if(request.get?)
+      @admin = Admin.first
+    end
+  end
+
 
   private
     def get_params()
