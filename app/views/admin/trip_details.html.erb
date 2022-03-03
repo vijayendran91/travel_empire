@@ -73,13 +73,20 @@
         <td><b>Email</b></td>
       <td><%=@trip[:email]%></td>
     </tr>
-    <% if @trip.photoproof1.url%>
+    <% if @trip[:photoproof1_file_name] != nil%>
+      <%if @trip[:photoproof1_content_type] == "application/pdf"%>
+        <tr>
+          <td><b>Photoproof 1</b></td>
+          <td><embed src=<%=@trip.photoproof1.url%>, width="500px" height="500px" /></td>
+        </tr>
+      <%else%>
       <tr>
         <td><b>Photoproof 1</b></td>
         <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
       </tr>
+      <%end%>
     <%end%>
-    <% if @trip.photoproof2.url %>
+    <% if @trip[:photoproof2_file_name] != nil %>
       <tr>
           <td><b>Photoproof 2</b></td>
         <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
