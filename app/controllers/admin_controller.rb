@@ -42,7 +42,6 @@ class AdminController < ApplicationController
   end
 
   def login
-    binding.pry
     if(request.get?)
       @admin = Admin.first
     end
