@@ -96,7 +96,7 @@
         </tr>
       <%else%>
         <tr>
-          <td><b>Photoproof 2 debug data<%=@trip[:photoproof2_content_type] == "application/pdf"%><%= @trip.photoproof2.url%></b></td>
+          <td><b>Photoproof 2</b></td>
           <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
         </tr>
       <%end%>
