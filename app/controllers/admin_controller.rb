@@ -19,7 +19,7 @@ class AdminController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html {render 'admin/home.html.erb'}
       format.xlsx {
         response.headers['Content-Disposition'] = 'attachment; filename="Trips from "'+Date.parse(params[:start_date]).strftime("%a %d-%m-%y")+" - "+Date.parse(params[:end_date]).strftime("%a %d-%m-%y")+'".xlsx"'
       }
