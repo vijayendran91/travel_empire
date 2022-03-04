@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         session[:admin_logged] = "chennai106"
         redirect_to chennai106_path
       elsif(success == false)
-        redirect_to admin_login_path
+        redirect_to admin_login_path, :alert => "Invalid Password"
       end
     end
   end
