@@ -1,6 +1,7 @@
 <script type="text/javascript" src="/data/ad_pwd.json"></script>
 <%= javascript_pack_tag 'admin/home'%>
 <div id="admin_container">
+  <%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn", :style => "float: right; margin-right: 1%;" %>
   <div id="xlsx">
     <h5>Business - By Month</h5>
     <%= form_for(@trips,:url => chennai106_path(:format=>:xlsx), :method => :post) do |f| %>

@@ -1,4 +1,5 @@
 <%=link_to "Back to Admin Home", chennai106_path%>
+<%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn", :style => "float: right;" %>
 <h1><center>Trip <%=@trip[:id]%></center></h1>
 <table  class="table">
   <tbody>

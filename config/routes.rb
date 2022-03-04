@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get '/chennai106', :to => 'admin#home', :format => 'html'
   get '/admin_login', :to => 'admin#login'
   post '/admin_login', :to => 'sessions#login'
+  delete '/admin_logout', :to => 'sessions#logout'
   get 'admin/trip_details/', :to => 'admin#trip_details'
 end

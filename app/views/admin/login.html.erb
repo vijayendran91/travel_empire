@@ -1,6 +1,8 @@
 <div>
   <%= image_tag("full_logo_png", :class=> "admin_full_logo")%>
-
+  <% if alert %>
+    <p class="alert alert-danger admin-alert"><%= alert %></p>
+  <% end %>
   <%=form_for(@admin, :url => admin_login_path, :method => 'post') do |f|%>
     <%= f.password_field(:password, :class=>"password" ,:class=>"form-control admin_form_item mt-5", :placeholder=>"Password")%>
     <%=f.submit "Login",:class=>"btn mt-2 green-btn form-submit admin_form_item"%>

@@ -10,15 +10,20 @@ class AdminController < ApplicationController
         @tot[i] = Trip::TYPE_OF_TRIP[@trips[i][:tot].to_sym]
         @perbus[i] = Trip::TRIP_TYPE[@trips[i][:perbus].to_sym]
       end
-    else
-      @trips_obj = Trip.all
-      @trips = []
-      @trips_obj.each do |trip|
-        @trips.push(trip)
-      end
     end
 
     respond_to do |format|
+      if admin_logged_in?
+        @trips_obj = Trip.all
+        @trips = []
+        @trips_obj.each do |trip|
+          @trips.push(trip)
+        end
+        format.html {render 'admin/home.html.erb'}
+      else
+        @admin = Admin.first
+        format.html {render 'admin/login.html.erb', :locals => {:alert => "Please Log in"}}
+      end
       format.html {render 'admin/home.html.erb'}
       format.xlsx {
         response.headers['Content-Disposition'] = 'attachment; filename="Trips from "'+Date.parse(params[:start_date]).strftime("%a %d-%m-%y")+" - "+Date.parse(params[:end_date]).strftime("%a %d-%m-%y")+'".xlsx"'
@@ -27,11 +32,17 @@ class AdminController < ApplicationController
   end
 
   def trip_details
-    params.permit(:id)
-    @trip =  Trip.find_by(:id => params[:id])
+    if admin_logged_in?
+      params.permit(:id)
+      @trip =  Trip.find_by(:id => params[:id])
+    else
+      @admin =  Admin.first
+      redirect_to admin_login_path, :alert => "Please Log In"
+    end
   end
 
   def login
+    binding.pry
     if(request.get?)
       @admin = Admin.first
     end
