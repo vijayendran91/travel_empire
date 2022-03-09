@@ -47,6 +47,17 @@ class AdminController < ApplicationController
     end
   end
 
+  def cancel_trip
+    if admin_logged_in?
+      id = params.permit(:id)[:id]
+      trip = Trip.where(:id => id).delete
+      redirect_to chennai106_path
+    else
+      @admin =  Admin.first
+      redirect_to admin_login_path, :alert => "Please Log In"
+    end
+  end
+
 
   private
     def get_params()

@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   post '/admin_login', :to => 'sessions#login'
   delete '/admin_logout', :to => 'sessions#logout'
   get 'admin/trip_details/', :to => 'admin#trip_details'
+  delete 'admin/cancel_trip', :to => 'admin#cancel_trip'
 end
