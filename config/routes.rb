@@ -18,4 +18,12 @@ Rails.application.routes.draw do
   post '/admin_login', :to => 'sessions#login'
   delete '/admin_logout', :to => 'sessions#logout'
   get 'admin/trip_details/', :to => 'admin#trip_details'
+
+
+
+  #Whatsapp API webhooks
+  post '/wa/wh/customer_reply', :to => 'whatsapp#receive_msg', :format => 'json'
+
+  #Whatsapp MP3
+  get 'wa/vm/booking_confirmation', :to => 'whatsapp#voice_msg'
 end
