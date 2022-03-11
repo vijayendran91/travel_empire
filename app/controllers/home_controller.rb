@@ -15,6 +15,7 @@ class HomeController < ApplicationController
     if @trip.save
       CabBookedMailer.with(:trip=>@trip).cab_booked_passenger.deliver_now
       CabBookedMailer.with(:trip=>@trip).cab_booked_admin.deliver_now
+      send_wa_messages(@trip)
       redirect_to root_path
     else
       redirect_to root_path, alert: "Something went wrong. Please try again"
@@ -27,8 +28,6 @@ class HomeController < ApplicationController
 
 
   def about_us
-
-
   end
 
   def pricing
