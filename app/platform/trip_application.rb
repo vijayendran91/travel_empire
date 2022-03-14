@@ -55,7 +55,7 @@ module TripApplication
         :reference => {
           :cust_ref => "Some Customer Ref",
           :messageTag1 => "Message Tag Val1",
-          :conversationId => "Some Optional Conversation ID"
+          :conversationId => @trip[:id].to_s
         }
       }
       return payload

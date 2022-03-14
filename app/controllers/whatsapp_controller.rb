@@ -18,3 +18,48 @@ class WhatsappController < ApplicationController
   end
 
 end
+# {
+#   "channel"=>"WABA",
+#   "appDetails"=>{
+#     "type"=>"LIVE"
+#     },
+#   "events"=>{
+#     "eventType"=>"User initiated",
+#     "timestamp"=>"1647242162",
+#     "date"=>"2022-March-14"
+#   },
+#   "eventContent"=>{
+#     "message"=>
+#       {
+#         "from"=>"919962395973",
+#         "id"=>"ABEGkZliOVlzAgo6q3kSFKkYNTa9",
+#         "text"=>{
+#           "body"=>"hi"},
+#         "to"=>"919444516391",
+#         "contentType"=>"text"
+#       }
+#     },
+#     "controller"=>"whatsapp",
+#     "action"=>"receive_msg",
+#     "whatsapp"=>{
+#       "channel"=>"WABA",
+#       "appDetails"=>{
+#         "type"=>"LIVE"
+#         },
+#       "events"=>{
+#         "eventType"=>"User initiated",
+#         "timestamp"=>"1647242162",
+#         "date"=>"2022-March-14"
+#         },
+#         "eventContent"=>{
+#           "message"=>{
+#             "from"=>"919962395973",
+#             "id"=>"ABEGkZliOVlzAgo6q3kSFKkYNTa9",
+#             "text"=>{
+#               "body"=>"hi"
+#               },
+#             "to"=>"919444516391",
+#             "contentType"=>"text"}
+#           }
+#         }
+# }
