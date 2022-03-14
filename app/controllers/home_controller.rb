@@ -13,8 +13,8 @@ class HomeController < ApplicationController
 
     @trip[:created_at] = Time.now
     if @trip.save
-      CabBookedMailer.with(:trip=>@trip).cab_booked_passenger.deliver_now
-      CabBookedMailer.with(:trip=>@trip).cab_booked_admin.deliver_now
+      send_customer_communications(@trip)
+      send_admin_communications(@trip)
       redirect_to root_path
     else
       redirect_to root_path, alert: "Something went wrong. Please try again"
@@ -25,10 +25,7 @@ class HomeController < ApplicationController
 
   end
 
-
   def about_us
-
-
   end
 
   def pricing

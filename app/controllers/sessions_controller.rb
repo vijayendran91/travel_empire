@@ -19,5 +19,4 @@ class SessionsController < ApplicationController
     session[:admin_logged] = nil
     redirect_to admin_login_path
   end
-
 end
