@@ -58,6 +58,20 @@ class AdminController < ApplicationController
     end
   end
 
+  def wa_index
+    wa_numbers = WhatsappOpt.all
+    @wa_list = []
+    @wa_messages = []
+    wa_numbers.each do |x|
+      @wa_list.push(x[:phone])
+    end
+  end
+
+  def wa_messenger
+    binding.pry
+    params.permit(:phone)
+    @messages = WhatsappMessage.where(:phone => params[:phone])
+  end
 
   private
     def get_params()

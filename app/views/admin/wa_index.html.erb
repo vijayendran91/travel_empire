@@ -1,0 +1,5 @@
+<%@wa_list.each do |wa|%>
+  <br>
+  <%=link_to wa, admin_wa_messenger_path(:params => {:phone => wa})%>
+  <br>
+<%end%>

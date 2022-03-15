@@ -7,6 +7,7 @@ module WhatsappApplication
   end
 
   def customer_wa_init(wa_template)
+    binding.pry
     opt_in = wa_opt_in?(@trip[:phone])
     opt_in_phone(@trip[:phone]) if (opt_in == false)
     case wa_template.to_s
@@ -43,9 +44,9 @@ module WhatsappApplication
   def wa_opt_in?(phone)
     data = WhatsappOpt.where(:phone => phone).first
     if data.nil?
-      return true
+      return false
     else
-      return WhatsappOpt.where(:phone => phone).first.opt_in
+      return true
     end
   end
 

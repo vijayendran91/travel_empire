@@ -16,8 +16,11 @@ Rails.application.routes.draw do
   post '/chennai106', :to => 'admin#home', :format => 'xlsx'
   get '/chennai106', :to => 'admin#home', :format => 'html'
   get '/admin_login', :to => 'admin#login'
-  post '/admin_login', :to => 'sessions#login'
-  delete '/admin_logout', :to => 'sessions#logout'
   get 'admin/trip_details/', :to => 'admin#trip_details'
   delete 'admin/cancel_trip', :to => 'admin#cancel_trip'
+  get '/admin/wa_index', :to => 'admin#wa_index'
+  get '/admin/wa_messenger', :to => 'admin#wa_messenger'
+
+  post '/admin_login', :to => 'sessions#login'
+  delete '/admin_logout', :to => 'sessions#logout'
 end
