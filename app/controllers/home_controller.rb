@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   require_relative "../platform/trip_application"
+  require_relative "../platform/whatsapp_application"
   include TripApplication
+  include WhatsappApplication
 
   def index
     @trip = Trip.new
@@ -13,8 +15,8 @@ class HomeController < ApplicationController
 
     @trip[:created_at] = Time.now
     if @trip.save
-      send_customer_communications(@trip)
-      send_admin_communications(@trip)
+      send_customer_communications(@trip, :customer_booking_confirmation)
+      send_admin_communications(@trip, :admin_booking_confirmation)
       redirect_to root_path
     else
       redirect_to root_path, alert: "Something went wrong. Please try again"
