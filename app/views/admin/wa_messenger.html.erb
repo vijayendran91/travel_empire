@@ -1,6 +1,18 @@
-<%@messages.each do |msg|%>
-  <br>
-  <%=msg[:text_message]%>
-  <br>
-  <br>
-<%end%>
+<div class="adminWaChatContainer">
+  <div class="adminChatBox shadow-lg p-3 mb-5 bg-white rounded overflow-auto">
+    <%@messages.each do |msg|%>
+      <br>
+      <%if msg[:sent_by] == WhatsappMessage::ADMIN%>
+        <div class = "adminMessage">
+          <%=msg[:text_message]%>
+        </div>
+      <%elsif msg[:sent_by] == WhatsappMessage::USER%>
+        <div class = "userMessage">
+          <%=msg[:text_message]%>
+        </div>
+      <%end%>
+      <br>
+      <br>
+    <%end%>
+  </div>
+</div>

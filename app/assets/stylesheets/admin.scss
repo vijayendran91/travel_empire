@@ -25,4 +25,32 @@
   width: 90%;
   margin-left: 5%;
   margin-top: 2%;
+  height:500px;
+}
+
+.adminWaChatContainer{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.adminChatBox{
+  height: 550px;
+  overflow: scroll;
+}
+
+.adminMessage{
+  float: right;
+  max-width: 45%;
+  border-radius: 25px;
+  background: #E1F4C8;
+  padding: 1%;
+}
+
+.userMessage{
+  float: left;
+  max-width: 45%;
+  border-radius: 25px;
+  background: #E1F4C8;
+  padding: 1%;
 }
