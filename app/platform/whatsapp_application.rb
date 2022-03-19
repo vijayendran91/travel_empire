@@ -7,13 +7,12 @@ module WhatsappApplication
   end
 
   def customer_wa_init(wa_template)
-    binding.pry
     opt_in = wa_opt_in?(@trip[:phone])
     opt_in_phone(@trip[:phone]) if (opt_in == false)
     case wa_template.to_s
     when "customer_booking_confirmation"
       payload = booking_conf_cust_wa_pl
-      wa_message_insert(wa_template,WhatsappMessage::TEXT, WhatsappMessage::ADMIN,WhatsappMessage::CUSTOMER_BOOKING_CONFIRMATION, nil)
+      wa_message_insert(@trip[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil)
     else
 
     end
@@ -21,12 +20,18 @@ module WhatsappApplication
   end
 
 
-  def wa_message_insert(wa_template, type,sent_by,text_message, media)
-    wa_message = {}
-    wa_message[:phone] = @trip[:phone]
+  def wa_message_insert(phone, wa_template, type,sent_by,text_message, media)
+    wa_message = {
+      :phone => phone,
+      :sent_by => sent_by,
+      :message_type => type,
+      :text_message => text_message,
+      :timestamp => Time.now
+    }
+    wa_message[:phone] = phone
     wa_message[:sent_by] = sent_by
-    wa_message[:message_type] = text_message
-    wa_message[:text_message] = wa_template
+    wa_message[:message_type] = type
+    wa_message[:text_message] = text_message
     wa_message[:timestamp] = Time.now
     case type
     when WhatsappMessage::TEXT
@@ -136,7 +141,7 @@ module WhatsappApplication
         }
       }
       payload[:message][:recipient] = {
-        :to => "919176016494",
+        :to => "919884538873",
         :recipient_type => 'individual',
         :reference => {
           :cust_ref => "Some Customer Ref",
@@ -167,4 +172,33 @@ module WhatsappApplication
         )
   end
 
+  def get_wa_message_type(message)
+    result = nil
+    if(message)
+      if(message[:text])
+        result = WhatsappMessage::TEXT
+      elsif message[:audio]
+
+      elsif message[:image]
+        result = WhatsappMessage::IMAGE
+      elsif message[:video]
+        result = WhatsappMessage::VIDEO
+      end
+    end
+  end
+
+  def get_wa_media(message)
+    result = nil
+    if(message)
+      if(message[:text])
+        result = WhatsappMessage::TEXT
+      elsif message[:audio]
+
+      elsif message[:image]
+        result = WhatsappMessage::IMAGE
+      elsif message[:video]
+        result = WhatsappMessage::VIDEO
+      end
+    end
+  end
 end

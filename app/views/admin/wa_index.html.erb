@@ -1,5 +1,15 @@
-<%@wa_list.each do |wa|%>
-  <br>
-  <%=link_to wa, admin_wa_messenger_path(:params => {:phone => wa})%>
-  <br>
-<%end%>
+<div class="adminWaIndexContainer shadow-lg p-3 mb-5 bg-white rounded">
+  <table class="table">
+    <h1>Whatsapp Messages Index</h1>
+    <tbody>
+      <%(0..@wa_list.length-1).each do |wa|%>
+        <tr>
+          <th scope="row"><%=wa+1%></th>
+          <td>
+            <%=link_to @wa_list[wa], admin_wa_messenger_path(:params => {:phone => @wa_list[wa]})%>
+          </td>
+        </tr>
+      <%end%>
+    <tbody>
+  </table>
+</div>

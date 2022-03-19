@@ -1,13 +1,18 @@
 class WhatsappController < ApplicationController
+  require_relative "../platform/whatsapp_application"
+  include WhatsappApplication
+
+
   skip_before_action :verify_authenticity_token
   def receive_msg
-    print "\n\n\n Whatsapp response #{params} \n\n\n"
-    params.permit(:channel, :appDetails, :events, :eventContent)
-    channel = params[:channel]
-    app_details = params[:appDetails]
-    events = params[:events]
+    params.permit(:eventContent)
     event_content = params[:eventContent]
     message = event_content[:message]
+
+    phone = message[:from][2..-1]
+    msg_type = get_wa_message_type(message)
+    media = get_wa_media(message)
+    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, msg_type, WhatsappMessage::USER, message[:text][:body], media)
     response = {:status => 200}
     response= response.to_json
     render :json => response
@@ -17,6 +22,10 @@ class WhatsappController < ApplicationController
 
   end
 
+  private
+    def get_user_sent_params
+      params.permit(:channel, :appDetails, :events, :eventContent)
+    end
 end
 # {
 #   "channel"=>"WABA",

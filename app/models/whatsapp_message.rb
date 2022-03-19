@@ -22,6 +22,7 @@ class WhatsappMessage
 
   CUSTOMER_BOOKING_CONFIRMATION = :customer_booking_confirmation
   ADMIN_BOOKING_CONFIRMATION = :admin_booking_confirmation
+  USER_INITIATED = :user_initiated
 
   MESSAGE_TYPE = {
     TEXT => "text",
@@ -30,6 +31,7 @@ class WhatsappMessage
   }
 
   TEMPLATE_MESSAGE = {
+    USER_INITIATED => "user_initiated",
     CUSTOMER_BOOKING_CONFIRMATION => "customer_booking_confirmation",
     ADMIN_BOOKING_CONFIRMATION => "admin_booking_confirmation"
   }

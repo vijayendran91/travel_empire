@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get '/pricing', :to => 'home#pricing'
   get '/payment_methods', :to => 'home#payment_methods'
   get '/contact_us', :to => 'home#contact_us'
-  post '/wa/wh/receive_msg', :to => 'whatsapp#receive_msg'
 
+  post '/wa/wh/receive_msg', :to => 'whatsapp#receive_msg'
 
   post '/chennai106', :to => 'admin#home', :format => 'xlsx'
   get '/chennai106', :to => 'admin#home', :format => 'html'

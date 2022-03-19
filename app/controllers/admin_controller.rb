@@ -68,7 +68,6 @@ class AdminController < ApplicationController
   end
 
   def wa_messenger
-    binding.pry
     params.permit(:phone)
     @messages = WhatsappMessage.where(:phone => params[:phone])
   end
