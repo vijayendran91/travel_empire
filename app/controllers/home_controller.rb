@@ -9,7 +9,6 @@ class HomeController < ApplicationController
   def submit_trip
     params=get_trip_params()
     perbus = params[:perbus]
-    binding.pry
     @trip = Trip.new(params)
 
     @trip[:created_at] = Time.now
