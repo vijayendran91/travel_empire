@@ -9,15 +9,16 @@ class HomeController < ApplicationController
   def submit_trip
     params=get_trip_params()
     perbus = params[:perbus]
+    binding.pry
     @trip = Trip.new(params)
 
     @trip[:created_at] = Time.now
     if @trip.save
       send_customer_communications(@trip)
       send_admin_communications(@trip)
-      redirect_to root_path
+      redirect_to root_path , alert: 'success'
     else
-      redirect_to root_path, alert: "Something went wrong. Please try again"
+      redirect_to root_path, alert: 'error'
     end
   end
 

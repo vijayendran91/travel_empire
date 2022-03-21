@@ -3,9 +3,14 @@ function validate_form(){
   var totr=$('#inlineFormCustomSelect').val()
   var todist=$('#fromDistSelect').val();
   var fromdist = $('#toDistSelect').val();
+  var str = $('#str').val();
   // Choose Type of Trip
   if(totr == 'ch'){
     alert('Choose a Type of Trip');
+  }
+
+  if(str == 'ch'){
+    alert('Choose a type of car')
   }
 
   //Cannot start tomorrow and arrivew today - time validation

@@ -1,7 +1,7 @@
 <div class="fromAndToLocation">
   <h3>Trip Details</h3>
   <div class="form-row mt-2">
-    <div class="form-group col-md-6 ">
+    <div class="form-group col-md-3 ">
       <label class="mr-sm-2 form-label" for="inlineFormCustomSelect">Type of your trip <div class="req">*</div></label>
       <%=f.select :tot, [['Choose...','ch'],['One Way', 'ow'],['Return Trip','rtt'],['Round Trip','rt'],['Multi Way','my'],['Hourly','hy']],{},{:class=> "custom-select mr-sm-2",:id=>"inlineFormCustomSelect", :selected=>'ch'}%>
     </div>
@@ -16,6 +16,12 @@
       <div class="form-outline">
         <label class="form-label" for="chldrn">Children</label>
         <%= f.number_field :chldrn, in: 1..7, step: 1,:default=> 0,:placeholder=> 0, :pattern => '\d*', :class=> "form-control",:id=>"chldrn" %>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="chldrn">Type of Car</label>
+        <%=f.select :str,  [["Choose", 'ch'],["4 Seater",'4 Seater'], ["7 Seater", '7 Seater']],{},{:id => 'str',:class=> "custom-select", :selected=>'ch'}%>
       </div>
     </div>
   </div>
@@ -45,9 +51,6 @@
         </div>
       </form>
     </div>
-  </div>
-  <div id="str">
-    <%=f.hidden_field :str, :class=> 'str'%>
   </div>
   <div id="carInfoIage">
     <%=image_tag("4seater.jpg", :id=>"4seater", :class=>"carImages", :style=>"display: none;")%>
