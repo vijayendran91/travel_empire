@@ -58,30 +58,6 @@ class AdminController < ApplicationController
     end
   end
 
-  def wa_index
-    if admin_logged_in?
-      wa_numbers = WhatsappOpt.all
-      @wa_list = []
-      @wa_messages = []
-      wa_numbers.each do |x|
-        @wa_list.push(x[:phone])
-      end
-    else
-      @admin =  Admin.first
-      redirect_to admin_login_path, :alert => "Please Log In"
-    end
-  end
-
-  def wa_messenger
-    if admin_logged_in?
-      params.permit(:phone)
-      @messages = WhatsappMessage.where(:phone => params[:phone])
-    else
-      @admin =  Admin.first
-      redirect_to admin_login_path, :alert => "Please Log In"
-    end
-  end
-
   private
     def get_params()
         params[:trip].permit(:start_date, :end_date)

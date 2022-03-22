@@ -1,0 +1,38 @@
+<h1><%=@phone%></h1>
+<div class="adminWaChatContainer">
+  <div class="adminChatBox shadow-lg p-3 bg-white rounded overflow-auto">
+    <%@messages.each do |msg|%>
+      <br>
+      <%if msg[:sent_by] == WhatsappMessage::ADMIN%>
+        <div class = "adminMessage">
+          <%=msg[:text_message]%>
+        </div>
+      <%elsif msg[:sent_by] == WhatsappMessage::USER%>
+        <div class = "userMessage">
+          <%=msg[:text_message]%>
+        </div>
+      <%end%>
+      <br>
+      <br>
+    <%end%>
+  </div>
+  <div id="chatMsgBox">
+    <%= form_for(@new_message, :url => admin_wa_messenger_path) do |f|%>
+    <div class="form-row mt-1">
+      <%if @template_flag == false%>
+        <div class="form-group col-md-10">
+          <%=f.text_field :text_message, :class=>'form-control', :id=>'textMessage', :placeholder=>'Message'%>
+        </div>
+      <%else%>
+        <div class="form-group col-md-10">
+          <%=f.select :text_message,  [["Choose a template", 'ch'],[WhatsappMessage::CUSTOMER_BOOKING_CONFIRMATION.to_s,WhatsappMessage::CUSTOMER_BOOKING_CONFIRMATION]],{},{:id => 'str',:class=> "custom-select", :selected=>'ch'}%>
+        </div>
+      <%end%>
+      <div class="form-group col-md-2">
+        <%=f.submit "Send Message",:class=>"btn green-btn form-submit", :id=>"sendMsg"%>
+      </div>
+      <%= f.hidden_field :phone, :value => @phone%>
+    <%end%>
+    </div>
+  </div>
+</div>

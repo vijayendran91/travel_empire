@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   get '/admin_login', :to => 'admin#login'
   get 'admin/trip_details/', :to => 'admin#trip_details'
   delete 'admin/cancel_trip', :to => 'admin#cancel_trip'
-  get '/admin/wa_index', :to => 'admin#wa_index'
-  get '/admin/wa_messenger', :to => 'admin#wa_messenger'
+  get '/admin/wa_index', :to => 'whatsapp#wa_index'
+  get '/admin/wa_messenger', :to => 'whatsapp#wa_messenger'
+  post 'admin/wa_messenger', :to => 'whatsapp#wa_messenger'
 
   post '/admin_login', :to => 'sessions#login'
   delete '/admin_logout', :to => 'sessions#logout'

@@ -11,8 +11,7 @@ class WhatsappMessage
   field :voice, type: String
   field :location, type: String
   field :timestamp, type: DateTime
-
-
+  
   ADMIN = "admin"
   USER = "user"
 
