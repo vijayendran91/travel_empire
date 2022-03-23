@@ -23,11 +23,10 @@ class HomeController < ApplicationController
     params[:whatsapp_number] = @wn
     params[:created_at] = Time.now
     create_trip(params)
-    binding.pry
     save_trip
     if save_trip
-      # send_customer_communications(@trip, :customer_booking_confirmation)
-      # send_admin_communications(@trip, :admin_booking_confirmation)
+      send_customer_communications(@trip, :customer_booking_confirmation)
+      send_admin_communications(@trip, :admin_booking_confirmation)
       redirect_to root_path , alert: 'success'
     else
       redirect_to root_path, alert: 'error'
