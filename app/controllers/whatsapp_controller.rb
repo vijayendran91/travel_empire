@@ -25,7 +25,7 @@ class WhatsappController < ApplicationController
 
   def wa_index
     if admin_logged_in?
-      wa_numbers = WhatsappOpt.all
+      wa_numbers = WhatsappNumber.all
       @wa_list = []
       @wa_messages = []
       wa_numbers.each do |x|

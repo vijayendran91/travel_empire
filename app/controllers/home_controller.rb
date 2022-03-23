@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
   require_relative "../platform/trip_application"
   require_relative "../platform/whatsapp_application"
+  require_relative "../services/trip_services"
   include TripApplication
   include WhatsappApplication
-
+  include TripServices
   def index
     @trip = Trip.new
   end
@@ -11,12 +12,22 @@ class HomeController < ApplicationController
   def submit_trip
     params=get_trip_params()
     perbus = params[:perbus]
-    @trip = Trip.new(params)
-
-    @trip[:created_at] = Time.now
-    if @trip.save
-      send_customer_communications(@trip, :customer_booking_confirmation)
-      send_admin_communications(@trip, :admin_booking_confirmation)
+    @wn = WhatsappNumber.where(:phone => params[:phone]).first
+    @trip = nil
+    if(@wn == nil)
+      if(wa_opt_in?(params[:phone]) == false)
+        #TODO Call OPTIN method and send GET request to RCM to OPTIN
+      end
+      @wn = WhatsappNumber.new(:phone => params[:phone], :opt_in => true, :notification => false)
+    end
+    params[:whatsapp_number] = @wn
+    params[:created_at] = Time.now
+    create_trip(params)
+    binding.pry
+    save_trip
+    if save_trip
+      # send_customer_communications(@trip, :customer_booking_confirmation)
+      # send_admin_communications(@trip, :admin_booking_confirmation)
       redirect_to root_path , alert: 'success'
     else
       redirect_to root_path, alert: 'error'

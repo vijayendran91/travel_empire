@@ -47,7 +47,7 @@ module WhatsappApplication
 
 
   def wa_opt_in?(phone)
-    data = WhatsappOpt.where(:phone => phone).first
+    data = WhatsappNumber.where(:phone => phone).first
     if data.nil?
       return false
     else
@@ -56,12 +56,11 @@ module WhatsappApplication
   end
 
   def opt_in_phone(phone) #TODO HTTP GET method to OPTIN the phone number
-    opt = WhatsappOpt.new(:phone => phone, :opt_in => true)
-    opt.save
+    
   end
 
   def opt_out_phone
-    opt = WhatsappOpt.new(:phone => phone, :opt_in => true)
+    opt = WhatsappNumber.new(:phone => phone, :opt_in => true)
     opt[:opt_in] = false
     opt.save
   end
