@@ -1,9 +1,6 @@
+<%= render :partial => '/common_partial/admin_navbar'%>
 <div class="adminWaChatContainer">
   <div class="chatOptions">
-    <%= link_to "Whatsapp Index", admin_wa_index_path, :method => "get", :class => "btn green-btn mb-2"%>
-    <div id="chatTripDetails">
-      <p>Trip Details</p>
-    </div>
   </div>
   <div class="adminChatBox shadow-lg p-3 bg-white rounded overflow-auto">
     <%@messages.each do |msg|%>

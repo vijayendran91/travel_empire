@@ -30,7 +30,7 @@ class WhatsappController < ApplicationController
       @wa_list = []
       @wa_messages = []
       wa_numbers.each do |x|
-        @wa_list.push(x[:phone])
+        @wa_list.push(x)
       end
     else
       @admin =  Admin.first
