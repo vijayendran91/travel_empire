@@ -10,6 +10,7 @@ class WhatsappController < ApplicationController
     message = event_content[:message]
 
     phone = message[:from][2..-1]
+    add_notification(phone)
     msg_type = get_wa_message_type(message)
     media = get_wa_media(message)
     wa_message_insert(phone, WhatsappMessage::USER_INITIATED, msg_type, WhatsappMessage::USER, message[:text][:body], media)

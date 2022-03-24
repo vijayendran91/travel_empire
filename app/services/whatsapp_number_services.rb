@@ -17,4 +17,9 @@ module WhatsappNumberServices
     def save_whatsapp_number_service
       return  @wn.save
     end
+
+    def add_notification_service(wa_phone)
+      binding.pry
+      wa_phone.update(:notification => true)
+    end
 end
