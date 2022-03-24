@@ -19,6 +19,7 @@ class AdminController < ApplicationController
         @trips_obj.each do |trip|
           @trips.push(trip)
         end
+        @trips = @trips.reverse
         format.html {render 'admin/home.html.erb'}
       else
         @admin = Admin.first

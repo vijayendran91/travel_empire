@@ -6,7 +6,7 @@ $base-color-gold : #E6A620;
   margin-top: 5%;
 }
 #xlsx{
-  margin: 5%;
+  margin: 2%;
 }
 
 .admin_full_logo{
@@ -81,4 +81,12 @@ $base-color-gold : #E6A620;
 .admin_te_logo{
   width: 200px;
   height: 70px;
+}
+
+.tripsContainer{
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  overflow: scroll;
+  bottom: 0px;
 }

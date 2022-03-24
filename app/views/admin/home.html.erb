@@ -3,7 +3,6 @@
 <script type="text/javascript" src="/data/ad_pwd.json"></script>
 <%= javascript_pack_tag 'admin/home'%>
 <div id="admin_container">
-  <%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn", :style => "float: right; margin-right: 1%;" %>
   <div id="xlsx">
     <h5>Business - By Month</h5>
     <%= form_for(@trips,:url => chennai106_path(:format=>:xlsx), :method => :post) do |f| %>
@@ -22,21 +21,21 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "Whatsapp Index", admin_wa_index_path, :method => "get", :class => "btn green-btn ml-5", :style => "float: light;" %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Booking Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Pick Up Location</th>
-        <th scope="col">Pick Up Date and Time</th>
-        <th scope="col">Drop Location</th>
-        <th scope="col">Drop Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%(0..@trips.length()-1).each do |i|%>
+  <div class="tripsContainer">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Booking Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Pick Up Location</th>
+          <th scope="col">Pick Up Date and Time</th>
+          <th scope="col">Drop Location</th>
+          <th scope="col">Drop Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%(0..@trips.length()-1).each do |i|%>
         <tr>
           <th scope="row"><%=i+1%></th>
           <th scopr="row"><%=link_to @trips[i].id, admin_trip_details_path(:id => @trips[i].id), :method => :get%></th>
@@ -46,7 +45,8 @@
           <td><%=@trips[i].drl%></td>
           <td><%=@trips[i][:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
         </tr>
-      <%end%>
-    </tbody>
-  </table>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
 </div>
