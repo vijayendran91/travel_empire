@@ -10,7 +10,7 @@ class WhatsappController < ApplicationController
     message = event_content[:message]
 
     phone = message[:from][2..-1]
-    add_notification(phone)
+    change_notification(phone, true)
     msg_type = get_wa_message_type(message)
     media = get_wa_media(message)
     wa_message_insert(phone, WhatsappMessage::USER_INITIATED, msg_type, WhatsappMessage::USER, message[:text][:body], media)
@@ -42,6 +42,7 @@ class WhatsappController < ApplicationController
     if request.get?
       if admin_logged_in?
         params.permit(:phone)
+        change_notification(params[:phone], false)
         @messages = WhatsappMessage.where(:phone => params[:phone])
         @phone = params[:phone]
         @new_message = WhatsappMessage.new

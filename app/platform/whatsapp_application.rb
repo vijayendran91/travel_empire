@@ -205,9 +205,8 @@ module WhatsappApplication
     return save_whatsapp_number_service
   end
 
-  def add_notification(phone)
+  def change_notification(phone, value)
     @wa_phone = get_wa_number(phone)
-    binding.pry
-    add_notification_service(@wa_phone)
+    change_notification_service(@wa_phone, value)
   end
 end
