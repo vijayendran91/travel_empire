@@ -1,4 +1,7 @@
+require_relative "../services/whatsapp_number_services"
+
 module WhatsappApplication
+  include WhatsappNumberServices
 
   def send_customer_communications(trip_details, wa_template)
     CabBookedMailer.with(:trip=>trip_details).cab_booked_passenger.deliver_now
@@ -42,22 +45,16 @@ module WhatsappApplication
 
 
   def wa_opt_in?(phone)
-    data = WhatsappNumber.where(:phone => phone).first
-    if data.nil?
-      return false
-    else
-      return true
-    end
+    data = get_whatsapp_number_service(phone)[:opt_in]
+    return data
   end
 
   def opt_in_phone(phone) #TODO HTTP GET method to OPTIN the phone number
 
   end
 
-  def opt_out_phone
-    opt = WhatsappNumber.new(:phone => phone, :opt_in => true)
-    opt[:opt_in] = false
-    opt.save
+  def opt_out_phone(phone)
+    opt_out_phone(phone)
   end
 
 
@@ -163,7 +160,6 @@ module WhatsappApplication
                         'Authentication' => 'Bearer na2JvXULNrlLYfw1BzsMyw=='
                       }
         )
-    binding.pry
     return response
   end
 
@@ -195,5 +191,17 @@ module WhatsappApplication
         result = WhatsappMessage::VIDEO
       end
     end
+  end
+
+  def get_wa_number(phone)
+    get_whatsapp_number_service(phone)
+  end
+
+  def create_wa_number_first(phone)
+    return create_whatsapp_number_service(phone,true,false)
+  end
+
+  def save_wa_number
+    return save_whatsapp_number_service
   end
 end

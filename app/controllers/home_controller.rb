@@ -11,20 +11,14 @@ class HomeController < ApplicationController
 
   def submit_trip
     params=get_trip_params()
-    perbus = params[:perbus]
-    @wn = WhatsappNumber.where(:phone => params[:phone]).first
-    @trip = nil
-    if(@wn == nil)
-      if(wa_opt_in?(params[:phone]) == false)
-        #TODO Call OPTIN method and send GET request to RCM to OPTIN
-      end
-      @wn = WhatsappNumber.new(:phone => params[:phone], :opt_in => true, :notification => false)
-    end
-    params[:whatsapp_number] = @wn
     params[:created_at] = Time.now
-    create_trip(params)
-    save_trip
-    if save_trip
+    @trip = create_trip(params)
+    @wn = get_wa_number(params[:phone])
+    if(@wn == nil)
+      @wn = create_wa_number_first(params[:phone])
+    end
+    @wn.trips.push(@trip)
+    if save_trip && save_wa_number
       send_customer_communications(@trip, :customer_booking_confirmation)
       send_admin_communications(@trip, :admin_booking_confirmation)
       redirect_to root_path , alert: 'success'

@@ -52,7 +52,6 @@ class WhatsappController < ApplicationController
         if((last_user == WhatsappMessage::USER) && (last_time_diff < 23.45))
           @template_flag = false
         end
-        # binding.pry
       else
         @admin =  Admin.first
         redirect_to admin_login_path, :alert => "Please Log In"
