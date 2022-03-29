@@ -8,16 +8,18 @@ module WhatsappApplication
     customer_wa_init(trip_details, wa_template)
   end
 
-  def customer_wa_init(trip_data, wa_template)
-    if(trip_data.whatsapp_number.opt_in == false)
-      opt_in_phone(trip_data[:phone])
-    end
+  def customer_wa_init(data, wa_template)
     case wa_template.to_s
-    when "customer_booking_confirmation"
-      payload = booking_conf_cust_wa_pl(trip_data)
-      wa_message_insert(trip_data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil)
-    else
+    when "delayed_response_regret"
 
+    when "customer_booking_confirmation"
+      if(data.whatsapp_number.opt_in == false)
+        opt_in_phone(data[:phone])
+      end
+      payload = booking_conf_cust_wa_pl(data)
+      wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil)
+    else
+      
     end
     response = send_wa_message(payload)
   end
@@ -131,7 +133,7 @@ module WhatsappApplication
         }
       }
       payload[:message][:recipient] = {
-        :to => "919884538873",
+        :to => "919962395973",
         :recipient_type => 'individual',
         :reference => {
           :cust_ref => "Some Customer Ref",

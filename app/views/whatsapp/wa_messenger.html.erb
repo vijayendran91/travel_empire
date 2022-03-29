@@ -20,6 +20,7 @@
   </div>
   <div id="chatMsgBox">
     <%= form_for(@new_message, :url => admin_wa_messenger_path) do |f|%>
+    <%= f.hidden_field :phone, :value => @phone%>
     <div class="form-row mt-1">
       <%if @template_flag == false%>
         <div class="form-group col-md-10">
@@ -33,7 +34,6 @@
       <div class="form-group col-md-2">
         <%=f.submit "Send Message",:class=>"btn green-btn form-submit", :id=>"sendMsg"%>
       </div>
-      <%= f.hidden_field :phone, :value => @phone%>
     <%end%>
     </div>
   </div>

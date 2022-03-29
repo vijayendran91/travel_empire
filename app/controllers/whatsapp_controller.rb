@@ -43,15 +43,19 @@ class WhatsappController < ApplicationController
       if admin_logged_in?
         params.permit(:phone)
         change_notification(params[:phone], false)
-        @messages = WhatsappMessage.where(:phone => params[:phone])
+        @messages = WhatsappMessage.where(:phone => params[:phone]).to_a
         @phone = params[:phone]
         @new_message = WhatsappMessage.new
         @template_flag  = true
+        @last_user_message = nil
         last = @messages.last
-        @messages = @messages.reverse
-        last_user = last[:sent_by]
-        last_time_diff = time_difference_hrs(last[:timestamp])
-        if((last_user == WhatsappMessage::USER) && (last_time_diff < 23.45))
+        @messages.reverse.each do |m|
+          if(m[:sent_by] == 'user')
+            @last_user_message = m
+            break
+          end
+        end
+        if(@last_user_message && (time_difference_hrs(@last_user_message[:timestamp])<23.45))
           @template_flag = false
         end
       else
