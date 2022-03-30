@@ -2,6 +2,8 @@ require_relative "../services/whatsapp_number_services"
 
 module WhatsappApplication
   include WhatsappNumberServices
+  include WhatsappHelper
+
 
   def send_customer_communications(trip_details, wa_template)
     CabBookedMailer.with(:trip=>trip_details).cab_booked_passenger.deliver_now
@@ -17,30 +19,26 @@ module WhatsappApplication
         opt_in_phone(data[:phone])
       end
       payload = booking_conf_cust_wa_pl(data)
-      wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil)
+      wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil, nil, nil, nil)
     else
-      
+
     end
     response = send_wa_message(payload)
   end
 
 
-  def wa_message_insert(phone, wa_template, type,sent_by,text_message, media)
+  def wa_message_insert(phone, wa_template, type,sent_by, text, image, video, location, document)
     wa_message = {
       :phone => phone,
       :sent_by => sent_by,
       :message_type => type,
-      :text_message => text_message,
+      :text_message => text,
+      :image => image,
+      :video => video,
+      :location => location,
+      :document => document,
       :timestamp => Time.now
     }
-    case type
-    when WhatsappMessage::TEXT
-
-    when WhatsappMessage::VIDEO
-      wa_message[:video] = media
-    when WhatsappMessage::LOCATION
-      wa_message[:location] = media
-    end
     result = WhatsappMessage.new(wa_message)
     result.save
   end
@@ -188,11 +186,12 @@ module WhatsappApplication
       elsif message[:audio]
 
       elsif message[:image]
-        result = WhatsappMessage::IMAGE
+        result = get_wa_media_api_call(message[:image][:fileLink], message[:image][:sha256])
       elsif message[:video]
-        result = WhatsappMessage::VIDEO
+        result = get_wa_media_api_call(message[:video][:fileLink], message[:video][:sha256])
       end
     end
+    return result
   end
 
   def get_wa_number(phone)

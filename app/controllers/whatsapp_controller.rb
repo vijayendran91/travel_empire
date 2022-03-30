@@ -8,12 +8,28 @@ class WhatsappController < ApplicationController
     params.permit(:eventContent)
     event_content = params[:eventContent]
     message = event_content[:message]
-
     phone = message[:from][2..-1]
+    text = image = video = location = document = nil
+    if(message)
+      if(message[:text])
+
+      elsif message[:audio]
+
+      elsif message[:image]
+        msg_type = WhatsappMessage::IMAGE
+        image_data = get_wa_media(message)
+        image = get_action_dispatch_upload_file(image_data.parsed_response, 'image/jpeg', 'customer_response_image.jpeg')
+      elsif message[:video]
+        msg_type = WhatsappMessage::VIDEO
+        video_data = get_wa_media(message)
+        video = get_action_dispatch_upload_file(video_data.parsed_response, 'video/mp4', 'customer_response_video.mp4')
+      end
+    end
     change_notification(phone, true)
     msg_type = get_wa_message_type(message)
-    media = get_wa_media(message)
-    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, msg_type, WhatsappMessage::USER, message[:text][:body], media)
+
+
+    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, text, image, video, location, document)
     response = {:status => 200}
     response= response.to_json
     render :json => response
@@ -65,7 +81,7 @@ class WhatsappController < ApplicationController
     elsif request.post?
       params.permit(:whatsapp_message)
       whatsapp_message = params[:whatsapp_message]
-      wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], WhatsappMessage::TEXT)
+      wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil)
       redirect_to admin_wa_messenger_path(:phone => whatsapp_message[:phone]), :method => 'get'
     end
   end
