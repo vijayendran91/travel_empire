@@ -13,8 +13,10 @@ class WhatsappController < ApplicationController
     if(message)
       if(message[:text])
 
-      elsif message[:audio]
-
+      elsif message[:voice]
+        msg_type = WhatsappMessage::VOICE
+        voice_data = get_wa_media(message)
+        voice = get_action_dispatch_upload_file(voice_data.parsed_response, 'audio/ogg; codecs=opus', 'customer_response_voice.ogg')
       elsif message[:image]
         msg_type = WhatsappMessage::IMAGE
         image_data = get_wa_media(message)
@@ -29,7 +31,7 @@ class WhatsappController < ApplicationController
     msg_type = get_wa_message_type(message)
 
 
-    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, text, image, video, location, document)
+    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
     response = {:status => 200}
     response= response.to_json
     render :json => response
@@ -81,7 +83,7 @@ class WhatsappController < ApplicationController
     elsif request.post?
       params.permit(:whatsapp_message)
       whatsapp_message = params[:whatsapp_message]
-      wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil)
+      wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
       redirect_to admin_wa_messenger_path(:phone => whatsapp_message[:phone]), :method => 'get'
     end
   end

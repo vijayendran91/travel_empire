@@ -27,7 +27,7 @@ module WhatsappApplication
   end
 
 
-  def wa_message_insert(phone, wa_template, type,sent_by, text, image, video, location, document)
+  def wa_message_insert(phone, wa_template, type,sent_by, text, image, video, voice, location, document)
     wa_message = {
       :phone => phone,
       :sent_by => sent_by,
@@ -35,6 +35,7 @@ module WhatsappApplication
       :text_message => text,
       :image => image,
       :video => video,
+      :voice => voice,
       :location => location,
       :document => document,
       :timestamp => Time.now
@@ -183,12 +184,12 @@ module WhatsappApplication
     if(message)
       if(message[:text])
         result = WhatsappMessage::TEXT
-      elsif message[:audio]
-
       elsif message[:image]
         result = get_wa_media_api_call(message[:image][:fileLink], message[:image][:sha256])
       elsif message[:video]
         result = get_wa_media_api_call(message[:video][:fileLink], message[:video][:sha256])
+      elsif message[:voice]
+        result = get_wa_media_api_call(message[:voice][:fileLink], message[:voice][:sha256])
       end
     end
     return result
