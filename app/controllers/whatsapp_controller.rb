@@ -12,7 +12,9 @@ class WhatsappController < ApplicationController
     text = image = video = location = document = nil
     if(message)
       if(message[:text])
-
+      elsif message[:location]
+        msg_type = WhatsappMessage::LOCATION
+        location = get_wa_media(message)
       elsif message[:voice]
         msg_type = WhatsappMessage::VOICE
         voice_data = get_wa_media(message)
@@ -25,6 +27,17 @@ class WhatsappController < ApplicationController
         msg_type = WhatsappMessage::VIDEO
         video_data = get_wa_media(message)
         video = get_action_dispatch_upload_file(video_data.parsed_response, 'video/mp4', 'customer_response_video.mp4')
+      elsif message[:document]
+        msg_type = WhatsappMessage::DOCUMENT
+        extension = ""
+        doc_data = get_wa_media(message)
+        doc_type = doc_data.headers["content-type"]
+        if(doc_type == "application/msword")
+          extension = ".doc"
+        elsif doc_type == "application/pdf"
+          extension = ".pdf"
+        end
+        document = get_action_dispatch_upload_file(doc_data.parsed_response, doc_data.headers["content-type"], 'customer_response_document'+extension)
       end
     end
     change_notification(phone, true)

@@ -5,11 +5,12 @@ class WhatsappMessage
   has_mongoid_attached_file :image
   has_mongoid_attached_file :video
   has_mongoid_attached_file :voice
+  has_mongoid_attached_file :document
 
   validates_attachment :image, :content_type => { :content_type => ["application/octet-stream","image/jpg","image/jpeg","image/png"] }
   validates_attachment :video, :content_type => { :content_type => ["application/octet-stream","video/mp4"] }
   validates_attachment :voice, :content_type => { :content_type => ["application/octet-stream","audio/ogg; codecs=opus","video/ogg"] }
-
+  validates_attachment :document, :content_type => { :content_type => ["application/octet-stream", "application/msword","application/pdf"] }
 
   field :phone, type: String
   field :sent_by, type: String
@@ -18,7 +19,7 @@ class WhatsappMessage
   field :video, type: String
   field :voice, type: String
   field :document, type: String
-  field :location, type: String
+  field :location, type: Hash
   field :timestamp, type: DateTime
 
   ADMIN = "admin"
@@ -29,6 +30,7 @@ class WhatsappMessage
   LOCATION = :location
   IMAGE = :image
   VOICE = :voice
+  DOCUMENT = :document
 
   CUSTOMER_BOOKING_CONFIRMATION = :customer_booking_confirmation
   ADMIN_BOOKING_CONFIRMATION = :admin_booking_confirmation
@@ -39,7 +41,8 @@ class WhatsappMessage
     VIDEO => "video",
     VOICE => "voice",
     LOCATION => "location",
-    IMAGE => "image"
+    IMAGE => "image",
+    DOCUMENT => "document"
   }
 
   TEMPLATE_MESSAGE = {

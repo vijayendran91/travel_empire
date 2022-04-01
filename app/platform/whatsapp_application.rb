@@ -184,12 +184,16 @@ module WhatsappApplication
     if(message)
       if(message[:text])
         result = WhatsappMessage::TEXT
+      elsif message[:location]
+        result = {:latitude => message[:location]["latitude"], :longitude => message[:location]["longitude"]}
       elsif message[:image]
         result = get_wa_media_api_call(message[:image][:fileLink], message[:image][:sha256])
       elsif message[:video]
         result = get_wa_media_api_call(message[:video][:fileLink], message[:video][:sha256])
       elsif message[:voice]
         result = get_wa_media_api_call(message[:voice][:fileLink], message[:voice][:sha256])
+      elsif message[:document]
+        result = get_wa_media_api_call(message[:document][:fileLink], message[:document][:sha256])
       end
     end
     return result
