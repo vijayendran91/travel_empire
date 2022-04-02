@@ -43,6 +43,7 @@
         </div>
       <%end%>
       <div class="form-group col-md-2">
+        <%=f.hidden_field :message_type, value: "text"%>
         <%=f.submit "Send Message",:class=>"btn green-btn form-submit", :id=>"sendMsg"%>
       </div>
     <%end%>

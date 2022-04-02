@@ -95,9 +95,13 @@ class WhatsappController < ApplicationController
         redirect_to admin_login_path, :alert => "Please Log In"
       end
     elsif request.post?
-      params.permit(:whatsapp_message)
+      params.permit(:whatsapp_message, :message_type)
       whatsapp_message = params[:whatsapp_message]
-      wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
+      if(whatsapp_message[:message_type] == WhatsappMessage::TEXT.to_s)
+        wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
+        payload = customer_conv_text(whatsapp_message[:phone], whatsapp_message[:text_message])
+        response = send_wa_message(payload)
+      end
       redirect_to admin_wa_messenger_path(:phone => whatsapp_message[:phone]), :method => 'get'
     end
   end
