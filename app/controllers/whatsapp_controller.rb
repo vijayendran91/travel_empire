@@ -12,6 +12,8 @@ class WhatsappController < ApplicationController
     text = image = video = location = document = nil
     if(message)
       if(message[:text])
+        msg_type = WhatsappMessage::TEXT
+        text = message[:text][:body]
       elsif message[:location]
         msg_type = WhatsappMessage::LOCATION
         location = get_wa_media(message)
@@ -23,6 +25,7 @@ class WhatsappController < ApplicationController
         msg_type = WhatsappMessage::IMAGE
         image_data = get_wa_media(message)
         image = get_action_dispatch_upload_file(image_data.parsed_response, 'image/jpeg', 'customer_response_image.jpeg')
+        binding.pry
       elsif message[:video]
         msg_type = WhatsappMessage::VIDEO
         video_data = get_wa_media(message)
@@ -41,10 +44,8 @@ class WhatsappController < ApplicationController
       end
     end
     change_notification(phone, true)
-    msg_type = get_wa_message_type(message)
 
-
-    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
+    wa_message_insert(phone, WhatsappMessage::USER_INITIATED, msg_type, WhatsappMessage::USER, text, image, video, voice, location, document)
     response = {:status => 200}
     response= response.to_json
     render :json => response
@@ -74,7 +75,7 @@ class WhatsappController < ApplicationController
       if admin_logged_in?
         params.permit(:phone)
         change_notification(params[:phone], false)
-        @messages = WhatsappMessage.where(:phone => params[:phone]).to_a
+        @messages = WhatsappMessage.order_by(:timestamp => :asc)
         @phone = params[:phone]
         @new_message = WhatsappMessage.new
         @template_flag  = true

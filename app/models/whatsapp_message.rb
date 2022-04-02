@@ -22,6 +22,8 @@ class WhatsappMessage
   field :location, type: Hash
   field :timestamp, type: DateTime
 
+  before_destroy :clear_media
+
   ADMIN = "admin"
   USER = "user"
 
@@ -50,4 +52,11 @@ class WhatsappMessage
     CUSTOMER_BOOKING_CONFIRMATION => "customer_booking_confirmation",
     ADMIN_BOOKING_CONFIRMATION => "admin_booking_confirmation"
   }
+
+
+  #TODO Clear the media from S3 as well
+  #https://stackoverflow.com/questions/43176604/paperclip-not-deleting-images-from-s3-on-destroy
+  def clear_media
+
+  end
 end
