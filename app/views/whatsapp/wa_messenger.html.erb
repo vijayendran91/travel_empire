@@ -17,11 +17,13 @@
         <%elsif msg[:message_type].to_s == WhatsappMessage::IMAGE.to_s%>
           <%= image_tag msg.image.url, :class=>"wa_msg_img"%>
         <%elsif msg[:message_type].to_s == WhatsappMessage::VIDEO.to_s%>
-          <%= video_tag msg.video.url, :size => "320x240", :controls => true %>
+          <%= video_tag msg.video.url, :size => "320x240", :controls => true, :class=>"wa_msg_vid" %>
         <%elsif msg[:message_type].to_s == WhatsappMessage::VOICE.to_s%>
           <%=video_tag msg.voice.url, :size => "300x25", :controls => true%>
         <%elsif msg[:message_type].to_s == WhatsappMessage::LOCATION.to_s%>
           <%=link_to "Location", "https://maps.google.com/?q=#{msg[:location][:latitude]},#{msg[:location][:longitude]}"%>
+        <%elsif msg[:message_type].to_s == WhatsappMessage::DOCUMENT.to_s%>
+          <embed src=<%=msg.document.url%>, width="500px" height="500px" />
         <%end%>
       <%end%>
       <br>
