@@ -63,9 +63,6 @@ $base-color-gold : #E6A620;
   margin-top: 1%;
 }
 
-#sendMsg{
-  margin-left: 15%;
-}
 
 .waIndexElement{
   color: black;
@@ -94,4 +91,9 @@ $base-color-gold : #E6A620;
 .wa_msg_img, .wa_msg_vid{
   width: 500px;
   height: 500px;
+}
+
+.paperclip{
+  width: 15px;
+  height: 15px;
 }

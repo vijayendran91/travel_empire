@@ -87,7 +87,7 @@ class WhatsappController < ApplicationController
             break
           end
         end
-        if(@last_user_message && (time_difference_hrs(@last_user_message[:timestamp])<23.45))
+        if(!@last_user_message.nil? && (time_difference_hrs(@last_user_message[:timestamp])<86400))
           @template_flag = false
         end
       else
@@ -98,6 +98,10 @@ class WhatsappController < ApplicationController
       params.permit(:whatsapp_message, :message_type)
       whatsapp_message = params[:whatsapp_message]
       if(whatsapp_message[:message_type] == WhatsappMessage::TEXT.to_s)
+        wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
+        payload = customer_conv_text(whatsapp_message[:phone], whatsapp_message[:text_message])
+        response = send_wa_message(payload)
+      elsif(whatsapp_message[:message_type] == WhatsappMessage::IMAGE.to_s)
         wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
         payload = customer_conv_text(whatsapp_message[:phone], whatsapp_message[:text_message])
         response = send_wa_message(payload)

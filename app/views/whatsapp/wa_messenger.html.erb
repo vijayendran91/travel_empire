@@ -34,11 +34,21 @@
     <%= f.hidden_field :phone, :value => @phone%>
     <div class="form-row mt-1">
       <%if @template_flag == false%>
-        <div class="form-group col-md-10">
+        <div class="form-group col-md-8">
           <%=f.text_field :text_message, :class=>'form-control', :id=>'textMessage', :placeholder=>'Message'%>
         </div>
+        <div class="form-group col-md-2">
+          <div class="btn-group dropup">
+            <button type="button" class="btn green-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Attachment
+            </button>
+            <div class="dropdown-menu">
+              <%=f.file_field :image, :class=>'green-btn', :placeholder => "Image"%>
+            </div>
+          </div>
+        </div>
       <%else%>
-        <div class="form-group col-md-10">
+        <div class="form-group col-md-8">
           <%=f.select :text_message,  [["Choose a template", 'ch'],[WhatsappMessage::CUSTOMER_BOOKING_CONFIRMATION.to_s,WhatsappMessage::CUSTOMER_BOOKING_CONFIRMATION]],{},{:id => 'str',:class=> "custom-select", :selected=>'ch'}%>
         </div>
       <%end%>
