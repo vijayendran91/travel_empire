@@ -67,7 +67,6 @@ module WhatsappApplication
 
 
   def send_wa_message(payload)
-    binding.pry
     payload[:message][:sender] = {
       :from => "919444516391",
     }
@@ -99,6 +98,16 @@ module WhatsappApplication
         result = WhatsappMessage::VIDEO
       end
     end
+  end
+
+  def get_msg_type_from_content_type(content_type)
+    result = ""
+    if((content_type == 'image/png') || (content_type == 'image/jpeg') || (content_type == 'image/jpg'))
+      result = WhatsappMessage::IMAGE
+    else
+      result = WhatsappMessage::TEXT
+    end
+    result
   end
 
   def get_wa_media(message)
@@ -136,5 +145,23 @@ module WhatsappApplication
   def change_notification(phone, value)
     @wa_phone = get_wa_number(phone)
     change_notification_service(@wa_phone, value)
+  end
+
+  def send_conv_reply(wa_msg)
+    media_type = get_msg_type_from_content_type(wa_msg[:media].content_type)
+    text = image = video = voice = text = location = document = nil
+    if(media_type == WhatsappMessage::TEXT)
+      text = wa_msg[:text_message]
+      payload = customer_conv_text(wa_msg[:phone], wa_msg[:text_message])
+      wa_message_insert(wa_msg[:phone], WhatsappMessage::CONVERSATION, media_type, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
+      response = send_wa_message(payload)
+    elsif(media_type == WhatsappMessage::IMAGE)
+      image = wa_msg[:media]
+      encoded_image = encode_media_base64(wa_msg[:media])
+      wa_message_insert(wa_msg[:phone], WhatsappMessage::CONVERSATION, media_type, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
+      payload = customer_conv_image(encoded_image, wa_msg[:phone], wa_msg[:media].content_type)
+      response = send_wa_message(payload)
+      print "\n\nresponse\n\n"
+    end
   end
 end

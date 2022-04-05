@@ -102,4 +102,33 @@ module WhatsappPayloadHelper
     return payload
   end
 
+  def customer_conv_image(image, phone, content_type)
+    payload = {}
+
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :preview_url => false,
+          :type => "ATTACHMENT",
+          :attachment => {
+            :type => "image",
+            :caption => "",
+            :mimeType => content_type,
+            :attachmentData => image
+          }
+        }
+      }
+
+      payload[:message][:recipient] = {
+        :to => phone,
+        :recipient_type => 'individual',
+        :reference => {
+          :cust_ref => "Some Customer Ref",
+          :messageTag1 => "Message Tag Val1",
+          :conversationId => "Some Optional Conversation ID"
+        }
+      }
+      return payload
+  end
+
 end

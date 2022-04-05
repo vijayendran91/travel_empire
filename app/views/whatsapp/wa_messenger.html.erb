@@ -43,7 +43,7 @@
               Attachment
             </button>
             <div class="dropdown-menu">
-              <%=f.file_field :image, :class=>'green-btn', :placeholder => "Image"%>
+              <%=f.file_field :media, :class=>'green-btn', :placeholder => "Image", :input_html => { :value => 'text' }%>
             </div>
           </div>
         </div>
@@ -53,7 +53,6 @@
         </div>
       <%end%>
       <div class="form-group col-md-2">
-        <%=f.hidden_field :message_type, value: "text"%>
         <%=f.submit "Send Message",:class=>"btn green-btn form-submit", :id=>"sendMsg"%>
       </div>
     <%end%>

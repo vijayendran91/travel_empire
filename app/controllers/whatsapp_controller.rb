@@ -25,7 +25,6 @@ class WhatsappController < ApplicationController
         msg_type = WhatsappMessage::IMAGE
         image_data = get_wa_media(message)
         image = get_action_dispatch_upload_file(image_data.parsed_response, 'image/jpeg', 'customer_response_image.jpeg')
-        binding.pry
       elsif message[:video]
         msg_type = WhatsappMessage::VIDEO
         video_data = get_wa_media(message)
@@ -96,17 +95,8 @@ class WhatsappController < ApplicationController
       end
     elsif request.post?
       params.permit(:whatsapp_message, :message_type)
-      whatsapp_message = params[:whatsapp_message]
-      if(whatsapp_message[:message_type] == WhatsappMessage::TEXT.to_s)
-        wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
-        payload = customer_conv_text(whatsapp_message[:phone], whatsapp_message[:text_message])
-        response = send_wa_message(payload)
-      elsif(whatsapp_message[:message_type] == WhatsappMessage::IMAGE.to_s)
-        wa_message_insert(whatsapp_message[:phone], whatsapp_message[:text_message], WhatsappMessage::TEXT,WhatsappMessage::ADMIN,whatsapp_message[:text_message], nil, nil, nil, nil, nil)
-        payload = customer_conv_text(whatsapp_message[:phone], whatsapp_message[:text_message])
-        response = send_wa_message(payload)
-      end
-      redirect_to admin_wa_messenger_path(:phone => whatsapp_message[:phone]), :method => 'get'
+      send_conv_reply(params[:whatsapp_message])
+      redirect_to admin_wa_messenger_path(:phone => params[:whatsapp_message][:phone]), :method => 'get'
     end
   end
 
