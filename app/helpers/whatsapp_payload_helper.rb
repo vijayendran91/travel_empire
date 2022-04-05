@@ -102,8 +102,15 @@ module WhatsappPayloadHelper
     return payload
   end
 
-  def customer_conv_image(image, phone, content_type)
+  def customer_conv_media(media_type, media, phone, content_type)
     payload = {}
+    type = ""
+
+    if(media_type == WhatsappMessage::IMAGE)
+      type="image"
+    elsif(media_type == WhatsappMessage::VIDEO)
+      type = "video"
+    end
 
     payload[:message] = {
         :channel => "WABA",
@@ -111,10 +118,10 @@ module WhatsappPayloadHelper
           :preview_url => false,
           :type => "ATTACHMENT",
           :attachment => {
-            :type => "image",
+            :type => type,
             :caption => "",
             :mimeType => content_type,
-            :attachmentData => image
+            :attachmentData => media
           }
         }
       }

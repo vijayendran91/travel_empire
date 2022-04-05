@@ -74,7 +74,7 @@ class WhatsappController < ApplicationController
       if admin_logged_in?
         params.permit(:phone)
         change_notification(params[:phone], false)
-        @messages = WhatsappMessage.order_by(:timestamp => :asc)
+        @messages = WhatsappMessage.where(:phone => params[:phone]).order_by(:timestamp => :asc)
         @phone = params[:phone]
         @new_message = WhatsappMessage.new
         @template_flag  = true

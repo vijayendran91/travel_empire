@@ -5,15 +5,31 @@
   <div class="adminChatBox shadow-lg p-3 bg-white rounded overflow-auto">
     <%@messages.each do |msg|%>
       <br>
+
       <%if msg[:sent_by] == WhatsappMessage::ADMIN%>
-        <div class = "adminMessage">
+
+        <%if (msg[:message_type].to_s == WhatsappMessage::TEXT.to_s)%>
+          <div class = "adminMessage">
             <%=msg[:text_message]%>
-        </div>
+          </div>
+        <%elsif msg[:message_type].to_s == WhatsappMessage::IMAGE.to_s%>
+          <%= image_tag msg.image.url, :class=>"wa_msg_img adminMessage"%>
+        <%elsif msg[:message_type].to_s == WhatsappMessage::VIDEO.to_s%>
+          <%= video_tag msg.video.url, :size => "320x240", :controls => true, :class=>"wa_msg_vid adminMessage" %>
+        <%elsif msg[:message_type].to_s == WhatsappMessage::VOICE.to_s%>
+          <%=video_tag msg.voice.url, :size => "300x25", :controls => true%>
+        <%elsif msg[:message_type].to_s == WhatsappMessage::LOCATION.to_s%>
+          <%=link_to "Location", "https://maps.google.com/?q=#{msg[:location][:latitude]},#{msg[:location][:longitude]}", :class=>"adminMessage"%>
+        <%elsif msg[:message_type].to_s == WhatsappMessage::DOCUMENT.to_s%>
+          <embed src=<%=msg.document.url%>, width="500px" height="500px" />
+        <%end%>
+        <br>
       <%elsif msg[:sent_by] == WhatsappMessage::USER%>
-          <%if (msg[:message_type].to_s == WhatsappMessage::TEXT.to_s)%>
-            <div class = "userMessage">
-              <%=msg[:text_message]%>
-            </div>
+
+        <%if (msg[:message_type].to_s == WhatsappMessage::TEXT.to_s)%>
+          <div class = "userMessage">
+            <%=msg[:text_message]%>
+          </div>
         <%elsif msg[:message_type].to_s == WhatsappMessage::IMAGE.to_s%>
           <%= image_tag msg.image.url, :class=>"wa_msg_img"%>
         <%elsif msg[:message_type].to_s == WhatsappMessage::VIDEO.to_s%>
@@ -25,6 +41,7 @@
         <%elsif msg[:message_type].to_s == WhatsappMessage::DOCUMENT.to_s%>
           <embed src=<%=msg.document.url%>, width="500px" height="500px" />
         <%end%>
+
       <%end%>
       <br>
     <%end%>
