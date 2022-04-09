@@ -12,7 +12,7 @@
               <%indexClass = "waBold" %>
             <%end%>
             <div class = "<%=indexClass%>">
-              <%=link_to @wa_list[wa][:phone]+"  -  "+@wa_list[wa][:first_name], admin_wa_messenger_path(:params => {:phone => @wa_list[wa][:phone]}), :class => "waIndexElement"%>
+              <%=link_to @wa_list[wa][:phone]+"  -  "+@wa_list[wa][:first_name]+" "+@wa_list[wa][:last_name], admin_wa_messenger_path(:params => {:phone => @wa_list[wa][:phone]}), :class => "waIndexElement"%>
               <%if @wa_list[wa][:notification] == true%>
                 <%=image_tag "notification", :class=> "wa_notification"%>
               <%end%>
