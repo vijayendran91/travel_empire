@@ -15,7 +15,6 @@
             <%=video_tag msg.voice.url, :size => "300x25", :controls => true%>
           <%elsif msg[:message_type].to_s == WhatsappMessage::LOCATION.to_s%>
             <%=link_to image_tag("location_tear", :class=>"locationTear"), "https://maps.google.com/?q=#{msg[:location][:latitude]},#{msg[:location][:longitude]}", target: :_blank%>
-
           <%elsif msg[:message_type].to_s == WhatsappMessage::DOCUMENT.to_s%>
             <embed src=<%=msg.document.url%>, width="500px" class="wa_msg_container" height="500px" />
           <%end%>
@@ -35,7 +34,7 @@
           <%elsif msg[:message_type].to_s == WhatsappMessage::VOICE.to_s%>
             <%=video_tag msg.voice.url, :size => "300x25", :controls => true%>
           <%elsif msg[:message_type].to_s == WhatsappMessage::LOCATION.to_s%>
-            <%=link_to "Location", "https://maps.google.com/?q=#{msg[:location][:latitude]},#{msg[:location][:longitude]}"%>
+            <%=link_to image_tag("location_tear", :class=>"locationTear"), "https://maps.google.com/?q=#{msg[:location][:latitude]},#{msg[:location][:longitude]}", target: :_blank%>
           <%elsif msg[:message_type].to_s == WhatsappMessage::DOCUMENT.to_s%>
             <embed src=<%=msg.document.url%>, width="500px" height="500px" />
           <%end%>
