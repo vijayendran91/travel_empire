@@ -9,8 +9,8 @@ module WhatsappNumberServices
       phone.update_attributes!(:opt_in => false)
     end
 
-    def create_whatsapp_number_service(phone, opt_in, notification)
-        result = WhatsappNumber.new(:phone => phone, :opt_in => opt_in, :notification => notification)
+    def create_whatsapp_number_service(first_name, last_name, phone, opt_in, notification)
+        result = WhatsappNumber.new(:first_name => first_name, :last_name => last_name, :phone => phone, :opt_in => opt_in, :notification => notification)
         return result
     end
 

@@ -25,31 +25,6 @@ $base-color-gold : #E6A620;
   margin: auto;
 }
 
-.adminWaIndexContainer{
-  width: 90%;
-  margin-left: 5%;
-  margin-top: 2%;
-  height:500px;
-}
-
-.adminWaChatContainer{
-  width: 90%;
-  margin-left: 5%;
-  margin-top: 2%;
-}
-
-.adminChatBox{
-  height: 650px;
-  overflow: scroll;
-}
-
-.adminMessage{
-  float: right;
-  max-width: 45%;
-  border-radius: 25px;
-  background: #E1F4C8;
-  padding: 1%;
-}
 
 .userMessage{
   float: left;
@@ -88,10 +63,6 @@ $base-color-gold : #E6A620;
   bottom: 0px;
 }
 
-.wa_msg_img, .wa_msg_vid{
-  width: 500px;
-  height: 500px;
-}
 
 .paperclip{
   width: 15px;

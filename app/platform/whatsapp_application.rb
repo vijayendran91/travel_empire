@@ -140,8 +140,8 @@ module WhatsappApplication
     get_whatsapp_number_service(phone)
   end
 
-  def create_wa_number_first(phone)
-    return create_whatsapp_number_service(phone,true,false)
+  def create_wa_number_first(first_name, last_name, phone)
+    return create_whatsapp_number_service(first_name, last_name, phone,true,false)
   end
 
   def save_wa_number

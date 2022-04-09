@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     @trip = create_trip(params)
     @wn = get_wa_number(params[:phone])
     if(@wn == nil)
-      @wn = create_wa_number_first(params[:phone])
+      @wn = create_wa_number_first(params[:fname], params[:lname], params[:phone])
     end
     @wn.trips.push(@trip)
     if save_trip && save_wa_number
