@@ -106,6 +106,10 @@ module WhatsappApplication
       result = WhatsappMessage::IMAGE
     elsif((content_type == 'video/mp4') || (content_type == 'video/mov') || (content_type == 'video/wmv') || (content_type == 'video/flv'))
       result = WhatsappMessage::VIDEO
+    elsif((content_type == 'audio/mp3') || (content_type == 'audio/ogg') || (content_type == 'audio/mpeg'))
+      result = WhatsappMessage::VOICE
+    elsif((content_type == 'application/pdf') || (content_type == 'application/msword'))
+      result = WhatsappMessage::DOCUMENT
     else
       result = WhatsappMessage::TEXT
     end
@@ -150,24 +154,37 @@ module WhatsappApplication
   end
 
   def send_conv_reply(wa_msg)
-    media_type = get_msg_type_from_content_type(wa_msg[:media].content_type)
+    media_type = get_msg_type_from_content_type(wa_msg[:media].content_type) unless wa_msg[:media].nil?
+    if(media_type == nil && wa_msg[:location] == "" && wa_msg[:text_message] != "")
+      media_type = WhatsappMessage::TEXT
+    end
     text = image = video = voice = text = location = document = nil
     if(media_type == WhatsappMessage::TEXT)
       text = wa_msg[:text_message]
-      wa_message_insert(wa_msg[:phone], WhatsappMessage::CONVERSATION, media_type, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
       payload = customer_conv_text(wa_msg[:phone], wa_msg[:text_message])
     elsif(media_type == WhatsappMessage::IMAGE)
       image = wa_msg[:media]
       encoded_image = encode_media_base64(wa_msg[:media])
-      wa_message_insert(wa_msg[:phone], WhatsappMessage::CONVERSATION, media_type, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
       payload = customer_conv_media(media_type, encoded_image, wa_msg[:phone], wa_msg[:media].content_type)
     elsif(media_type == WhatsappMessage::VIDEO)
       video =  wa_msg[:media]
       encoded_video = encode_media_base64(wa_msg[:media])
-      wa_message_insert(wa_msg[:phone], WhatsappMessage::CONVERSATION, media_type, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
       payload = customer_conv_media(media_type, encoded_video, wa_msg[:phone], wa_msg[:media].content_type)
-      response = send_wa_message(payload)
-      binding.pry
+    elsif(media_type == WhatsappMessage::VOICE)
+      voice =  wa_msg[:media]
+      encoded_voice = encode_media_base64(wa_msg[:media])
+      payload = customer_conv_media("audio", encoded_voice, wa_msg[:phone], wa_msg[:media].content_type)
+    elsif(media_type == WhatsappMessage::DOCUMENT)
+      document = wa_msg[:media]
+      encoded_document = encode_media_base64(wa_msg[:media])
+      payload = customer_conv_media(media_type, encoded_document, wa_msg[:phone], wa_msg[:media].content_type)
+    elsif(!wa_msg[:location].nil?)
+      media_type = WhatsappMessage::LOCATION
+      locations = wa_msg[:location].split(", ")
+      location = {:latitude => locations[0], :longitude => locations[1]}
+      payload = customer_conv_loc(wa_msg[:phone], location)
     end
+    response = send_wa_message(payload)
+    wa_message_insert(wa_msg[:phone], WhatsappMessage::CONVERSATION, media_type, WhatsappMessage::ADMIN, text, image, video, voice, location, document)
   end
 end

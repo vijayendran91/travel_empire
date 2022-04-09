@@ -26,7 +26,7 @@ module WhatsappHelper
   end
 
   def encode_media_base64(media)
-    file = media.tempfile.open.read.force_encoding(Encoding::UTF_8)
+    file =  media.tempfile.open.read.force_encoding(Encoding::UTF_8)
     return Base64.strict_encode64(file)
   end
 

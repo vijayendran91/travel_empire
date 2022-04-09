@@ -5,7 +5,6 @@
   <div class="adminChatBox shadow-lg p-3 bg-white rounded overflow-auto">
     <%@messages.each do |msg|%>
       <br>
-
       <%if msg[:sent_by] == WhatsappMessage::ADMIN%>
 
         <%if (msg[:message_type].to_s == WhatsappMessage::TEXT.to_s)%>
@@ -23,7 +22,6 @@
         <%elsif msg[:message_type].to_s == WhatsappMessage::DOCUMENT.to_s%>
           <embed src=<%=msg.document.url%>, width="500px" height="500px" />
         <%end%>
-        <br>
       <%elsif msg[:sent_by] == WhatsappMessage::USER%>
 
         <%if (msg[:message_type].to_s == WhatsappMessage::TEXT.to_s)%>
@@ -43,7 +41,7 @@
         <%end%>
 
       <%end%>
-      <br>
+      <br><br><br><br>
     <%end%>
   </div>
   <div id="chatMsgBox">
@@ -61,6 +59,7 @@
             </button>
             <div class="dropdown-menu">
               <%=f.file_field :media, :class=>'green-btn', :placeholder => "Image", :input_html => { :value => 'text' }%>
+              <%=f.text_field :location, :placeholder => "Location"%>
             </div>
           </div>
         </div>

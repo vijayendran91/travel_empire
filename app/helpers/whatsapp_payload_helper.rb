@@ -61,7 +61,6 @@ module WhatsappPayloadHelper
               "5" => trip_data[:drt].strftime("%a %d-%m-%y  %l:%M:%p"),
               "6" => trip_data[:str],
               "7" => trip_data[:id].to_s, #TODO - Add adult and children
-
             }
           }
         }
@@ -110,12 +109,19 @@ module WhatsappPayloadHelper
       type="image"
     elsif(media_type == WhatsappMessage::VIDEO)
       type = "video"
+    elsif(media_type == WhatsappMessage::VOICE || media_type == 'audio')
+      type = "audio"
+      content_type = "audio/mpeg"
+    elsif(media_type == WhatsappMessage::DOCUMENT)
+      type = "document"
+    elsif(media_type == WhatsappMessage::LOCATION)
+      type = "location"
     end
-
     payload[:message] = {
         :channel => "WABA",
         :content => {
           :preview_url => false,
+          :shorten_url => false,
           :type => "ATTACHMENT",
           :attachment => {
             :type => type,
@@ -136,6 +142,28 @@ module WhatsappPayloadHelper
         }
       }
       return payload
+  end
+
+  def customer_conv_loc(phone, location)
+    payload = {}
+
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :type => "LOCATION",
+          :location => location
+        }
+      }
+    payload[:message][:recipient] = {
+      :to => phone,
+      :recipient_type => 'individual',
+      :reference => {
+        :cust_ref => "Some Customer Ref",
+        :messageTag1 => "Message Tag Val1",
+        :conversationId => "Some Optional Conversation ID"
+      }
+    }
+    return payload
   end
 
 end
