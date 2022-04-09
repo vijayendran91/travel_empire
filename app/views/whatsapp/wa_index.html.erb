@@ -1,16 +1,21 @@
 <%= render :partial => '/common_partial/admin_navbar'%>
 <div class="adminWaIndexContainer shadow-lg p-3 mb-5 bg-white rounded">
   <table class="table">
-    <h1>Whatsapp Messages Index</h1>
+    <h1><%=image_tag "whatsapp_logo", :style=> "width: 5%;"%>Whatsapp Messages Index</h1>
     <tbody>
       <%(0..@wa_list.length-1).each do |wa|%>
         <tr>
           <th scope="row"><%=wa+1%></th>
           <td>
             <%indexClass = ""%>
-            <%indexClass = "waBold" if @wa_list[wa][:notification] == true%>
+            <%if @wa_list[wa][:notification] == true%>
+              <%indexClass = "waBold" %>
+            <%end%>
             <div class = "<%=indexClass%>">
-              <%=link_to @wa_list[wa][:phone], admin_wa_messenger_path(:params => {:phone => @wa_list[wa][:phone]}), :class => "waIndexElement"%>
+              <%=link_to @wa_list[wa][:phone]+"  -  "+@wa_list[wa][:first_name], admin_wa_messenger_path(:params => {:phone => @wa_list[wa][:phone]}), :class => "waIndexElement"%>
+              <%if @wa_list[wa][:notification] == true%>
+                <%=image_tag "notification", :class=> "wa_notification"%>
+              <%end%>
             </div>
           </td>
         </tr>
