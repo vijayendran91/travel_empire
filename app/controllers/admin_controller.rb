@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
-
+  require_relative "../platform/whatsapp_application"
+  include WhatsappApplication
   def home
     if params[:format] == "xlsx"
       params = get_params()
@@ -64,9 +65,12 @@ class AdminController < ApplicationController
       params.permit[:id]
       @trip = Trip.where(:id => params[:id]).first
     elsif request.put?
-      original_trip = Trip.where(:id => params[:trip][:id]).first
+      @original_trip = Trip.where(:id => params[:trip][:id]).first
       params = get_trip_params
-      result = original_trip.update_attributes(params)
+      result = @original_trip.update_attributes(params)
+      @trip = Trip.where(:id => params[:id]).first
+      send_customer_communications(@trip, :edit_booking_message)
+      # send_admin_communications(@trip, :admin_booking_confirmation)
       if result == true
         redirect_to chennai106_path
       end
@@ -78,6 +82,6 @@ class AdminController < ApplicationController
         params[:trip].permit(:start_date, :end_date)
     end
     def get_trip_params
-      params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at)
+      params[:trip].permit(:id,:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at)
     end
 end

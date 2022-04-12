@@ -78,6 +78,40 @@ module WhatsappPayloadHelper
     return payload
   end
 
+  def edit_booking_wa_pl(trip_data)
+    payload = {}
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :preview_url => false,
+          :type => "TEMPLATE",
+          :template => {
+            :templateId => "edit_booking_message",
+            :parameterValues => {
+              "0" => trip_data[:fname],
+              "1" => "*#{trip_data[:pul]} - #{trip_data[:pua]}*",
+              "2" => trip_data[:put].strftime("%a %d-%m-%y  %l:%M:%p"),
+              "3" => Trip::TYPE_OF_TRIP[trip_data[:tot].to_sym], #TODO - ONE Way stores the time of booking
+              "4" => "*#{trip_data[:drl]} - #{trip_data[:dra]}*",
+              "5" => trip_data[:drt].strftime("%a %d-%m-%y  %l:%M:%p"),
+              "6" => trip_data[:str],
+              "7" => trip_data[:id].to_s
+            }
+          }
+        }
+      }
+      payload[:message][:recipient] = {
+        :to => "919962395973",
+        :recipient_type => 'individual',
+        :reference => {
+          :cust_ref => "Some Customer Ref",
+          :messageTag1 => "Message Tag Val1",
+          :conversationId => @trip[:id].to_s
+        }
+      }
+    return payload
+  end
+
   def customer_conv_text(phone, text)
     payload = {}
 
