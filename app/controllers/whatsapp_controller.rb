@@ -4,6 +4,7 @@ class WhatsappController < ApplicationController
   include WhatsappHelper
 
   skip_before_action :verify_authenticity_token
+  
   def receive_msg
     params.permit(:eventContent)
     event_content = params[:eventContent]
@@ -49,11 +50,6 @@ class WhatsappController < ApplicationController
     response= response.to_json
     render :json => response
   end
-
-  def voice_msg
-
-  end
-
 
   def wa_index
     if admin_logged_in?
@@ -106,48 +102,3 @@ class WhatsappController < ApplicationController
       params.permit(:channel, :appDetails, :events, :eventContent)
     end
 end
-# {
-#   "channel"=>"WABA",
-#   "appDetails"=>{
-#     "type"=>"LIVE"
-#     },
-#   "events"=>{
-#     "eventType"=>"User initiated",
-#     "timestamp"=>"1647242162",
-#     "date"=>"2022-March-14"
-#   },
-#   "eventContent"=>{
-#     "message"=>
-#       {
-#         "from"=>"919962395973",
-#         "id"=>"ABEGkZliOVlzAgo6q3kSFKkYNTa9",
-#         "text"=>{
-#           "body"=>"hi"},
-#         "to"=>"919444516391",
-#         "contentType"=>"text"
-#       }
-#     },
-#     "controller"=>"whatsapp",
-#     "action"=>"receive_msg",
-#     "whatsapp"=>{
-#       "channel"=>"WABA",
-#       "appDetails"=>{
-#         "type"=>"LIVE"
-#         },
-#       "events"=>{
-#         "eventType"=>"User initiated",
-#         "timestamp"=>"1647242162",
-#         "date"=>"2022-March-14"
-#         },
-#         "eventContent"=>{
-#           "message"=>{
-#             "from"=>"919962395973",
-#             "id"=>"ABEGkZliOVlzAgo6q3kSFKkYNTa9",
-#             "text"=>{
-#               "body"=>"hi"
-#               },
-#             "to"=>"919444516391",
-#             "contentType"=>"text"}
-#           }
-#         }
-# }
