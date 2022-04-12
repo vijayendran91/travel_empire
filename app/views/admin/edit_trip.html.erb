@@ -1,0 +1,133 @@
+<%= render :partial => '/common_partial/admin_navbar'%>
+<h1><center>Trip <%=@trip[:id]%></center></h1>
+<%= form_for @trip, :url => admin_edit_trip_path,:method => 'put' do |f|%>
+  <table  class="table">
+    <tbody>
+      <tr>
+        <td><b>Booking Id</b></td>
+        <td><%=@trip[:id]%></td>
+      </tr>
+      <tr>
+        <td><b>Personal or Business</b></td>
+        <td><%=f.select :perbus,  [["Personal",'per'], ["Business", 'bus']],{},{:class=> "custom-select", :selected=> @trip[:perbus].to_s}%></td>
+      </tr>
+      <tr>
+        <td><h5><center>Trip Details<center><h5></td>
+      </tr>
+      <tr>
+        <td><b>Type of Trip</b></td>
+        <td><%=f.select :tot, [['Choose...','ch'],['One Way', 'ow'],['Return Trip','rtt'],['Round Trip','rt'],['Multi Way','my'],['Hourly','hy']],{},{:class=> "custom-select", :selected=>@trip[:tot].to_s}%></td>
+      </tr>
+      <tr>
+        <td><b>Type of Booking</b></td>
+        <td><%=@trip[:tob]%></td>
+      </tr>
+      <tr>
+        <td><b>Type of Car</b></td>
+        <td><%=f.select :str,  [["Choose", 'ch'],["4 Seater",'4 Seater'], ["7 Seater", '7 Seater']],{},{:id => 'str',:class=> "custom-select", :selected=>'ch'}%></td>
+      </tr>
+      <tr>
+        <td><h5><center>Pick Up Details<center><h5></td>
+      </tr>
+      <tr>
+        <td><b>Pick Up Location</b></td>
+        <td><%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2","data-district" => @trip[:pul].to_s,:id=>"editFromDistSelect", :required => true}%></td>
+        <td><%=f.text_field :pua, :class=>'form-control pua', :id=>'editFromArea', :placeholder=>@trip[:pua]%></td>
+        <td>
+          <%if(@trip[:tot].to_sym == Trip::MULTI_WAY || @trip[:tot].to_sym == Trip::ROUND_TRIP)%>
+            <%=@trip[:locs1] if(@trip[:locs1])%><br>
+            <%=@trip[:locs2] if(@trip[:locs2])%><br>
+            <%=@trip[:locs3] if(@trip[:locs3])%><br>
+            <%=@trip[:locs4] if(@trip[:locs4])%><br>
+          <%end%>
+        </td>
+
+      </tr>
+      <tr>
+        <td><b>Pick Up Date</b></td>
+        <td><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+        <td>
+          <%= f.datetime_local_field :put, :class=> "bookingTime form-control timepicker", :id=> "returnBookingTime"%>
+        </td>
+      </tr>
+      <tr>
+        <td><h5><center>Drop Details<center><h5></td>
+      </tr>
+      <tr>
+        <td><b>Drop Location</b></td>
+        <td><%=f.select :drl, [['Select District','sd']],{}, {:class=> "custom-select mr-sm-2","data-district" => @trip[:drl].to_s, :id=>"editToDistSelect", :required => true}%></td>
+        <td><%=f.text_field :dra, :class=>'form-control dra', :id=>'editToArea', :placeholder=>@trip[:dra]%></td>
+      </tr>
+      <tr>
+        <td><b>Drop Date</b></td>
+        <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+        <td>
+          <%= f.datetime_local_field :drt, :class=> "bookingTime form-control timepicker", :id=> "returnBookingTime"%>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><h5><center>Personal Details<center><h5></td>
+      </tr>
+      <tr>
+        <td><b>First Name</b></td>
+        <td><%=f.text_field :fname, :class=>'form-control', :id=>'editFirstName', :value=>@trip[:fname]%></td>
+      </tr>
+      <tr>
+        <td><b>Last Name</b></td>
+        <td><%=f.text_field :lname, :class=>'form-control', :id=>'editLastName', :value=>@trip[:lname]%></td>
+      </tr>
+      <tr>
+        <td><b>Phone</b></td>
+        <td><%=f.text_field :phone, :class=>'form-control', :id=>'editPhone', :value=>@trip[:phone]%></td>
+      </tr>
+      <tr>
+        <td><b>Email</b></td>
+        <td><%=f.text_field :email, :class=>'form-control', :id=>'editEmail', :value=>@trip[:email]%></td>
+      </tr>
+      <% if @trip[:photoproof1_file_name] != nil%>
+        <%if @trip[:photoproof1_content_type] == "application/pdf"%>
+          <tr>
+            <td><b>Photoproof 1</b></td>
+            <td><embed src=<%=@trip.photoproof1.url%>, width="500px" height="500px" /></td>
+          </tr>
+        <%else%>
+          <tr>
+            <td><b>Photoproof 1</b></td>
+            <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
+          </tr>
+        <%end%>
+      <%end%>
+      <% if @trip[:photoproof2_file_name] != nil %>
+        <%=@trip[:photoproof_content_type]%><%= @trip.photoproof2.url%>
+        <%if @trip[:photoproof2_content_type] == "application/pdf"%>
+          <tr>
+            <td><b>Photoproof 2 </b></td>
+            <td><embed src=<%=@trip.photoproof2.url%>, width="500px" height="500px" /></td>
+          </tr>
+        <%else%>
+          <tr>
+            <td><b>Photoproof 2</b></td>
+            <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
+          </tr>
+        <%end%>
+      <%end%>
+      <tr>
+        <td>
+            <%=f.hidden_field :id, :class=>'gst_full_addr', :value => @trip[:id]%>
+            <%=f.submit "Update",:class=>"btn mt-2 green-btn form-submit"%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<%end%>
+<script type="text/javascript" src="../data/data.json"></script>
+<%= javascript_pack_tag 'admin/edit_trip' %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    debugger;
+    $('#editFromDistSelect').val($('#editFromDistSelect').data('district'));
+    $('#editToDistSelect').val($('#editToDistSelect').data('district'));
+  });
+</script>
