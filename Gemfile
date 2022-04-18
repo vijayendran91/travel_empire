@@ -85,3 +85,8 @@ gem "letter_opener", :group => :development
 gem "rails_serve_static_assets"
 
 gem "bcrypt"
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv'
