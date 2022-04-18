@@ -1,4 +1,27 @@
 GIT
+  remote: https://github.com/capistrano/chruby.git
+  revision: 50dd000a0ad8ca24da6ec0d36e855fd9f20a6b56
+  specs:
+    capistrano-chruby (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.3)
+
+GIT
+  remote: https://github.com/capistrano/passenger.git
+  revision: 4082e8be91ba375c649ee3ef0e85f0584c958ddb
+  specs:
+    capistrano-passenger (0.2.1)
+      capistrano (~> 3.0)
+
+GIT
+  remote: https://github.com/capistrano/rvm.git
+  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
+  specs:
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+
+GIT
   remote: https://github.com/mongodb/mongoid.git
   revision: d13ba55d027ec45a964f76cef9cf85819e189881
   specs:
@@ -1312,6 +1335,10 @@ GEM
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano3-puma (5.2.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 4.0, < 6.0)
     capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -1567,8 +1594,12 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
+  capistrano-chruby!
+  capistrano-passenger!
   capistrano-rails
   capistrano-rbenv
+  capistrano-rvm!
+  capistrano3-puma
   capybara (>= 2.15)
   caxlsx_rails
   cucumber-rails
