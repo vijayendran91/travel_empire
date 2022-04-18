@@ -112,6 +112,10 @@ module WhatsappPayloadHelper
     return payload
   end
 
+  def delay_regret_msg
+    
+  end
+
   def customer_conv_text(phone, text)
     payload = {}
 
