@@ -1,10 +1,7 @@
-
-
 {
   "name": "travel_empire",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.4",
     "@popperjs/core": "^2.10.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -24,7 +21,26 @@
   "devDependencies": {
     "webpack-dev-server": "^4.6.0"
   },
-  "engines":{
-    "node":"16.x"
-  }
+  "engines": {
+    "node": "16.x"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijayendran91/travel_empire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vijayendran91/travel_empire/issues"
+  },
+  "homepage": "https://github.com/vijayendran91/travel_empire#readme"
 }
