@@ -86,11 +86,17 @@ gem "rails_serve_static_assets"
 
 gem "bcrypt"
 
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv'
-gem 'capistrano3-puma'
-gem 'capistrano-rvm', github: 'capistrano/rvm'
-gem 'capistrano-chruby', github: 'capistrano/chruby'
-gem 'capistrano-passenger', github: 'capistrano/passenger'
+gem 'ed25519', '~> 1.2'
+gem 'bcrypt_pbkdf', '~> 1'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rvm'
+  gem 'sshkit-sudo'
+  # gem 'capistrano-chruby', github: 'capistrano/chruby'
+  gem 'capistrano-passenger', github: 'capistrano/passenger'
+end

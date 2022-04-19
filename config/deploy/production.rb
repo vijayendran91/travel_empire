@@ -7,12 +7,8 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-server '65.0.135.220', user: 'ubuntu', roles: %w{web app db}
-set :ssh_options, {
-  forward_agent: true,
-  auth_methods: %w[publickey],
-  keys: %w[~/Documents/travel_empire_kp.pem]
-}
+server '65.0.135.220', user: 'saravanan', roles: %w{web app db}
+
 
 
 
