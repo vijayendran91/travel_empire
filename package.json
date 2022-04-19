@@ -19,10 +19,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "node-sass": "4.12.0",
+    "node-sass": "6.0",
     "webpack-dev-server": "^4.6.0"
   },
   "engines":{
-    "node":"12.x"
+    "node":"16.14.2"
   }
 }
