@@ -33,7 +33,7 @@ gem 'caxlsx_rails'
 
 
 #Bootstrap for UI
-gem 'bootstrap'
+gem 'bootstrap', '~> 5.1.3'
 gem 'bootstrap-timepicker-rails', '~> 0.1.3'
 gem 'bootstrap-select-rails', '~> 1.6', '>= 1.6.3'
 #JQuery Rails
