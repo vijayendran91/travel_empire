@@ -6,14 +6,12 @@
 //= require jquery-ujs
 //= require jquery-ui
 //= require popper
-//= require bootstrap-sprockets
 //= require jquery3
 //= require popper
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require bootstrap-select
 //= require bootstrap
-//= require bootstrap-sprockets
 require("@rails/ujs").start();
 require("turbolinks").start();
 // require("@rails/activestorage").start();
