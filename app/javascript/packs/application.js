@@ -18,8 +18,9 @@ require("turbolinks").start();
 // require("@rails/activestorage").start();
 require("channels");
 
-import "bootstrap";
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap/dist/css/bootstrap';
+require("stylesheets/application.scss")
 import JQuery from 'jquery';
 window.$ = window.JQuery = JQuery;
 import 'bootstrap'
