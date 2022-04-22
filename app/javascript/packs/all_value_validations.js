@@ -37,8 +37,38 @@ function validate_form(){
 }
 
 
+function validate_phone(phone){
+  result = false;
+  if(phone.length == 13)
+  {
+    temp = phone.substring(1)
+    if(temp.length == 12 && /^-?\d+$/.test(temp)){
+      result = true
+    }else{
+      result = false;
+    }
+  }
+  else if (phone.length == 12 && /^-?\d+$/.test(phone)) {
+    result = true;
+  }else if (phone.length == 10 && /^-?\d+$/.test(phone)){
+    result = true;
+  }else{
+    result = false;
+  }
+
+
+
+  if(result == false){
+    // $('#errorsModal').modal('show');
+    window.alert("Please enter a valid Phone number with country code");
+  }
+}
+
 $(document).ready(function(){
   $('#bookRide').on('click', function(){
     validate_form();
+  })
+  $('#phone').on('change',function(){
+    validate_phone($('#phone').val());
   })
 });

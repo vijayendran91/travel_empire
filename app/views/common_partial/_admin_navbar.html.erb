@@ -1,0 +1,17 @@
+<nav class="navbar adminNavbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href= "<%=chennai106_path%>""><%=image_tag("Travel_Empire_Logo_1.jpg",:class=>"admin_te_logo")%></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ml-2">
+       <%=link_to "Whatsapp Index", admin_wa_index_path, :class => 'nav-link'%>
+      </li>
+      <li class="nav-item active ml-2">
+        <%=link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => 'nav-link'%>
+      </li>
+    </ul>
+  </div>
+</nav>

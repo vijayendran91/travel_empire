@@ -10,14 +10,20 @@ Rails.application.routes.draw do
   get '/pricing', :to => 'home#pricing'
   get '/payment_methods', :to => 'home#payment_methods'
   get '/contact_us', :to => 'home#contact_us'
-  post '/wa/wh/receive_msg', :to => 'whatsapp#receive_msg'
 
+  post '/wa/wh/receive_msg', :to => 'whatsapp#receive_msg'
 
   post '/chennai106', :to => 'admin#home', :format => 'xlsx'
   get '/chennai106', :to => 'admin#home', :format => 'html'
   get '/admin_login', :to => 'admin#login'
+  get 'admin/trip_details/', :to => 'admin#trip_details'
+  get 'admin/edit_trip/', :to => 'admin#edit_trip'
+  put 'admin/edit_trip/', :to => 'admin#edit_trip'
+  delete 'admin/cancel_trip', :to => 'admin#cancel_trip'
+  get '/admin/wa_index', :to => 'whatsapp#wa_index'
+  get '/admin/wa_messenger', :to => 'whatsapp#wa_messenger'
+  post 'admin/wa_messenger', :to => 'whatsapp#wa_messenger'
+
   post '/admin_login', :to => 'sessions#login'
   delete '/admin_logout', :to => 'sessions#logout'
-  get 'admin/trip_details/', :to => 'admin#trip_details'
-  delete 'admin/cancel_trip', :to => 'admin#cancel_trip'
 end
