@@ -1310,7 +1310,7 @@ GEM
     bootstrap-select-rails (1.13.8)
     bootstrap-timepicker-rails (0.1.3)
       railties (>= 3.0)
-    bson (4.14.1)
+    bson (4.15.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.36.0)
@@ -1429,7 +1429,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
-    mongo (2.17.1)
+    mongo (2.15.1)
       bson (>= 4.8.2, < 5.0.0)
     mongoid-paperclip (0.1.0)
       kt-paperclip
@@ -1578,6 +1578,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   listen (~> 3.2)
+  mongo (~> 2.15.0)
   mongoid!
   mongoid-paperclip
   paperclip

@@ -7,7 +7,7 @@ ruby '2.7.3'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
 
 gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
-
+gem 'mongo', "~> 2.15.0"
 
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
