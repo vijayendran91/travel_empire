@@ -35,6 +35,7 @@ class WhatsappMessage
   DOCUMENT = :document
 
   CUSTOMER_BOOKING_CONFIRMATION = :customer_booking_confirmation
+  EDIT_BOOKING_CONFIRMATION = :edit_booking_message
   ADMIN_BOOKING_CONFIRMATION = :admin_booking_confirmation
   USER_INITIATED = :user_initiated
   CONVERSATION = :conversation
@@ -52,7 +53,8 @@ class WhatsappMessage
     USER_INITIATED => "user_initiated",
     CUSTOMER_BOOKING_CONFIRMATION => "customer_booking_confirmation",
     ADMIN_BOOKING_CONFIRMATION => "admin_booking_confirmation",
-    CONVERSATION => "conversation"
+    CONVERSATION => "conversation",
+    EDIT_BOOKING_CONFIRMATION => "edit_booking_message"
   }
 
 

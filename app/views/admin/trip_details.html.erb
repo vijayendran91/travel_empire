@@ -1,6 +1,12 @@
+<%= render :partial => '/common_partial/admin_navbar'%>
+
 <%=link_to "Back to Admin Home", chennai106_path, :class => "btn green-btn mt-2 ml-2"%>
+<%= link_to "Edit Trip", admin_edit_trip_path(:id => @trip[:id]), :method => "get", :class => "btn green-btn mr-2 mt-2" %>
+<%=link_to "Cancel Trip", admin_cancel_trip_path(:id => @trip[:id]), :method => :delete, :class => "btn green-btn mr-2 mt-2"%>
+
+
 <%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn mr-2 mt-2", :style => "float: right;" %>
-<%=link_to "Cancel Trip", admin_cancel_trip_path(:id => @trip[:id]), :method => :delete, :class => "btn green-btn mr-2 mt-2", :style => "float: right;"%>
+
 <h1><center>Trip <%=@trip[:id]%></center></h1>
 <table  class="table">
   <tbody>
@@ -56,7 +62,7 @@
     </tr>
     <tr>
       <td><b>Drop Date</b></td>
-      <td><%=@trip[:drt].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+      <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
     </tr>
 
 

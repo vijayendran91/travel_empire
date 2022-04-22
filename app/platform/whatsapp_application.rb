@@ -11,18 +11,19 @@ module WhatsappApplication
   end
 
   def customer_wa_init(data, wa_template)
+    if(data.whatsapp_number.opt_in == false)
+      opt_in_phone(data[:phone])
+    end
     case wa_template.to_s
     when "delayed_response_regret"
-
+    when "edit_booking_message"
+      payload = edit_booking_wa_pl(data)
     when "customer_booking_confirmation"
-      if(data.whatsapp_number.opt_in == false)
-        opt_in_phone(data[:phone])
-      end
       payload = booking_conf_cust_wa_pl(data)
-      wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil, nil, nil, nil,nil)
     else
 
     end
+    wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil, nil, nil, nil,nil)
     response = send_wa_message(payload)
   end
 
