@@ -1,0 +1,49 @@
+<script type="text/javascript" src="/data/ad_pwd.json"></script>
+<%= javascript_pack_tag 'admin/home'%>
+<div id="admin_container">
+  <%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn", :style => "float: right; margin-right: 1%;" %>
+  <div id="xlsx">
+    <h5>Business - By Month</h5>
+    <%= form_for(@trips,:url => chennai106_path(:format=>:xlsx), :method => :post) do |f| %>
+      <div class="form-row mt-4">
+        <div class="form-group col-md-3">
+          <label class="form-label" for="startDate">Start Date</label>
+          <%= f.datetime_local_field :start_date, :class=> "bookingTime form-control datetimepicker", :id=> "startDate"%>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="form-label" for="endDate">End Date</label>
+          <%= f.datetime_local_field :end_date, :class=> "bookingTime form-control datetimepicker", :id=> "endDate"%>
+        </div>
+        <div class="form-group col-md-6">
+          <%=f.submit "Download Excel",:class=>"btn green-btn form-submit", :id=>"dwnExcel"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Booking Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Pick Up Location</th>
+        <th scope="col">Pick Up Date and Time</th>
+        <th scope="col">Drop Location</th>
+        <th scope="col">Drop Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%(0..@trips.length()-1).each do |i|%>
+        <tr>
+          <th scope="row"><%=i+1%></th>
+          <th scopr="row"><%=link_to @trips[i].id, admin_trip_details_path(:id => @trips[i].id), :method => :get%></th>
+          <td><%=@trips[i].fname%></td>
+          <td><%=@trips[i].pul%></td>
+          <td><%=@trips[i][:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+          <td><%=@trips[i].drl%></td>
+          <td><%=@trips[i][:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

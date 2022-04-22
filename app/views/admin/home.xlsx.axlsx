@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+sps_img = File.expand_path(Rails.root+'app/assets/images/Travel_Empire_Logo_1.jpg')
+wb.add_worksheet(name: "Trips") do |sheet|
+  sheet.add_image(:image_src => sps_img) do |image|
+    image.start_at 0, 0
+    image.end_at 3, 6
+  end
+  headers = sheet.styles.add_style(b: true);
+  date_cell = sheet.styles.add_style(format_code: "yyyy-mm-dd hh:mm")
+  8.times do
+    sheet.add_row
+  end
+  sheet.add_row ["S.No.","Created On","Booking Id", "TR Number","Cab Model", "Per /Bus", "Full  Name","Whatsapp Number","Email", "Type of Trip", "Pick Up Location", "Pick Up Area", "Pick Up Time", "Drop Location", "Drop Area", "Drop Time"], :style => headers
+  (0..@trips.length-1).each do |i|
+    sheet.add_row [i+1,@trips[i].created_at, @trips[i].id, " ", @trips[i].str, @perbus[i], @trips[i].fname+" "+@trips[i].lname,@trips[i].phone,@trips[i].email ,@tot[i], @trips[i].pul, @trips[i].pua, @trips[i].put.strftime("%F %T"), @trips[i].drl, @trips[i].dra, @trips[i].drt.strftime("%F %T")],
+    style: [nil, date_cell, nil, nil,nil, nil, nil, nil,nil, nil, nil, nil, date_cell, nil, nil, date_cell]
+  end
+end

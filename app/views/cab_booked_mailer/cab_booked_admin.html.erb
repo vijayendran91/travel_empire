@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <h5><%="Dear Admin"%>,<br><br></h5>
+    <center>
+      <%= image_tag(attachments["logo.jpg"].url, :style=> 'width:45%;') %>
+      <br><h5>Please find the details below.</h5>
+      <table class="table table-striped" style="width:  95% !important; background-color: #334420; color: #ffffff !important;">
+        <tbody>
+          <tr>
+            <td><b>Booking Id/TR Number</b></td>
+            <td class="table-imp"><%=@trip[:id]%></td>
+          </tr>
+          <tr>
+            <td><b>Customer Full Name</b></td>
+            <td class="table-imp"><%=@trip[:fname]+" "+@trip[:lname]%></td>
+          </tr>
+          <tr>
+            <td><b>Customer Whatsapp Number</b></td>
+            <td class="table-imp"><%=@trip[:phone]%></td>
+          </tr>
+          <tr>
+            <td><b>Type of Trip</b></td>
+            <td class="table-imp"><%=@tot%></td>
+          </tr>
+          <tr>
+            <td><b>Pick Up Location</b></td>
+            <td class="table-imp"><%=@trip[:pul]+" - "+@trip[:pua]%></td>
+          </tr>
+          <%if(@trip[:tot].to_s == 'my' || @trip[:tot].to_s == 'rt')%>
+            <%if(@trip[:locs1])%>
+              <tr>
+                <td>Location 1</td>
+                <td><%=@trip[:locs1]%></td>
+              </tr>
+            <%end%>
+            <%if(@trip[:locs2])%>
+              <tr>
+                <td>Location 2</td>
+                <td><%=@trip[:locs2]%></td>
+              </tr>
+            <%end%>
+            <%if(@trip[:locs3])%>
+              <tr>
+                <td>Location 3</td>
+                <td><%=@trip[:locs3]%></td>
+              </tr>
+            <%end%>
+            <%if(@trip[:locs4])%>
+              <tr>
+                <td>Location 4</td>
+                <td><%=@trip[:locs4]%></td>
+              </tr>
+            <%end%>
+          <%end%>
+          <tr>
+            <td><b>Drop Location</b></td>
+            <td class="table-imp"><%=@trip[:drl]+" - "+@trip[:dra]%></td>
+          </tr>
+          <tr>
+            <td><b>Car Type</b></td>
+            <td class="table-imp"><%=@trip[:str]%></td>
+          </tr>
+          <tr>
+            <td><b>Reporting Date and Time</b></td>
+            <td class="table-imp"><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+          </tr>
+
+          <tr>
+            <td><b>Customer Message</b></td>
+            <td><%=@trip[:msg]%></td>
+          </tr>
+          <%if(@trip[:perbus].to_s == 'bus')%>
+            <tr>
+              <td><b>GST</b></td>
+              <td><%=@trip[:gst]%></td>
+            </tr>
+            <tr>
+              <td><b>GST Legal Name</b></td>
+              <td><%=@trip[:gst_lg_nm]%></td>
+            </tr>
+            <tr>
+              <td><b>GST Address</b></td>
+              <td><%=@trip[:gst_full_addr]%></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </center><br><br>
+      - 8 hours duty on <%=@pick_up_time%><br><br>
+
+      - Govt. & Private Toll Entry Fee & Permit Fee Excluded.<br><br>
+
+      - Particular trip Driver will pay all the Govt. & Private Toll Entry Fee & Permit Fee.
+        After Trip End Passenger has to pay back to the Driver Trip Amount along with
+        Govt. & Private Toll Entry Fee & Permit Fee.<br><br>
+
+      - Driver should maintain cleaniness ( Face and Neatness ) with full dignity. <br><br>
+
+      - Cab should be well cleaned and good ambience must be followed before reporting to the Client Location.<br><br>
+
+      -All the Vehicle documents and Driving Licence should be kept inside the Cab. <br><br>
+
+      - Usage of Alcohol/Drugs are prohibited.<br><br>
+
+      - Usage of Headphones are prohibited<br><br>
+
+      - 1 Litre Sealed water bottle should be kept inside the Cab.<br><br>
+
+      - First Aid Kit, Umbrella and Torch Light should be kept inside the Cab.<br><br>
+
+      - Keep Cellphone is active mode not in busy mode, switch off mode, not reachable mode.<br><br>
+
+      - Report 15 before in the Client Pickup Point. No excuses and reasons permitted.<br><br>
+
+      Note :-
+
+        a. Incase of Vehicle Breakdown or Driver Not well or Driver Not Interested
+           for Particular Trip please inform to Travel Empire Admin immediately within
+           the Scheduled Trip Start Date and Time.<br><br>
+
+
+        b. Incase Travel Empire is not receiving proper notification from the Driver
+           further trips remain Cancelled and future prospects will not be recommended. <br><br>
+
+
+        c. Incase of any doubts or Cancellation or Any Tariff information
+           or Bill Payment Information <br><br>
+
+
+      Contact :  Travel Empire Admin<br>
+      Number  :  98845 38873 / 83000 54444<br>
+      E-Mail id : chennai.travelempire@yahoo.com<br>
+  </body>
+</html>
+<style>
+  .table-imp{
+    font-weight: 900;
+    text-decoration: underline;
+  }
+  table{
+    background-color: #334420;
+    color: #ffffff !important;
+  }
+</style>

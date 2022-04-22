@@ -1,0 +1,38 @@
+<%= render :partial => 'home/navbar_files/navbar'%>
+<center>
+  <div class="formContainer shadow-lg p-3 mb-5 bg-white rounded">
+    <%if alert%>
+      <% if alert == 'error' %>
+        <p class="alert alert-danger"><%= "Sorry! Something went wrong. Please try again "%></p>
+      <% elsif alert == 'success' %>
+        <p class="alert alert-success"><%= "Your cab has been booked successfully" %></p>
+      <%end%>
+    <%end%>
+    <div id="initBtnCntnr">
+      <div class="form-row mt-4">
+        <div class="form-group col-md-6">
+          <button type="button" id="bookCab" name="button" class="btn green-btn ">Book a Cab</button>
+        </div>
+        <div class="form-group col-md-6">
+          <%= link_to "Make a Payment", payment_methods_path, :id => "makePayment", :class=> "btn green-btn"%>
+        </div>
+      </div>
+    </div>
+    <%= form_for(@trip,:as => 'trip', url: submit_trip_path(@trip)) do |f| %>
+      <%=render :partial => 'home/modals/gst_details_modal.html.erb', :locals => {:f => f}%>
+      <%=render :partial => 'home/modals/tot_modal.html.erb'%>
+      <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
+      <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
+      <%=f.submit "Book Ride",:class=>"btn ml-3 green-btn form-submit", :id=>"bookRide"%>
+    <%end%>
+    <div class="loading-gif-modal"></div>
+  </div>
+</center>
+<script type="text/javascript" src="./data/data.json"></script>
+<%= javascript_pack_tag 'trip/date_time' %>
+<%= javascript_pack_tag 'trip/districts_load'%>
+<%= javascript_pack_tag 'init_jquery'%>
+<%= javascript_pack_tag 'trip/trip_tot'%>
+<%= javascript_pack_tag 'trip/passenger'%>
+<%= javascript_pack_tag 'personal/gst_modal'%>
+<%= javascript_pack_tag 'all_value_validations'%>

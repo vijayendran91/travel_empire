@@ -1,0 +1,13 @@
+<div id="perOrBus" class="perOrBus" style="display:inline-flex">
+    <div class="form-check ml-3">
+      <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="personalRadio" value="personal"> -->
+      <%= f.radio_button :perbus, "per", :id=> "personalRadio", :value=>"personal", :class=> "form-check-input"%>
+      <label class="form-check-label" for="personalRadio">Personal</label>
+    </div>
+    <div class="form-check ml-3">
+      <%= f.radio_button :perbus, "bus", :id=> "businessRadio", :value=>"business", :class=> "form-check-input"%>
+      <label class="form-check-label" for="businessRadio">
+        Business
+      </label>
+    </div>
+</div>

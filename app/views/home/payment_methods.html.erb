@@ -1,0 +1,32 @@
+<%= render :partial => 'home/navbar_files/navbar'%>
+<center>
+  <div class="formContainer shadow-lg p-3 mb-5 bg-white rounded ">
+    <div id="initBtnCntnr">
+      <div class="form-row mt-4">
+        <div class="form-group col-md-6">
+          <a href="javascript:void(0)" id="upi"><%=image_tag("upi.png", :class=>"upi")%></a>
+        </div>
+        <div class="form-group col-md-6">
+          <a href="https://pmny.in/aIlQzaGFxaIb" id="payumoney"><%=image_tag("payumoney-banner.jpg", :class=>"payumoney")%></a>
+        </div>
+      </div>
+      <div id="qrs">
+        <div class="form-row mt-4">
+          <div class="form-group col-md-6">
+            <%=image_tag("gpay.png", :class => "qr")%>
+          </div>
+          <div class="form-group col-md-6">
+            <%=image_tag("phonepe.png", :class=> "qr")%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</center>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#upi').on('click', function(){
+    $('#qrs').toggle();
+  });
+});
+</script>

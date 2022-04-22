@@ -1,0 +1,79 @@
+data = {
+    districts: [
+                    "Ariyalur" ,
+                    "Bangaluru - Airport ",
+                    "Chengalpattu" ,
+                    "Chennai","Chennai - Airport" ,
+                    "Coimbatore" ,
+                    "Coimbatore - Airport" ,
+                    "Cuddalore" ,"Dharmapuri" ,
+                    "Dindigul" ,"Erode" ,
+                    "Kallakurichi" ,
+                    "Kanchipuram" ,
+                    "Kanyakumari" ,
+                    "Karur" ,
+                    "Krishnagiri" ,
+                    "Mahabalipuram",
+                    "Madurai" ,
+                    "Madurai - Airport" ,
+                    "Nagapattinam" ,
+                    "Namakkal" ,
+                    "Nilgiris" ,
+                    "Perambalur",
+                    "Puducherry" ,
+                    "Pudukkottai" ,
+                    "Ramanathapuram" ,
+                    "Ranipet",
+                    "Salem", 
+                    "Sivaganga" ,
+                    "Sri Kalahasthi Temple",
+                    "Tenkasi" ,
+                    "Thanjavur" ,
+                    "Theni" ,
+                    "Thoothukudi" ,
+                    "Tiruchirappalli",
+                    "Tiruchirappalli - Airport" ,
+                    "Tirumala Tirupathi Temple",
+                    "Tirunelveli" ,
+                    "Tirupathur" ,
+                    "Tirupathi Tirumala Temple" ,
+                    "Tiruppur" ,
+                    "Tiruvallur" ,
+                    "Tiruvannamalai" ,
+                    "Tiruvarur" ,
+                    "Vellore" ,
+                    "Viluppuram" ,
+                    "Virudhunagar" ],
+    modaltexts: {  ow:{title:"One Way: (STARTING POINT TO END POINT)",1: "Your Journey Starts at Zero Km. and ends at one Destination Only (End or Drop Point).No returning Back again.", 
+                        2:"Waiting Charges Apply.",
+                        3:"Driver Bata Rs.500/- Govt. & Private Toll Entry Fee & Permit Fee Excluded.",red:" Billing Charges - Minimum 130 Kms."
+                      },
+                    rtt:{
+                        title:"Return Trip (STARTING POINT TO END POINT AND BACK TO STARTING POINT - ONE RETURN TRIP ONLY)",
+                        1:"Your Journey Starts at Zero Km. and reaches to your specific Destination and returning back to Pick up Starting Point.",
+                        2:"A Valid Return Travel meaning which can be on that day or another hour.",
+                        3:"Waiting Charges Apply.",
+                        red:"Billing Charges - Minimum 130 Kms.",
+                        4:"Driver Bata Rs.500/- Govt. & Private Toll Entry Fee & Permit Fee Excluded."
+                    },
+                    rt:{
+                        title: "Round Trip (STARTING POINT TO ONE OR MORE PLACES BACK TO STARTING POINT)",
+                        1:"Your Journey Starts at Zero Km. and Travel to One or More Places and returning to same Starting point.",
+                        2:"Driver Bata Rs.500/- Govt. & Private Toll Entry Fee & Permit Fee Excluded.",
+                        red:"Billing Charges - Time and Kms. Calculated basis on Calendar Day '12' Mid Night (Per Day 250 Kms.)"
+                    },
+                    my:{
+                        title:"Multi Way (STARTING POINT TO ANY NUMBER OF PLACES DROP AT ANY FLEXIBLE DESTINATION POINT)",
+                        1:"Your Journey Starts at Zero Km. and Travel to One or More Places and Drop at your Flexible End Point.",
+                        2:"Driver Bata Rs.500/- Govt. & Private Toll Entry Fee & Permit Fee Excluded.",
+                        red:"Billing Charges - Time and Kms. Calculated basis on Calendar Day '12' Mid Night (Per Day 250 Kms.)"
+                    },
+                    hy:{
+                        title: "Hourly (PACKAGE TRIP WITHIN INSIDE CITY FOR DOMESTIC PURPOSES ONLY)",
+                        1:"Your Journey Starts at Zero Km. and Travel to One or More Places and Drop at your Flexible End Point.",
+                        2:"Govt. & Private Toll Entry Fee & Permit Fee Excluded."
+                    }
+        }
+}
+
+

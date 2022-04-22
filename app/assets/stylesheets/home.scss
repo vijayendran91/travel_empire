@@ -1,0 +1,197 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$base-color-green : #334420;
+$base-color-gold : #E6A620;
+
+.cabBookingForm{
+  display: none;
+  margin-top: 30px;
+}
+.green-btn{
+    background-color: $base-color-green !important;
+    color: white !important;
+}
+
+.navbar{
+  background-color: $base-color-green !important;
+  color: white;
+}
+
+.navbar .navbar-brand .te_logo{
+  width: 200px;
+  height: 70px;
+}
+
+.navbar .navbar-toggler {
+    background-color: white;
+    background-image: image("data:image/svg+xml,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+.nav-link{
+  color: white !important;
+}
+
+.perOrBus{
+  display: none;
+  margin-top: 10px;
+}
+
+
+.bookingTime{
+  color: #7e7e80;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.bookingTime .datetime-input-edit-wrapper{
+  height:30px;
+}
+
+#dateTime{
+  position: relative;
+}
+
+.dateTimeLabel{
+  float: left;
+}
+
+.typeOfRide{
+  float: left;
+}
+
+
+.smallFont{
+  font-size: 70%;
+  font-weight: 350;
+  color: #1c1c1c;
+  display: inline;
+}
+
+.form-label{
+  float:left;
+}
+
+.whatsapp_logo{
+  width: 30px;
+}
+
+.emailCont{
+  margin-top: 0.5%;
+}
+
+
+#locationSwap{
+  background-color: $base-color-green;
+  border-color: $base-color-green;
+}
+
+#typeOfRides{
+  display: flex;
+}
+
+.formContainer{
+  width: 90%;
+  height: auto;
+  min-height: 200px;
+  margin-top: 30px;
+  // background-image: image-url("te-logo-gray");
+  // background-repeat: no-repeat;
+  // background-position: 50% 0%;
+  // background-attachment: fixed;
+}
+
+#personalDets{
+  margin-top: 5%;
+}
+
+#initBtnCntnr{
+  margin-top: 55px;
+}
+
+#typeOfBooking{
+  display: flex;
+  margin-top: 20px;
+}
+
+.addLocText{
+ float: right;
+}
+
+.hr{
+  background: black;
+}
+
+.form-submit{
+  float: left;
+}
+
+.modal-image{
+  width: 350px;
+}
+
+.modal-body-text{
+  text-align: left;
+}
+.modal-title{
+  text-align: center;
+}
+
+.modal-list-red{
+  color: red;
+}
+
+.loading-gif-modal{
+  display:    none;
+  position:   fixed;
+  z-index:    1000;
+  top:        0;
+  left:       0;
+  height:     100%;
+  width:      100%;
+  background: rgba( 255, 255, 255, .8 )
+              url('/assets/ajax-loader.gif')
+              50% 50%
+              no-repeat;
+}
+
+body.loading .loading-gif-modal {
+    overflow: hidden;
+    display: block;
+}
+
+.carImages{
+  width: 50%;
+}
+
+.left-text{
+  text-align: left
+}
+
+.pricing-images{
+    height: 600px;
+}
+
+.upi{
+  height: 100%;
+  width: 60%;
+}
+
+.payumoney{
+  width: 75%;
+}
+
+.qr{
+  height: 35%;
+}
+
+#qrs{
+  display: none;
+}
+.req{
+  color: red;
+  display: inline-flex;
+}
+.contact_us{
+  width: 100%;
+}

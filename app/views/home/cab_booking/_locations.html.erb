@@ -1,0 +1,136 @@
+<div class="fromAndToLocation">
+  <h3>Trip Details</h3>
+  <div class="form-row mt-2">
+    <div class="form-group col-md-3 ">
+      <label class="mr-sm-2 form-label" for="inlineFormCustomSelect">Type of your trip <div class="req">*</div></label>
+      <%=f.select :tot, [['Choose...','ch'],['One Way', 'ow'],['Return Trip','rtt'],['Round Trip','rt'],['Multi Way','my'],['Hourly','hy']],{},{:class=> "custom-select mr-sm-2",:id=>"inlineFormCustomSelect", :selected=>'ch'}%>
+    </div>
+    <div class="form-group col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="adult">Adult</label>
+        <!-- <input type="number" pattern="\d*" id="adult" value="1"  min=1 max=7 step="1" class="form-control" /> -->
+        <%= f.number_field :adult, in: 1..7, step: 1,:default=> 0,:placeholder=> 0, :pattern => '\d*', :class=> "form-control",:id=>"adult" %>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="chldrn">Children</label>
+        <%= f.number_field :chldrn, in: 1..7, step: 1,:default=> 0,:placeholder=> 0, :pattern => '\d*', :class=> "form-control",:id=>"chldrn" %>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="chldrn">Type of Car</label>
+        <%=f.select :str,  [["Choose", 'ch'],["4 Seater",'4 Seater'], ["7 Seater", '7 Seater']],{},{:id => 'str',:class=> "custom-select", :selected=>'ch'}%>
+      </div>
+    </div>
+  </div>
+  <div clas="form-row mt-2">
+    <div class="form-group col" style='display: flex;' >
+      <form class="typeOfRide">
+        <div class="form-check">
+          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="bookNow" value="option1"> -->
+          <%= f.radio_button :tob, "Book Now", :id=> "bookNow", :value=>"booknow", :class=> "form-check-input"%>
+          <label class="form-check-label" for="bookNow">
+            Book Now
+          </label>
+        </div>
+        <div class="form-check ml-3">
+          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="advanceBooking" value="option2"> -->
+          <%= f.radio_button :tob, "Book in Advance", :id=> "advanceBooking", :value=>"advanceBooking", :class=> "form-check-input"%>
+          <label class="form-check-label" for="advanceBooking">
+            Book in Advance
+          </label>
+        </div>
+        <div class="form-check disabled ml-3">
+          <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="tentative" value="option3"> -->
+          <%= f.radio_button :tob, "Tentative", :id=> "tentativeBooking", :value=>"tentativeBooking", :class=> "form-check-input"%>
+          <label class="form-check-label" for="tentativeBooking">
+            Tentative - <div class="smallFont">Only within the next 7 days</div>
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="carInfoIage">
+    <%=image_tag("4seater.jpg", :id=>"4seater", :class=>"carImages", :style=>"display: none;")%>
+    <%=image_tag("7seater.jpg", :id=>"7seater", :class=>"carImages", :style=>"display: none;")%>
+  </div>
+  <hr>
+  <div class="form-row mt-8">
+    <div class="form-group col-6">
+      <label class="mr-sm-2 form-label" for="fromDistSelect">Pick Up Location<div class="req">*</div></label>
+      <!-- <select class=" custom-select mr-sm-2" id="fromDistSelect">
+        <option select="selected">Select District </option>
+      </select> -->
+
+      <%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"fromDistSelect", :selected=>'sd', :required => true}%>
+    </div>
+    <div class="form-group col-6" id="fromArea">
+      <label class="mr-sm-2 form-label" for="fromArea">Area</label>
+      <%=f.text_field :pua, :class=>'form-control pua', :id=>'fromArea', :placeholder=>'Area'%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <div id="dateTime">
+        <label>Trip Start Date and Time (IST) <div class="req">*</div></label>
+        <!-- <input type="datetime-local" class="bookingTime form-control timepicker" id="returnBookingTime"
+        name="bookingTpartialtime" value="2021-10-13T19:30"
+        min="2021-10-13T00:00" max="2021-10-13T00:00"> -->
+
+        <%= f.datetime_local_field :put, :class=> "bookingTime form-control datetimepicker", :id=> "BookingTime",
+          :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00",
+          :data => { :provide => :datepicker }
+        %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="form-row mt-8">
+      <div class="form-group col" id="multiLocations">
+
+      </div>
+    </div>
+    <div class="form-row mt-8">
+      <div class="form-group col" id="roundtripDest">
+        <input type="text" id="roundtripDestText" class="form-control" placeholder="Destination" disabled="true">
+      </div>
+    </div>
+  </div>
+
+  <center>
+    <button type="button" id="locationSwap" class="btn btn-primary mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"></path>
+      </svg>
+    </button>
+  </center>
+
+  <div class="form-row mt-2">
+    <div class="form-group col-6">
+      <label class="mr-sm-2 form-label" for="toDistSelect" id="toDistLabel">Destination <div class="req">*</div></label>
+      <!-- <select class=" custom-select mr-sm-2" id="toDistSelect">
+        <option select="selected">Select District </option>
+      </select> -->
+      <%=f.select :drl, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2",:id=>"toDistSelect", :selected=>'sd', :required => true}%>
+    </div>
+    <div class="form-group col-6" id="toArea">
+      <label class="mr-sm-2 form-label" for="toArea" id="toAreaLabel">Area</label>
+      <%=f.text_field :dra, :class=>'form-control dra', :id=>'toArea', :placeholder=>'Area'%>
+    </div>
+  </div>
+  <div id="addLocation">
+    <small class="addLocText"><a href="javascript:void(0)">Add more location</a></small><br>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <div id="returnDateTime">
+        <label>Trip End Date and Time (IST) <div class="req">*</div></label>
+        <%= f.datetime_local_field :drt, :class=> "bookingTime form-control timepicker", :id=> "returnBookingTime",
+            :value=> "2021-10-13T00:00", :min=>"2021-10-13T00:00", :max=>"2021-10-13T00:00"
+        %>
+      </div>
+    </div>
+  </div>
+  <hr>

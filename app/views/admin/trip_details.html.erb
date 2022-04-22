@@ -1,0 +1,116 @@
+<%= render :partial => '/common_partial/admin_navbar'%>
+
+<%=link_to "Back to Admin Home", chennai106_path, :class => "btn green-btn mt-2 ml-2"%>
+<%= link_to "Edit Trip", admin_edit_trip_path(:id => @trip[:id]), :method => "get", :class => "btn green-btn mr-2 mt-2" %>
+<%=link_to "Cancel Trip", admin_cancel_trip_path(:id => @trip[:id]), :method => :delete, :class => "btn green-btn mr-2 mt-2"%>
+
+
+<%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn mr-2 mt-2", :style => "float: right;" %>
+
+<h1><center>Trip <%=@trip[:id]%></center></h1>
+<table  class="table">
+  <tbody>
+    <tr>
+      <td><b>Booking Id</b></td>
+      <td><%=@trip[:id]%></td>
+    </tr>
+    <tr>
+      <td><b>Personal or Business</b></td>
+      <td><%=Trip::TRIP_TYPE[@trip[:perbus].to_sym]%></td>
+    </tr>
+    <tr>
+      <td><h5><center>Trip Details<center><h5></td>
+    </tr>
+    <tr>
+      <td><b>Type of Trip</b></td>
+      <td><%=Trip::TYPE_OF_TRIP[@trip[:tot].to_sym]%></td>
+    </tr>
+    <tr>
+      <td><b>Type of Booking</b></td>
+      <td><%=@trip[:tob]%></td>
+    </tr>
+    <tr>
+      <td><b>Type of Car</b></td>
+      <td><%=@trip[:str]%></td>
+    </tr>
+    <tr>
+      <td><h5><center>Pick Up Details<center><h5></td>
+    </tr>
+    <tr>
+      <td><b>Pick Up Location</b></td>
+      <td>
+        <%=@trip[:pul]%>   -   <%=@trip[:pua]%><br>
+        <%if(@trip[:tot].to_sym == Trip::MULTI_WAY || @trip[:tot].to_sym == Trip::ROUND_TRIP)%>
+          <%=@trip[:locs1] if(@trip[:locs1])%><br>
+          <%=@trip[:locs2] if(@trip[:locs2])%><br>
+          <%=@trip[:locs3] if(@trip[:locs3])%><br>
+          <%=@trip[:locs4] if(@trip[:locs4])%><br>
+        <%end%>
+      </td>
+
+    </tr>
+    <tr>
+      <td><b>Pick Up Date</b></td>
+      <td><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+    </tr>
+    <tr>
+      <td><h5><center>Drop Details<center><h5></td>
+    </tr>
+    <tr>
+      <td><b>Drop Location</b></td>
+      <td><%=@trip[:drl]%>   -   <%=@trip[:dra]%></td>
+    </tr>
+    <tr>
+      <td><b>Drop Date</b></td>
+      <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+    </tr>
+
+
+    <tr>
+      <td><h5><center>Personal Details<center><h5></td>
+    </tr>
+    <tr>
+      <td><b>First Name</b></td>
+      <td><%=@trip[:fname]%></td>
+    </tr>
+    <tr>
+      <td><b>First Name</b></td>
+      <td><%=@trip[:lname]%></td>
+    </tr>
+    <tr>
+      <td><b>Phone</b></td>
+      <td><%=@trip[:phone]%></td>
+    </tr>
+    <tr>
+        <td><b>Email</b></td>
+      <td><%=@trip[:email]%></td>
+    </tr>
+    <% if @trip[:photoproof1_file_name] != nil%>
+      <%if @trip[:photoproof1_content_type] == "application/pdf"%>
+        <tr>
+          <td><b>Photoproof 1</b></td>
+          <td><embed src=<%=@trip.photoproof1.url%>, width="500px" height="500px" /></td>
+        </tr>
+      <%else%>
+        <tr>
+          <td><b>Photoproof 1</b></td>
+          <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
+        </tr>
+      <%end%>
+    <%end%>
+    <% if @trip[:photoproof2_file_name] != nil %>
+      <%=@trip[:photoproof_content_type]%><%= @trip.photoproof2.url%>
+      <%if @trip[:photoproof2_content_type] == "application/pdf"%>
+        <tr>
+          <td><b>Photoproof 2 </b></td>
+          <td><embed src=<%=@trip.photoproof2.url%>, width="500px" height="500px" /></td>
+        </tr>
+      <%else%>
+        <tr>
+          <td><b>Photoproof 2</b></td>
+          <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
+        </tr>
+      <%end%>
+    <%end%>
+  </tbody>
+</table>
