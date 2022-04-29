@@ -10,6 +10,7 @@ class Trip
   validates_attachment :photoproof2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "application/pdf"] }
   
 
+
   attr_accessor :start_date, :end_date
   field :perbus, type: String
   field :tot, type: String

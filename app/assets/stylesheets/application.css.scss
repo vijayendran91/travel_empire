@@ -12,12 +12,10 @@
  *
  *= require bootstrap-select
  *= require bootstrap
-
 *= require_tree .
 *= require_self
  */
 @import 'bootstrap/dist/css/bootstrap';
-
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
@@ -37,3 +35,6 @@ $font-family-sans-serif:
 //   background-position: 50% 0%;
 //   background-attachment: fixed;
 // }
+
+@import "bootstrap";
+// @import 'bootstrap-custom';
