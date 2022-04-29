@@ -13,6 +13,7 @@ gem 'mongo', "~> 2.15.0"
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '>= 6'
+# gem 'sass-rails', '>= 6'
 gem 'sassc', '~> 2.1'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
