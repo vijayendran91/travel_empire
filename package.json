@@ -15,10 +15,12 @@
     "jquery-ui-dist": "^1.12.1",
     "js-autocomplete": "^1.0.4",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.0.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "webpack": "^4.43.0",
     "webpack-dev-server": "^4.6.0"
   },
   "engines": {

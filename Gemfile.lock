@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/capistrano/passenger.git
-  revision: 4082e8be91ba375c649ee3ef0e85f0584c958ddb
-  specs:
-    capistrano-passenger (0.2.1)
-      capistrano (~> 3.0)
-
-GIT
   remote: https://github.com/mongodb/mongoid.git
   revision: d13ba55d027ec45a964f76cef9cf85819e189881
   specs:
@@ -74,8 +67,6 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    airbrussh (1.4.0)
-      sshkit (>= 1.6.1, != 1.7.0)
     autoprefixer-rails (10.4.2.0)
       execjs (~> 2)
     aws-eventstream (1.2.0)
@@ -1293,7 +1284,6 @@ GEM
       nokogiri (>= 1.4.1)
       rubyzip (>= 0.9.5)
     bcrypt (3.1.16)
-    bcrypt_pbkdf (1.1.0)
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -1304,29 +1294,9 @@ GEM
     bootstrap-select-rails (1.13.8)
     bootstrap-timepicker-rails (0.1.3)
       railties (>= 3.0)
-    bson (4.12.1)
+    bson (4.15.0)
     builder (3.2.4)
     byebug (11.1.3)
-    capistrano (3.17.0)
-      airbrussh (>= 1.0.0)
-      i18n
-      rake (>= 10.0.0)
-      sshkit (>= 1.9.0)
-    capistrano-bundler (2.0.1)
-      capistrano (~> 3.1)
-    capistrano-rails (1.6.2)
-      capistrano (~> 3.1)
-      capistrano-bundler (>= 1.1, < 3)
-    capistrano-rbenv (2.2.0)
-      capistrano (~> 3.1)
-      sshkit (~> 1.3)
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-    capistrano3-puma (5.2.0)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (>= 4.0, < 6.0)
     capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -1394,7 +1364,6 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
-    ed25519 (1.3.0)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.4)
@@ -1436,7 +1405,7 @@ GEM
     mini_mime (1.1.1)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
-    mongo (2.16.0)
+    mongo (2.15.1)
       bson (>= 4.8.2, < 5.0.0)
     mongoid-paperclip (0.0.11)
       mongoid
@@ -1444,9 +1413,6 @@ GEM
     msgpack (1.4.2)
     multi_test (0.1.2)
     multi_xml (0.6.0)
-    net-scp (3.0.0)
-      net-ssh (>= 2.6.5, < 7.0.0)
-    net-ssh (6.1.0)
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
@@ -1509,8 +1475,6 @@ GEM
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -1522,7 +1486,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic_range (3.0.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -1534,11 +1497,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.21.2)
-      net-scp (>= 1.1.2)
-      net-ssh (>= 2.8.0)
-    sshkit-sudo (0.1.0)
-      sshkit (~> 1.8)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     terrapin (0.6.0)
@@ -1560,11 +1518,10 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
+    webpacker (4.3.0)
+      activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
+      railties (>= 4.2)
     webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -1580,29 +1537,21 @@ DEPENDENCIES
   aws-sdk
   axlsx
   bcrypt
-  bcrypt_pbkdf (~> 1)
   bootsnap (>= 1.4.2)
-  bootstrap (~> 5.1.3)
+  bootstrap (~> 5.1.0)
   bootstrap-select-rails (~> 1.6, >= 1.6.3)
   bootstrap-timepicker-rails (~> 0.1.3)
   byebug
-  capistrano
-  capistrano-bundler
-  capistrano-passenger!
-  capistrano-rails
-  capistrano-rbenv
-  capistrano-rvm
-  capistrano3-puma
   capybara (>= 2.15)
   caxlsx_rails
   cucumber-rails
   database_cleaner
-  ed25519 (~> 1.2)
   httparty
   jbuilder (~> 2.7)
   jquery-rails
   letter_opener
   listen (~> 3.2)
+  mongo (~> 2.15.0)
   mongoid!
   mongoid-paperclip
   paperclip
@@ -1611,16 +1560,15 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.7)
   rails_12factor
   rails_serve_static_assets
-  sass-rails (>= 6)
+  sassc (~> 2.1)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sshkit-sudo
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 5.0)
+  webpacker (~> 4.0)
 
 RUBY VERSION
    ruby 2.7.3p183
