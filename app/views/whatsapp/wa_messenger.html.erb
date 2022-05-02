@@ -64,11 +64,10 @@
       <%else%>
         <div class="form-group col-md-8">
           <%=f.select :text_message,  [["Choose a template", 'ch'],[WhatsappMessage::DELAY_CONV_REGRET.to_s, WhatsappMessage::DELAY_CONV_REGRET]],{},{:id => 'str',:class=> "custom-select", :selected=>'ch'}%>
-          <%=%>
+          <%= f.hidden_field :template, :value => true%>
         </div>
       <%end%>
       <div class="form-group col-md-2">
-        <%= f.hidden_field :template, :value => true%>
         <%=f.submit "Send Message",:class=>"btn green-btn form-submit", :id=>"sendMsg"%>
       </div>
     <%end%>
