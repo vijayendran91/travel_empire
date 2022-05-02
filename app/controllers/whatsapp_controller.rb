@@ -4,7 +4,7 @@ class WhatsappController < ApplicationController
   include WhatsappHelper
 
   skip_before_action :verify_authenticity_token
-  
+
   def receive_msg
     params.permit(:eventContent)
     event_content = params[:eventContent]
@@ -92,7 +92,11 @@ class WhatsappController < ApplicationController
       end
     elsif request.post?
       params.permit(:whatsapp_message, :message_type)
-      send_conv_reply(params[:whatsapp_message])
+      if(params[:whatsapp_message][:template] != "true")
+        send_conv_reply(params[:whatsapp_message])
+      elsif(params[:whatsapp_message][:template] == "true")
+        customer_wa_init(params[:whatsapp_message], params[:whatsapp_message][:text_message])
+      end
       redirect_to admin_wa_messenger_path(:phone => params[:whatsapp_message][:phone]), :method => 'get'
     end
   end

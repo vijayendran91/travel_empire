@@ -7,21 +7,20 @@ module WhatsappApplication
 
   def send_customer_communications(trip_details, wa_template)
     CabBookedMailer.with(:trip=>trip_details).cab_booked_passenger.deliver_now
+    if(trip_details.whatsapp_number.opt_in == false)
+      opt_in_phone(trip_details[:phone])
+    end
     customer_wa_init(trip_details, wa_template)
   end
 
   def customer_wa_init(data, wa_template)
-    if(data.whatsapp_number.opt_in == false)
-      opt_in_phone(data[:phone])
-    end
     case wa_template.to_s
-    when "delayed_response_regret"
     when "edit_booking_message"
       payload = edit_booking_wa_pl(data)
     when "customer_booking_confirmation"
       payload = booking_conf_cust_wa_pl(data)
-    else
-
+    when "delay_conv_regret"
+      payload = delayed_response_regret
     end
     wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil, nil, nil, nil,nil)
     response = send_wa_message(payload)

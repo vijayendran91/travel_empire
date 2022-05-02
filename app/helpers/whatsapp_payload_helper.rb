@@ -37,6 +37,33 @@ module WhatsappPayloadHelper
     return payload
   end
 
+  def delayed_response_regret
+    payload = {}
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :preview_url => false,
+          :type => "TEMPLATE",
+          :template => {
+            :templateId => "delay_conv_regret",
+            :parameterValues => {
+              "0" => "Sir/Madam"
+            }
+          }
+        }
+      }
+      payload[:message][:recipient] = {
+        :to => "919962395973",
+        :recipient_type => 'individual',
+        :reference => {
+          :cust_ref => "Some Customer Ref",
+          :messageTag1 => "Message Tag Val1",
+          :conversationId => ""
+        }
+      }
+    return payload
+  end
+
 
   def booking_conf_cust_wa_pl(trip_data)
     payload = {}
@@ -112,8 +139,31 @@ module WhatsappPayloadHelper
     return payload
   end
 
-  def delay_regret_msg
-    
+  def delay_regret_msg(data)
+    payload = {}
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :preview_url => false,
+          :type => "TEMPLATE",
+          :template => {
+            :templateId => "delay_conv_regret",
+            :parameterValues => {
+              "0" => "Sir/Madam"
+            }
+          }
+        }
+      }
+      payload[:message][:recipient] = {
+        :to => "919962395973",
+        :recipient_type => 'individual',
+        :reference => {
+          :cust_ref => "Some Customer Ref",
+          :messageTag1 => "Message Tag Val1",
+          :conversationId => data.to_s
+        }
+      }
+    return payload
   end
 
   def customer_conv_text(phone, text)

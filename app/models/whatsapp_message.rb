@@ -39,6 +39,7 @@ class WhatsappMessage
   ADMIN_BOOKING_CONFIRMATION = :admin_booking_confirmation
   USER_INITIATED = :user_initiated
   CONVERSATION = :conversation
+  DELAY_CONV_REGRET = :delay_conv_regret
 
   MESSAGE_TYPE = {
     TEXT => "text",
@@ -54,7 +55,8 @@ class WhatsappMessage
     CUSTOMER_BOOKING_CONFIRMATION => "customer_booking_confirmation",
     ADMIN_BOOKING_CONFIRMATION => "admin_booking_confirmation",
     CONVERSATION => "conversation",
-    EDIT_BOOKING_CONFIRMATION => "edit_booking_message"
+    EDIT_BOOKING_CONFIRMATION => "edit_booking_message",
+    DELAY_CONV_REGRET => "delay_conv_regret"
   }
 
 
