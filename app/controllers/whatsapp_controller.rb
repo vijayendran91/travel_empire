@@ -10,7 +10,6 @@ class WhatsappController < ApplicationController
     event_content = params[:eventContent]
     message = event_content[:message]
     phone = message[:from]
-    binding.pry
     text = image = video = location = document = nil
     if(message)
       if(message[:text])
