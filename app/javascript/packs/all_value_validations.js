@@ -35,7 +35,7 @@ function validate_form(){
     alert("Please select a proper district");
     event.preventDefault;
   }
-  validate_phone(phone)
+  validate_phone($('#phone').val())
   // if($("#aadhaarFront").val() == ""){
   //   alert("Please Upload Photo Proof");
   // }
