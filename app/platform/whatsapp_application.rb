@@ -149,6 +149,7 @@ module WhatsappApplication
   end
 
   def change_notification(phone, value)
+    binding.pry
     @wa_phone = get_wa_number(phone)
     change_notification_service(@wa_phone, value)
   end

@@ -9,7 +9,8 @@ class WhatsappController < ApplicationController
     params.permit(:eventContent)
     event_content = params[:eventContent]
     message = event_content[:message]
-    phone = message[:from][2..-1]
+    phone = message[:from]
+    binding.pry
     text = image = video = location = document = nil
     if(message)
       if(message[:text])
