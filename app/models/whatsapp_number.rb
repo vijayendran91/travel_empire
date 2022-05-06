@@ -6,4 +6,6 @@ class WhatsappNumber
   field :last_name, :type=> String
   field :opt_in,:type => Boolean
   field :notification, :type=> Boolean
+
+  SARAVANAN_PERSONAL = "919884538873"
 end

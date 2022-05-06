@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   include TripApplication
   include WhatsappApplication
   include TripServices
+
   def index
     @trip = Trip.new
   end
@@ -12,6 +13,7 @@ class HomeController < ApplicationController
   def submit_trip
     params=get_trip_params()
     params[:created_at] = Time.now
+    params[:phone] = params[:cc][1..-1]+params[:phone]
     @trip = create_trip(params)
     @wn = get_wa_number(params[:phone])
     if(@wn == nil)
@@ -46,7 +48,7 @@ class HomeController < ApplicationController
   private
 
   def get_trip_params()
-    params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at)
+    params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at, :cc)
   end
 
 end

@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <%= form_for(@trip,:as => 'trip', url: submit_trip_path(@trip)) do |f| %>
+    <%= form_for :trip, url: submit_trip_path do |f| %>
       <%=render :partial => 'home/modals/gst_details_modal.html.erb', :locals => {:f => f}%>
       <%=render :partial => 'home/modals/tot_modal.html.erb'%>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
@@ -31,6 +31,7 @@
 <script type="text/javascript" src="./data/data.json"></script>
 <%= javascript_pack_tag 'trip/date_time' %>
 <%= javascript_pack_tag 'trip/districts_load'%>
+<%= javascript_pack_tag 'trip/country_codes_load'%>
 <%= javascript_pack_tag 'init_jquery'%>
 <%= javascript_pack_tag 'trip/trip_tot'%>
 <%= javascript_pack_tag 'trip/passenger'%>

@@ -68,7 +68,7 @@ $(document).ready(function(){
   $('#bookRide').on('click', function(){
     validate_form();
   })
-  $('#phone').on('change',function(){
-    validate_phone($('#phone').val());
-  })
+  // $('#phone').on('change',function(){
+  //   validate_phone($('#phone').val());
+  // })
 });

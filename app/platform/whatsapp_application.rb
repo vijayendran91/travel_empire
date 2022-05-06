@@ -20,7 +20,7 @@ module WhatsappApplication
     when "customer_booking_confirmation"
       payload = booking_conf_cust_wa_pl(data)
     when "delay_conv_regret"
-      payload = delayed_response_regret
+      payload = delayed_response_regret(data)
     end
     wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil, nil, nil, nil,nil)
     response = send_wa_message(payload)
