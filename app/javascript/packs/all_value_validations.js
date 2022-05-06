@@ -5,12 +5,15 @@ function validate_form(){
   var fromdist = $('#toDistSelect').val();
   var str = $('#str').val();
   // Choose Type of Trip
+
   if(totr == 'ch'){
     alert('Choose a Type of Trip');
+    event.preventDefault;
   }
 
   if(str == 'ch'){
-    alert('Choose a type of car')
+    alert('Choose a type of car');
+    event.preventDefault;
   }
 
   //Cannot start tomorrow and arrivew today - time validation
@@ -19,17 +22,20 @@ function validate_form(){
     end = new Date($('#returnBookingTime').val());
     if((end - st) < 0){
       alert('Return time is before start time.');
+      event.preventDefault;
     }
   }
 
   if(totr == 'ch'){
     alert('Choose a Type of Trip');
+    event.preventDefault;
   }
 
   if(todist == 'sd' || fromdist == 'sd'){
     alert("Please select a proper district");
+    event.preventDefault;
   }
-
+  validate_phone(phone)
   // if($("#aadhaarFront").val() == ""){
   //   alert("Please Upload Photo Proof");
   // }
@@ -38,29 +44,16 @@ function validate_form(){
 
 
 function validate_phone(phone){
-  result = false;
-  if(phone.length == 13)
+  result = true;
+  if(phone.length != 10)
   {
-    temp = phone.substring(1)
-    if(temp.length == 12 && /^-?\d+$/.test(temp)){
-      result = true
-    }else{
-      result = false;
-    }
-  }
-  else if (phone.length == 12 && /^-?\d+$/.test(phone)) {
-    result = true;
-  }else if (phone.length == 10 && /^-?\d+$/.test(phone)){
-    result = true;
-  }else{
     result = false;
   }
 
-
-
   if(result == false){
     // $('#errorsModal').modal('show');
-    window.alert("Please enter a valid Phone number with country code");
+    window.alert("Please enter a valid 10 digit Phone number");
+    event.preventDefault;
   }
 }
 
@@ -68,7 +61,7 @@ $(document).ready(function(){
   $('#bookRide').on('click', function(){
     validate_form();
   })
-  // $('#phone').on('change',function(){
-  //   validate_phone($('#phone').val());
-  // })
+  $('#phone').on('change',function(event){
+    validate_phone($('#phone').val());
+  })
 });
