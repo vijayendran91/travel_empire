@@ -35,33 +35,14 @@ function validate_form(){
     alert("Please select a proper district");
     event.preventDefault;
   }
-  // validate_phone($('#phone').val())
-  // if($("#aadhaarFront").val() == ""){
-  //   alert("Please Upload Photo Proof");
-  // }
 
 }
 
 
-function validate_phone(phone){
-  // result = true;
-  // if(phone.length != 10)
-  // {
-  //   result = false;
-  // }
-  //
-  // if(result == false){
-  //   // $('#errorsModal').modal('show');
-  //   window.alert("Please enter a valid 10 digit Phone number");
-  //   event.preventDefault;
-  // }
-}
+
 
 $(document).ready(function(){
   $('#bookRide').on('click', function(){
     validate_form();
   })
-  // $('#phone').on('change',function(event){
-  //   validate_phone($('#phone').val());
-  // })
 });
