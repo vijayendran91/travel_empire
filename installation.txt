@@ -23,3 +23,6 @@ yarn add bootstrap-icons
 
 gem install bootstrap-timepicker-rails
 gem install bootstrap-select-rails -v 1.6.3
+
+
+NEVER PRECOMPILE WITH SERVER Running
