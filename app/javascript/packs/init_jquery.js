@@ -96,9 +96,9 @@ $(document).ready(function(){
   });
 
 
-  $('#gst, #firstName, #lastName, #fromArea, #toArea').keyup(function(){
-    this.value = this.value.toUpperCase();
-  });
+  // $('#gst, #firstName, #lastName, #fromArea, #toArea').keyup(function(){
+  //   this.value = this.value.toUpperCase();
+  // });
 
 
   $('#bookNow, #advanceBooking, #tentativeBooking').on('change', function(){
