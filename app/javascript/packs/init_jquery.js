@@ -96,7 +96,8 @@ $(document).ready(function(){
   });
 
 
-  // $('#gst, #firstName, #lastName, #fromArea, #toArea').keyup(function(){
+  // $('#gst, #firstName, #lastName, #fromArea, #toArea').keydown(function(){
+  //   debugger;
   //   this.value = this.value.toUpperCase();
   // });
 
