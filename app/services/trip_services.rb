@@ -14,4 +14,13 @@ module TripServices
     return result
   end
 
+  def get_trip_data_service(trip_id)
+    return Trip.find_by(:id => trip_id)
+  end
+
+  def update_trip_status_service(trip_id, status)
+    trip = get_trip_data_service(trip_id)
+    trip.update_attribute(:trp_sts, status)
+  end
+
 end

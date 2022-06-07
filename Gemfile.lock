@@ -1486,6 +1486,9 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -1499,6 +1502,7 @@ GEM
       sprockets (>= 3.0.0)
     sys-uname (1.2.2)
       ffi (~> 1.1)
+    temple (0.8.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
@@ -1562,6 +1566,7 @@ DEPENDENCIES
   rails_serve_static_assets
   sassc (~> 2.1)
   selenium-webdriver
+  slim
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

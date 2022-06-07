@@ -1,0 +1,54 @@
+
+= image_tag("full_logo_png", :class=> "admin_full_logo driver_te_logo")
+
+.driver_module_container
+  = form_for(@driver_details, :url => trip_start_submit_path) do |f|
+    -if @status_flag.to_s == ""
+      label.admin_form_item
+        = "Driver Full Name"
+      = f.text_field :dr_name,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Driver Mobile No"
+      = f.text_field :dr_mob,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Lisence Number"
+      = f.text_field :dr_dl_no,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Car Number"
+      = f.text_field :lic_no,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Car Model"
+      = f.text_field :car_model,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Start Kilometer"
+      = f.text_field :st_km,:class => "form-control admin_form_item"
+      label.admin_form_item.mt-2
+        = "Starting Odometer Photo"
+      =f.file_field :dr_odometer_start, :class=>'admin_form_item', :id=>'drOdometerStart'
+
+    -elsif @status_flag.to_s == Trip::TRIP_STARTED.to_s
+      label.admin_form_item
+        = "Closing Kilometer"
+      = f.text_field :cl_km,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Total Toll Paid"
+      = f.text_field :total_toll,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Permit Paid"
+      = f.text_field :permit,:class => "form-control admin_form_item"
+      label.admin_form_item.mt-2
+        = "Closing Odometer Photo"
+      =f.file_field :dr_odometer_close, :class => "admin_form_item"
+      label.admin_form_item
+        = "Employee Name"
+      = f.text_field :emp_name,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Employee Id"
+      = f.text_field :emp_id,:class => "form-control admin_form_item"
+      label.admin_form_item
+        = "Employee Phone"
+      = f.text_field :emp_phone,:class => "form-control admin_form_item"
+      label.admin_form_item.mt-2
+        = "Inside City"
+        =f.check_box :in_city, :class=> "admin_form_item"
+    = f.submit "Submit", :class => "btn green-btn mt-2 admin_form_item"
