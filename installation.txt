@@ -26,3 +26,9 @@ gem install bootstrap-select-rails -v 1.6.3
 
 
 NEVER PRECOMPILE WITH SERVER Running
+
+
+<div id="hourlyHours">
+  <label>No. of Hours <div class="req">*</div></label>
+  <%=f.select :hrt, ['Hours', '1', '2', '3','4','5','6','7','8','9','10','11','12'],{},{:class=> "custom-select mr-sm-2",:id=>"inlineFormCustomSelect", :selected=>'ch'}%>
+</div>

@@ -17,6 +17,7 @@ $(document).ready(function(){
       $('#bookCab').hide();
       $('#makePayment').hide();
       $('.perOrBus').show();
+      $('.perOrBus').attr('style', 'display:inline-flex');
     // $('.cabBookingForm').show();
   });
 
