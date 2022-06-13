@@ -20,6 +20,7 @@ class HomeController < ApplicationController
       @wn = create_wa_number_first(params[:fname], params[:lname], params[:phone])
     end
     @wn.trips.push(@trip)
+    binding.pry
     if save_trip && save_wa_number
       send_customer_communications(@trip, :customer_booking_confirmation)
       send_admin_communications(@trip, :admin_booking_confirmation)
@@ -48,7 +49,7 @@ class HomeController < ApplicationController
   private
 
   def get_trip_params()
-    params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at, :cc)
+    params[:trip].permit(:perbus, :tot,:tob, :adult, :chldrn, :pul, :pua, :put, :drl,:dra,:drt, :fname, :lname, :phone, :email, :gst, :gst_lg_nm, :gst_full_addr, :tick, :photoproof1, :photoproof2, :str, :locs1, :locs2, :locs3, :locs4, :msg, :created_at, :cc, :hrt)
   end
 
 end

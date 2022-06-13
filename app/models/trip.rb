@@ -39,6 +39,7 @@ class Trip
   field :locs4, type: String
   field :msg, type: String
   field :created_at , type: DateTime
+  field :hrt, type: Integer
 
   PERSONAL = :per
   BUSINESS = :bus

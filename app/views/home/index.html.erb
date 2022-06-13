@@ -1,6 +1,7 @@
 <%= render :partial => 'home/navbar_files/navbar'%>
 <center>
   <div class="formContainer shadow-lg p-3 mb-5 bg-white rounded">
+    <%= render :partial => 'home/modals/error_modal.html.erb'%>
     <%if alert%>
       <% if alert == 'error' %>
         <p class="alert alert-danger"><%= "Sorry! Something went wrong. Please try again "%></p>

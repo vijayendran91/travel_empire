@@ -195,3 +195,11 @@ body.loading .loading-gif-modal {
 .contact_us{
   width: 100%;
 }
+
+#errorModal{
+  display: contents;
+}
+
+#errorMsgsList{
+  color: red;
+}
