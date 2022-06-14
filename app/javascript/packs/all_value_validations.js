@@ -61,10 +61,12 @@ $(document).ready(function(){
     var error_msgs = validate_form();
     if(error_msgs.length > 0){
       fillErrorsInModal(error_msgs);
+      $('#errorModal').attr("style","display:contents !important;");
       $('#errorModal').show();
       window.scrollTo(0, 0);
       event.preventDefault();
     } else{
+      $('#previeBookingModal').attr("style","display:contents !important;");
       $('#previeBookingModal').show();
       window.scrollTo(0, 0);
       loadPreviewTripTable();
