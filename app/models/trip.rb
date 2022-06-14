@@ -41,7 +41,7 @@ class Trip
   field :msg, type: String
   field :created_at , type: DateTime
   field :trp_sts, type: String
-
+  field :hrt, type: Integer
   PERSONAL = :per
   BUSINESS = :bus
 

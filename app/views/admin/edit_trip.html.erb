@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <td><b>Pick Up Location</b></td>
-        <td><%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2","data-district" => @trip[:pul].to_s,:id=>"editFromDistSelect", :required => true}%></td>
+        <td><%=f.select :pul, [['Select District','sd']],{},{:class=> "custom-select mr-sm-2","data-district" => @trip[:pul].to_s,:id=>"editFromDistSelect"}%></td>
         <td><%=f.text_field :pua, :class=>'form-control pua', :id=>'editFromArea', :placeholder=>@trip[:pua]%></td>
         <td>
           <%if(@trip[:tot].to_sym == Trip::MULTI_WAY || @trip[:tot].to_sym == Trip::ROUND_TRIP)%>
@@ -55,7 +55,7 @@
       </tr>
       <tr>
         <td><b>Drop Location</b></td>
-        <td><%=f.select :drl, [['Select District','sd']],{}, {:class=> "custom-select mr-sm-2","data-district" => @trip[:drl].to_s, :id=>"editToDistSelect", :required => true}%></td>
+        <td><%=f.select :drl, [['Select District','sd']],{}, {:class=> "custom-select mr-sm-2","data-district" => @trip[:drl].to_s, :id=>"editToDistSelect"}%></td>
         <td><%=f.text_field :dra, :class=>'form-control dra', :id=>'editToArea', :placeholder=>@trip[:dra]%></td>
       </tr>
       <tr>
@@ -126,7 +126,6 @@
 <%= javascript_pack_tag 'admin/edit_trip' %>
 <script type="text/javascript">
   $(document).ready(function(){
-    debugger;
     $('#editFromDistSelect').val($('#editFromDistSelect').data('district'));
     $('#editToDistSelect').val($('#editToDistSelect').data('district'));
   });

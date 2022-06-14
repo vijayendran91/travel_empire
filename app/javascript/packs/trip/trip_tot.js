@@ -103,20 +103,21 @@ export function typeOfTrip(showModal){
   }
 
   function prepHourly(tor, modal){
+    setOneWayMinTime();
     if(modal){
       showModal(tor);
     }
-    setHourlyDT();
-    $('.locations').hide();
+    // setHourlyDT();
     $('#addLocation').hide();
-    $('#locationSwap').hide();
-    $('#toDistSelect').hide();
-    $('#toAreaLabel').hide();
-    $('#toDistLabel').hide();
-    $('#toArea').hide();
-    $('#returnDateTime').show();
+    $('#toDistSelect').show();
+    $('#locationSwap').show();
+    $('#toAreaLabel').show();
+    $('#toDistLabel').show();
+    $('#toArea').show();
+    $('.locations').hide();
     $('#roundtripDest').hide();
-    $('#toDistSelect').attr("required", false);
+    $('#returnDateTime').hide();
+    $('#hourlyHours').show();
   }
 
 

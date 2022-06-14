@@ -1,27 +1,27 @@
 <div id="personalDets">
-  <h3>Personal Details
+  <h3>Personal Details (Passenger)
   </h3>
   <div class="form-row mt-4">
     <div class="form-group col-md-6">
-      <label class="form-label" for="firstName">First Name</label>
+      <label class="form-label" for="firstName">Passenger First Name</label>
       <%=f.text_field :fname, :class=>'form-control', :id=>'firstName', :placeholder=>'First Name'%>
     </div>
     <div class="form-group col-md-6">
-      <label class="form-label" for="lastName">Last Name</label>
+      <label class="form-label" for="lastName">Passenger Last Name</label>
       <%=f.text_field :lname, :class=>'form-control', :id=>'lastName', :placeholder=>'Last Name'%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-3 mt-2">
       <label class="form-label" for="Email">Country Code</label>
-      <%=f.select :cc, [],{},{:class=> "custom-select mr-sm-2",:id=>"countryCode", :selected=>'', :required => true}%>
+      <%=f.select :cc, [],{},{:class=> "custom-select mr-sm-2",:id=>"countryCode", :selected=>''}%>
     </div>
     <div class="form-group col-md-3">
-      <label class="form-label" for="phone"><%=image_tag("whatsapp_logo.png",:class=>"whatsapp_logo")%>Whatsapp Phone Number<div class="req"> *</div></label>
-      <%=f.telephone_field :phone, :id=>"phone", :class=>'form-control', :placeholder=>'+919876543210', :required => true%>
+      <label class="form-label" for="phone"><%=image_tag("whatsapp_logo.png",:class=>"whatsapp_logo")%>Passenger Whatsapp Number<div class="req"> *</div></label>
+      <%=f.telephone_field :phone, :id=>"phone", :class=>'form-control', :placeholder=>'9876543210'%>
     </div>
     <div class="form-group col-md-6 emailCont">
-        <label class="form-label" for="Email">Email</label>
+        <label class="form-label" for="Email">Passenger Email</label>
         <%=f.email_field :email, :class=>'form-control', :id=>'email', :placeholder=> 'john@msn.in'%>
     </div>
   </div>
@@ -29,7 +29,7 @@
 
   <div class="form-row">
     <div class="form-group">
-      <label class="form-label ml-2">Aadhaar Copies</label>
+      <label class="form-label ml-2">ID Proof</label>
       <small class="ml-2"> - (I wish to upload my flight ticket instead.)
         <%=f.check_box :tick, :checked => false, :class=>"mt-1", :id=> "flight"%>
       </small>
@@ -40,13 +40,13 @@
       <div class="form-group col-md-6">
         <div class="custom-file">
           <%=f.file_field :photoproof1, :class=>'custom-file-input green-btn', :id=>'aadhaarFront'%>
-          <label class="custom-file-label" for="customFile">Aadhaar Front Copy</label>
+          <label class="custom-file-label" for="customFile">ID Front Copy</label>
         </div>
       </div>
       <div class="form-group col-md-6">
         <div class="custom-file">
           <%=f.file_field :photoproof2, :class=>'custom-file-input green-btn', :id=>'aadhaarRear'%>
-          <label class="custom-file-label" for="aadhaarRear">Aadhaar Rear Copy</label>
+          <label class="custom-file-label" for="aadhaarRear">ID Rear Copy</label>
         </div>
       </div>
     </div>

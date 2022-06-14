@@ -7,8 +7,9 @@ $(document).ready(function(){
   $('#flightTicket').hide();
   $('#returnDateTime').hide();
   $('#roundtripDest').hide();
-
-
+  $('#hourlyHours').hide();
+  $('#errorModal').hide();
+  $('#previeBookingModal').hide();
   $("#new_trip").on("submit", function(){
     $("body").addClass("loading");
   });
@@ -17,6 +18,7 @@ $(document).ready(function(){
       $('#bookCab').hide();
       $('#makePayment').hide();
       $('.perOrBus').show();
+      $('.perOrBus').attr('style', 'display:inline-flex');
     // $('.cabBookingForm').show();
   });
 
@@ -100,6 +102,10 @@ $(document).ready(function(){
   //   debugger;
   //   this.value = this.value.toUpperCase();
   // });
+
+  $('.close-modal').on('click', function(){
+    $('.modal').hide();
+  });
 
 
   $('#bookNow, #advanceBooking, #tentativeBooking').on('change', function(){

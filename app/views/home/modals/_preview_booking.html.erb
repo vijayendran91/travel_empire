@@ -1,0 +1,22 @@
+<div class="modal fade" id="previeBookingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Preview Booking Details</h5>
+        <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody class="previewTableRows">
+
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <%=f.submit "Confirm",:class=>"btn ml-3 green-btn form-submit", :id=>"confirmRide"%>
+      </div>
+    </div>
+  </div>
+</div>
