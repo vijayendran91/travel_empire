@@ -22,9 +22,10 @@
     <%= form_for :trip, url: submit_trip_path, :html => {:id => "new_trip"} do |f| %>
       <%=render :partial => 'home/modals/gst_details_modal.html.erb', :locals => {:f => f}%>
       <%=render :partial => 'home/modals/tot_modal.html.erb'%>
+      <%=render :partial => 'home/modals/preview_booking.html.erb', :locals => {:f => f} %>
       <%=render :partial => 'home/cab_booking/per_bus', :locals => {:f => f}%>
       <%=render :partial => 'home/cab_booking/cab_booking_form', :locals => {:f => f}%>
-      <%=f.submit "Book Ride",:class=>"btn ml-3 green-btn form-submit", :id=>"bookRide"%>
+      <button type="button" id="bookRide" name="button" class="ml-2 btn green-btn form-submit">Book</button>
     <%end%>
     <div class="loading-gif-modal"></div>
   </div>
@@ -36,5 +37,6 @@
 <%= javascript_pack_tag 'init_jquery'%>
 <%= javascript_pack_tag 'trip/trip_tot'%>
 <%= javascript_pack_tag 'trip/passenger'%>
+<%= javascript_pack_tag 'trip/preview_modal'%>
 <%= javascript_pack_tag 'personal/gst_modal'%>
 <%= javascript_pack_tag 'all_value_validations'%>
