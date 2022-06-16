@@ -20,9 +20,9 @@ class HomeController < ApplicationController
       @wn = create_wa_number_first(params[:fname], params[:lname], params[:phone])
     end
     @wn.trips.push(@trip)
-    binding.pry
     if save_trip && save_wa_number
-      send_customer_communications(@trip, :customer_booking_confirmation)
+      update_trip_status(@trip[:id], Trip::TRIP_BOOKED)
+      send_customer_communications(@trip, :customer_booking_confirmation, true)
       send_admin_communications(@trip, :admin_booking_confirmation)
       redirect_to root_path , alert: 'success'
     else

@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   delete '/admin_logout', :to => 'sessions#logout'
 
   get 'trip/status', :to => 'trip#status'
-  get ':id/driver_module', :to => 'driver_module#trip_start', :as=> 'trip_start'
-  post ':id/driver_module', :to => 'driver_module#trip_start', :as => 'trip_start_submit'
+  get ':id/driver_module', :to => 'driver_module#status_change', :as=> 'trip_start'
+  post ':id/driver_module', :to => 'driver_module#status_change', :as => 'trip_start_submit'
 end

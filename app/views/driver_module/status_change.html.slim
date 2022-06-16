@@ -1,9 +1,8 @@
 
 = image_tag("full_logo_png", :class=> "admin_full_logo driver_te_logo")
-
 .driver_module_container
   = form_for(@driver_details, :url => trip_start_submit_path) do |f|
-    -if @status_flag.to_s == ""
+    -if @status_flag.to_s == Trip::TRIP_BOOKED.to_s
       label.admin_form_item
         = "Driver Full Name"
       = f.text_field :dr_name,:class => "form-control admin_form_item"

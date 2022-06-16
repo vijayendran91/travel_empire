@@ -5,12 +5,12 @@ module WhatsappApplication
   include WhatsappHelper
   include WhatsappPayloadHelper
 
-  def send_customer_communications(trip_details, wa_template)
-    CabBookedMailer.with(:trip=>trip_details).cab_booked_passenger.deliver_now
-    if(trip_details.whatsapp_number.opt_in == false)
-      opt_in_phone(trip_details[:phone])
+  def send_customer_communications(wa_data, wa_template, mail)
+    CabBookedMailer.with(:trip=>wa_data).cab_booked_passenger.deliver_now if mail == true
+    if(wa_data.whatsapp_number.opt_in == false)
+      opt_in_phone(wa_data[:phone])
     end
-    customer_wa_init(trip_details, wa_template)
+    customer_wa_init(wa_data, wa_template)
   end
 
   def customer_wa_init(data, wa_template)
@@ -21,6 +21,10 @@ module WhatsappApplication
       payload = booking_conf_cust_wa_pl(data)
     when "delay_conv_regret"
       payload = delayed_response_regret(data)
+    when "trip_start_driver"
+      payload = trip_start_dm(data)
+    when "trip_end_driver"
+      payload = trip_end_dm(data)
     end
     wa_message_insert(data[:phone], wa_template, WhatsappMessage::TEXT, WhatsappMessage::ADMIN, wa_template, nil, nil, nil, nil,nil)
     response = send_wa_message(payload)

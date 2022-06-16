@@ -1,5 +1,63 @@
 module WhatsappPayloadHelper
 
+  def trip_end_dm(trip_data)
+    payload = {}
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :preview_url => false,
+          :type => "TEMPLATE",
+          :template => {
+            :templateId => "trip_end_driver",
+            :parameterValues => {
+              "0" => "#{trip_data[:fname]} - #{trip_data[:lname]}",
+              "1" => "#{trip_data.driver_module.cl_km}",
+              "2" => "#{trip_data.driver_module.cl_km - trip_data.driver_module.st_km}"
+            }
+          }
+        }
+      }
+      payload[:message][:recipient] = {
+        :to => trip_data[:phone],
+        :recipient_type => 'individual',
+        :reference => {
+          :cust_ref => "Some Customer Ref",
+          :messageTag1 => "Message Tag Val1",
+          :conversationId => trip_data[:id].to_s
+        }
+      }
+    return payload
+  end
+
+
+  def trip_start_dm(trip_data)
+    payload = {}
+    payload[:message] = {
+        :channel => "WABA",
+        :content => {
+          :preview_url => false,
+          :type => "TEMPLATE",
+          :template => {
+            :templateId => "trip_start_driver",
+            :parameterValues => {
+              "0" => "#{trip_data[:fname]} - #{trip_data[:lname]}",
+              "1" => "#{trip_data.driver_module.st_km}",
+            }
+          }
+        }
+      }
+      payload[:message][:recipient] = {
+        :to => trip_data[:phone],
+        :recipient_type => 'individual',
+        :reference => {
+          :cust_ref => "Some Customer Ref",
+          :messageTag1 => "Message Tag Val1",
+          :conversationId => trip_data[:id].to_s
+        }
+      }
+    return payload
+  end
+
   def booking_conf_admin_wa_pl(trip_data)
     payload = {}
     payload[:message] = {

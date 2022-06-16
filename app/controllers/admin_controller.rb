@@ -69,7 +69,7 @@ class AdminController < ApplicationController
       params = get_trip_params
       result = @original_trip.update_attributes(params)
       @trip = Trip.where(:id => params[:id]).first
-      send_customer_communications(@trip, :edit_booking_message)
+      send_customer_communications(@trip, :edit_booking_message, true)
       if result == true
         redirect_to chennai106_path
       end
