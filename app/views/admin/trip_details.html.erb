@@ -60,10 +60,17 @@
       <td><b>Drop Location</b></td>
       <td><%=@trip[:drl]%>   -   <%=@trip[:dra]%></td>
     </tr>
-    <tr>
-      <td><b>Drop Date</b></td>
-      <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
-    </tr>
+    <%if(@trip[:tot].to_s == Trip::HOURLY.to_s)%>
+      <tr>
+        <td><b>No. of Hours Rented</b></td>
+        <td><%=@trip[:hrt]%></td>
+      </tr>
+    <%else%>
+      <tr>
+        <td><b>Drop Date</b></td>
+        <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+      </tr>
+    <%end%>
 
 
     <tr>
@@ -111,6 +118,61 @@
           <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
         </tr>
       <%end%>
+    <%end%>
+    <%unless @trip.driver_module.nil?%>
+      <tr><td><h5><center>Driver Module</center></h5></td></tr>
+      <tr>
+        <td><b>Authorized Person</b></td>
+        <td><%=@trip.driver_module.auth_person%></td>
+      </tr>
+      <tr>
+        <td><b>Authorized Mobile</b></td>
+        <td><%=@trip.driver_module.auth_mob%></td>
+      </tr>
+      <tr>
+        <td><b>Driver Name</b></td>
+        <td><%=@trip.driver_module.dr_name%></td>
+      </tr>
+      <tr>
+        <td><b>Driver Mobile</b></td>
+        <td><%=@trip.driver_module.dr_mob%></td>
+      </tr>
+      <tr>
+        <td><b>Driver License</b></td>
+        <td><%=@trip.driver_module.lic_no%></td>
+      </tr>
+      <tr>
+        <td><b>Car Model</b></td>
+        <td><%=@trip.driver_module.car_model%></td>
+      </tr>
+      <tr>
+        <td><b>Starting Kilometers</b></td>
+        <td><%=@trip.driver_module.st_km%></td>
+      </tr>
+      <tr>
+        <td><b>Starting Time</b></td>
+        <td><%=@trip.driver_module.tr_start_time%></td>
+      </tr>
+      <tr>
+        <td><b>Advance Paid</b></td>
+        <td><%=@trip.driver_module.advance%></td>
+      </tr>
+      <tr>
+        <td><b>Closing Kilometers</b></td>
+        <td><%=@trip.driver_module.cl_km%></td>
+      </tr>
+      <tr>
+        <td><b>Total Toll</b></td>
+        <td><%=@trip.driver_module.total_toll%></td>
+      </tr>
+      <tr>
+        <td><b>Permits Paid</b></td>
+        <td><%=@trip.driver_module.permit%></td>
+      </tr>
+      <tr>
+        <td><b>Closing Time</b></td>
+        <td><%=@trip.driver_module.cl_time%></td>
+      </tr>
     <%end%>
   </tbody>
 </table>

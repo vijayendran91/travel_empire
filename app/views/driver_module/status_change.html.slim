@@ -19,12 +19,15 @@
         = "Car Model"
       = f.text_field :car_model,:class => "form-control admin_form_item"
       label.admin_form_item
+        = "Advance Paid"
+      = f.text_field :advance,:class => "form-control admin_form_item"
+      label.admin_form_item
         = "Start Kilometer"
       = f.text_field :st_km,:class => "form-control admin_form_item"
       label.admin_form_item.mt-2
         = "Starting Odometer Photo"
       =f.file_field :dr_odometer_start, :class=>'admin_form_item', :id=>'drOdometerStart'
-
+      = f.submit "Submit", :class => "btn green-btn mt-2 admin_form_item"
     -elsif @status_flag.to_s == Trip::TRIP_STARTED.to_s
       label.admin_form_item
         = "Closing Kilometer"
@@ -50,4 +53,8 @@
       label.admin_form_item.mt-2
         = "Inside City"
         =f.check_box :in_city, :class=> "admin_form_item"
-    = f.submit "Submit", :class => "btn green-btn mt-2 admin_form_item"
+      = f.submit "Submit", :class => "btn green-btn mt-2 admin_form_item"
+    -else
+      center
+        h1
+          = "Trip Completed"

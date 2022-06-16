@@ -10,6 +10,7 @@ class DriverModuleController < ApplicationController
   if request.post?
       trip_start_params = get_trip_start_params(params)
       trip_start_params[:trip_id] = params[:id]
+      trip_start_params[:tr_start_time] = Time.now
       @trip_details = get_trip_data(params[:id])
       trip_status = @trip_details[:trp_sts]
       if(trip_status == Trip::TRIP_BOOKED.to_s)
@@ -24,6 +25,7 @@ class DriverModuleController < ApplicationController
       elsif trip_status== Trip::TRIP_STARTED.to_s
         update_trip_status(params[:id], Trip::TRIP_COMPLETE)
         update_driver_module(@trip_details.driver_module[:id], params[:driver_module])
+        @trip_details = get_trip_data(params[:id])
         send_customer_communications(@trip_details, :trip_end_driver, false)
         redirect_to trip_status_path
       end

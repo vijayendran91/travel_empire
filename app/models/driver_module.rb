@@ -21,9 +21,6 @@ class DriverModule
   field :st_km, type: Float
   field :tr_start_time, type: DateTime
   field :advance, type: Integer
-  field :emp_name, type: String
-  field :emp_id, type: String
-  field :emp_phone, type: String
 
 
   # II Form
@@ -32,6 +29,9 @@ class DriverModule
   field :permit, type: Integer
   field :cl_time, type: DateTime
   field :in_city, type: Boolean
+  field :emp_name, type: String
+  field :emp_id, type: String
+  field :emp_phone, type: String
 
 
 
