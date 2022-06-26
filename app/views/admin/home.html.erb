@@ -41,9 +41,9 @@
           <th scopr="row"><%=link_to @trips[i].id, admin_trip_details_path(:id => @trips[i].id), :method => :get%></th>
           <td><%=@trips[i].fname%></td>
           <td><%=@trips[i].pul%></td>
-          <td><%=@trips[i][:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+          <td><%=@trips[i][:put].try(:strftime, "Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
           <td><%=@trips[i].drl%></td>
-          <td><%=@trips[i][:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+          <td><%=@trips[i][:drt].try(:strftime, "Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
         </tr>
         <%end%>
       </tbody>
