@@ -22,8 +22,8 @@ class HomeController < ApplicationController
     @wn.trips.push(@trip)
     if save_trip && save_wa_number
       update_trip_status(@trip[:id], Trip::TRIP_BOOKED)
-      send_customer_communications(@trip, :customer_booking_confirmation, true)
-      send_admin_communications(@trip, :admin_booking_confirmation)
+      send_customer_communications(@trip, :customer_booking_confirmation_new, true)
+      send_admin_communications(@trip, :admin_booking_confirmation_new)
       redirect_to root_path , alert: 'success'
     else
       redirect_to root_path, alert: 'error'

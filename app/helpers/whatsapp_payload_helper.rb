@@ -66,7 +66,7 @@ module WhatsappPayloadHelper
           :preview_url => false,
           :type => "TEMPLATE",
           :template => {
-            :templateId => "admin_booking_confirmation",
+            :templateId => "admin_booking_confirmation_new",
             :parameterValues => {
               "0" => "*#{trip_data[:pul]} - #{trip_data[:pua]}*",
               "1" => trip_data[:put].strftime("%a %d-%m-%y  %l:%M:%p"),
@@ -132,7 +132,7 @@ module WhatsappPayloadHelper
           :shorten_url => false,
           :type => "MEDIA_TEMPLATE",
           :mediaTemplate => {
-            :templateId => "customer_booking_confirmation",
+            :templateId => "customer_booking_confirmation_new",
             :media => {
               :type => "video",
               :url => "https://travel-empire-proofs.s3.ap-south-1.amazonaws.com/booking_conf_vm/booking_conf_vm.mp4"
@@ -146,6 +146,8 @@ module WhatsappPayloadHelper
               "5" => trip_data[:drt].strftime("%a %d-%m-%y  %l:%M:%p"),
               "6" => trip_data[:str],
               "7" => trip_data[:id].to_s, #TODO - Add adult and children
+              "8" => "#{trip_data[:first_name]}  #{trip_data[:last_name]}",
+              "9" => "#{trip_data[:phone]}"
             }
           }
         }

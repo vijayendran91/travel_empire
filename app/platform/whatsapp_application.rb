@@ -17,7 +17,7 @@ module WhatsappApplication
     case wa_template.to_s
     when "edit_booking_message"
       payload = edit_booking_wa_pl(data)
-    when "customer_booking_confirmation"
+    when "customer_booking_confirmation_new"
       payload = booking_conf_cust_wa_pl(data)
     when "delay_conv_regret"
       payload = delayed_response_regret(data)
