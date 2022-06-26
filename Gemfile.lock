@@ -1435,6 +1435,7 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.15.0)
     mongo (2.15.1)
       bson (>= 4.8.2, < 5.0.0)
@@ -1445,6 +1446,9 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.6.0)
     nio4r (2.5.8)
+    nokogiri (1.13.5)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.13.5-x86_64-linux)
       racc (~> 1.4)
     paperclip (6.1.0)
@@ -1505,7 +1509,7 @@ GEM
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sassc (2.1.0-x86_64-linux)
+    sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -1566,6 +1570,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -1595,7 +1600,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.7)
   rails_12factor
   rails_serve_static_assets
-  sassc (~> 2.1.0)
+  sassc (~> 2.4.0)
   selenium-webdriver
   slim
   spring
