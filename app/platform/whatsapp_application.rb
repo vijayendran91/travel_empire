@@ -86,7 +86,6 @@ module WhatsappApplication
                         'Authentication' => 'Bearer na2JvXULNrlLYfw1BzsMyw=='
                       }
         )
-    binding.pry
     return response
   end
 

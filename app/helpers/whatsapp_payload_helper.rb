@@ -85,7 +85,7 @@ module WhatsappPayloadHelper
         }
       }
       payload[:message][:recipient] = {
-        :to => WhatsappNumber::SARAVANAN_PERSONAL,
+        :to => "919962395973",
         :recipient_type => 'individual',
         :reference => {
           :cust_ref => "Some Customer Ref",
