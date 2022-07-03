@@ -36,7 +36,7 @@ class WhatsappMessage
 
   CUSTOMER_BOOKING_CONFIRMATION = :customer_booking_confirmation_new
   EDIT_BOOKING_CONFIRMATION = :edit_booking_message
-  ADMIN_BOOKING_CONFIRMATION = :admin_booking_confirmation_new
+  ADMIN_BOOKING_CONFIRMATION = :admin_booking_confirmation_2
   USER_INITIATED = :user_initiated
   CONVERSATION = :conversation
   DELAY_CONV_REGRET = :delay_conv_regret
@@ -53,7 +53,7 @@ class WhatsappMessage
   TEMPLATE_MESSAGE = {
     USER_INITIATED => "user_initiated",
     CUSTOMER_BOOKING_CONFIRMATION => "customer_booking_confirmation_new",
-    ADMIN_BOOKING_CONFIRMATION => "admin_booking_confirmation_new",
+    ADMIN_BOOKING_CONFIRMATION => "admin_booking_confirmation_2",
     CONVERSATION => "conversation",
     EDIT_BOOKING_CONFIRMATION => "edit_booking_message",
     DELAY_CONV_REGRET => "delay_conv_regret"

@@ -66,7 +66,7 @@ module WhatsappPayloadHelper
           :preview_url => false,
           :type => "TEMPLATE",
           :template => {
-            :templateId => "admin_booking_confirmation_new",
+            :templateId => "admin_booking_confirmation_2",
             :parameterValues => {
               "0" => "*#{trip_data[:pul]} - #{trip_data[:pua]}*",
               "1" => trip_data[:put].strftime("%a %d-%m-%y  %l:%M:%p"),
@@ -78,7 +78,8 @@ module WhatsappPayloadHelper
               "7" => "*#{trip_data[:fname]} #{trip_data[:lname]}*",
               "8" =>trip_data[:phone],
               "9" => trip_data[:email],
-              "10" => trip_data[:id].to_s
+              "10" => trip_data[:id].to_s,
+              "11" => "http://www.travelempire.org/#{trip_data[:id].to_s}/driver_module"
             }
           }
         }
