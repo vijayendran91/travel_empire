@@ -40,7 +40,7 @@ function validate_form(){
     error_msgs.push(msg);
   }
 
-  if(totr != 'my'){
+  if(totr != 'my' && totr != 'rt'){
     if(todist == 'sd' || fromdist == 'sd'){
       msg = "Please select a proper district";
       error_msgs.push(msg);

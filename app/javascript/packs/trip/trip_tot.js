@@ -50,6 +50,7 @@ export function typeOfTrip(showModal){
     $('.locations').hide();
     $('#roundtripDest').hide();
     $('#returnDateTime').hide();
+    $('#hourlyHours').hide();
   }
 
   function prepReturnTrip(tor, modal){
@@ -66,6 +67,7 @@ export function typeOfTrip(showModal){
     $('#toArea').show();
     $('#returnDateTime').show();
     $('#roundtripDest').hide();
+    $('#hourlyHours').hide();
   }
 
   function prepRoundTrip(tor, modal){
@@ -83,6 +85,7 @@ export function typeOfTrip(showModal){
     $('#toArea').hide();
     $('#roundtripDest').show();
     $('#toDistSelect').attr("required", false);
+    $('#hourlyHours').hide();
   }
 
   function prepMultiCity(tor, modal){
@@ -100,6 +103,7 @@ export function typeOfTrip(showModal){
     $('#toArea').hide();
     $('#roundtripDest').hide();
     $('#toDistSelect').attr("required", false);
+    $('#hourlyHours').hide();
   }
 
   function prepHourly(tor, modal){
