@@ -40,9 +40,11 @@ function validate_form(){
     error_msgs.push(msg);
   }
 
-  if(todist == 'sd' || fromdist == 'sd'){
-    msg = "Please select a proper district";
-    error_msgs.push(msg);
+  if(totr != 'my'){
+    if(todist == 'sd' || fromdist == 'sd'){
+      msg = "Please select a proper district";
+      error_msgs.push(msg);
+    }
   }
 
   return error_msgs
