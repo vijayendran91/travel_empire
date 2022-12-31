@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'axlsx'
 gem 'caxlsx_rails'
 
+#PDF Generator
+gem 'wicked_pdf'
 
 #Bootstrap for UI
 gem 'bootstrap', '~> 5.1.0'

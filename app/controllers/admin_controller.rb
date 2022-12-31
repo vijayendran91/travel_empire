@@ -76,6 +76,18 @@ class AdminController < ApplicationController
     end
   end
 
+  def pdf_download
+    trip_id = params.permit(:trip)[:trip]
+    @trip = Trip.find(trip_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "pdf_download", :layout => 'pdf.html.erb', filename: "Vijay"
+      end
+    end
+    
+  end
+
   private
     def get_params()
         params[:trip].permit(:start_date, :end_date)

@@ -1,81 +1,19 @@
-<%= render :partial => '/common_partial/admin_navbar'%>
-
-<%=link_to "Back to Admin Home", chennai106_path, :class => "btn green-btn mt-2 ml-2"%>
-<%= link_to "Edit Trip", admin_edit_trip_path(:id => @trip[:id]), :method => "get", :class => "btn green-btn mr-2 mt-2" %>
-<%=link_to "Cancel Trip", admin_cancel_trip_path(:id => @trip[:id]), :method => :delete, :class => "btn green-btn mr-2 mt-2"%>
-<%=link_to "Download PDF", admin_pdf_download_path(trip: @trip, format: :pdf), :method => "post", :class => 'btn green-btn mr-2 mt-2'%>
-
-<%= link_to "Log Out", admin_logout_path(:admin_logout => true), :method => "delete", :class => "btn green-btn mr-2 mt-2", :style => "float: right;" %>
-
-<h1><center>Trip <%=@trip[:id]%></center></h1>
-<table  class="table">
+<div>
+  <left>
+    <%=image_tag 'Travel_Empire_Logo_1.jpg', :size=> "300x100"%>
+  </left>
+  <div style="float: right;">
+    <b>Saravanan Kumar,</b><br>
+    15/12, 1st Floor, Elangoadigal Streeet,<br>
+    Thiruvalluvar Nagar, Arumbakkam,<br>
+    Chennai, Tamil Nadu 600106
+  </div>
+</div>
+<br><br>
+<h2>Personal Details</h2>
+<br>
+<table class="table">
   <tbody>
-    <tr>
-      <td><b>Booking Id</b></td>
-      <td><%=@trip[:id]%></td>
-    </tr>
-    <tr>
-      <td><b>Personal or Business</b></td>
-      <td><%=Trip::TRIP_TYPE[@trip[:perbus].to_sym]%></td>
-    </tr>
-    <tr>
-      <td><h5><center>Trip Details<center><h5></td>
-    </tr>
-    <tr>
-      <td><b>Type of Trip</b></td>
-      <td><%=Trip::TYPE_OF_TRIP[@trip[:tot].to_sym]%></td>
-    </tr>
-    <tr>
-      <td><b>Type of Booking</b></td>
-      <td><%=@trip[:tob]%></td>
-    </tr>
-    <tr>
-      <td><b>Type of Car</b></td>
-      <td><%=@trip[:str]%></td>
-    </tr>
-    <tr>
-      <td><h5><center>Pick Up Details<center><h5></td>
-    </tr>
-    <tr>
-      <td><b>Pick Up Location</b></td>
-      <td>
-        <%=@trip[:pul]%>   -   <%=@trip[:pua]%><br>
-        <%if(@trip[:tot].to_sym == Trip::MULTI_WAY || @trip[:tot].to_sym == Trip::ROUND_TRIP)%>
-          <%=@trip[:locs1] if(@trip[:locs1])%><br>
-          <%=@trip[:locs2] if(@trip[:locs2])%><br>
-          <%=@trip[:locs3] if(@trip[:locs3])%><br>
-          <%=@trip[:locs4] if(@trip[:locs4])%><br>
-        <%end%>
-      </td>
-
-    </tr>
-    <tr>
-      <td><b>Pick Up Date</b></td>
-      <td><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
-    </tr>
-    <tr>
-      <td><h5><center>Drop Details<center><h5></td>
-    </tr>
-    <tr>
-      <td><b>Drop Location</b></td>
-      <td><%=@trip[:drl]%>   -   <%=@trip[:dra]%></td>
-    </tr>
-    <%if(@trip[:tot].to_s == Trip::HOURLY.to_s)%>
-      <tr>
-        <td><b>No. of Hours Rented</b></td>
-        <td><%=@trip[:hrt]%></td>
-      </tr>
-    <%else%>
-      <tr>
-        <td><b>Drop Date</b></td>
-        <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
-      </tr>
-    <%end%>
-
-
-    <tr>
-      <td><h5><center>Personal Details<center><h5></td>
-    </tr>
     <tr>
       <td><b>First Name</b></td>
       <td><%=@trip[:fname]%></td>
@@ -92,34 +30,64 @@
         <td><b>Email</b></td>
       <td><%=@trip[:email]%></td>
     </tr>
-    <% if @trip[:photoproof1_file_name] != nil%>
-      <%if @trip[:photoproof1_content_type] == "application/pdf"%>
-        <tr>
-          <td><b>Photoproof 1</b></td>
-          <td><embed src=<%=@trip.photoproof1.url%>, width="500px" height="500px" /></td>
-        </tr>
-      <%else%>
-        <tr>
-          <td><b>Photoproof 1</b></td>
-          <td><%= image_tag @trip.photoproof1.url, :size=> "300x100"%></td>
-        </tr>
-      <%end%>
-    <%end%>
-    <% if @trip[:photoproof2_file_name] != nil %>
-      <%if @trip[:photoproof2_content_type] == "application/pdf"%>
-        <tr>
-          <td><b>Photoproof 2 </b></td>
-          <td><embed src=<%=@trip.photoproof2.url%>, width="500px" height="500px" /></td>
-        </tr>
-      <%else%>
-        <tr>
-          <td><b>Photoproof 2</b></td>
-          <td><%= image_tag @trip.photoproof2.url, :size=> "300x100"%></td>
-        </tr>
-      <%end%>
+  </tbody>
+</table>
+<br>
+<b><h2>Trip Details</h2></b>
+<table  class="table">
+  <tbody>
+    <tr>
+      <td><b>Booking Id</b></td>
+      <td><%=@trip[:id]%></td>
+    </tr>
+    <tr>
+      <td><b>Personal or Business</b></td>
+      <td><%=Trip::TRIP_TYPE[@trip[:perbus].to_sym]%></td>
+    </tr>
+    <tr>
+      <td><b>Type of Trip</b></td>
+      <td><%=Trip::TYPE_OF_TRIP[@trip[:tot].to_sym]%></td>
+    </tr>
+    <tr>
+      <td><b>Type of Booking</b></td>
+      <td><%=@trip[:tob]%></td>
+    </tr>
+    <tr>
+      <td><b>Type of Car</b></td>
+      <td><%=@trip[:str]%></td>
+    </tr>
+    <tr>
+      <td><b>Pick Up Location</b></td>
+      <td>
+        <%=@trip[:pul]%>   -   <%=@trip[:pua]%><br>
+        <%if(@trip[:tot].to_sym == Trip::MULTI_WAY || @trip[:tot].to_sym == Trip::ROUND_TRIP)%>
+          <%=@trip[:locs1] if(@trip[:locs1])%><br>
+          <%=@trip[:locs2] if(@trip[:locs2])%><br>
+          <%=@trip[:locs3] if(@trip[:locs3])%><br>
+          <%=@trip[:locs4] if(@trip[:locs4])%><br>
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Pick Up Date</b></td>
+      <td><%=@trip[:put].strftime("Pickup on %a %d-%m-%y  %l:%M:%p")%></td>
+    </tr>
+    <tr>
+      <td><b>Drop Location</b></td>
+      <td><%=@trip[:drl]%>   -   <%=@trip[:dra]%></td>
+    </tr>
+    <%if(@trip[:tot].to_s == Trip::HOURLY.to_s)%>
+      <tr>
+        <td><b>No. of Hours Rented</b></td>
+        <td><%=@trip[:hrt]%></td>
+      </tr>
+    <%else%>
+      <tr>
+        <td><b>Drop Date</b></td>
+        <td><%=@trip[:drt].strftime("Drop on %a %d-%m-%y  %l:%M:%p")%></td>
+      </tr>
     <%end%>
     <%unless @trip.driver_module.nil?%>
-      <tr><td><h5><center>Driver Module</center></h5></td></tr>
       <tr>
         <td><b>Authorized Person</b></td>
         <td><%=@trip.driver_module.auth_person%></td>
@@ -150,7 +118,7 @@
       </tr>
       <tr>
         <td><b>Starting Time</b></td>
-        <td><%=@trip.driver_module.tr_start_time%></td>
+        <td><%=@trip.driver_module.tr_start_time.strftime("%a %d-%m-%y  %l:%M:%p")%></td>
       </tr>
       <tr>
         <td><b>Advance Paid</b></td>
@@ -170,8 +138,16 @@
       </tr>
       <tr>
         <td><b>Closing Time</b></td>
-        <td><%=@trip.driver_module.cl_time%></td>
+        <td><%=@trip.driver_module.cl_time.strftime("%a %d-%m-%y  %l:%M:%p")%></td>
       </tr>
     <%end%>
   </tbody>
 </table>
+<div style="float:left;margin-top: 5%;">
+  <b>
+    Signature of the Passenger
+  </b>
+  <br><br><br>
+  __________________________________<br>
+  <%="(#{@trip[:fname]} #{@trip[:lname]})"%>
+</div>

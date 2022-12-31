@@ -20,10 +20,13 @@ Rails.application.routes.draw do
   get 'admin/edit_trip/', :to => 'admin#edit_trip'
   put 'admin/edit_trip/', :to => 'admin#edit_trip'
   delete 'admin/cancel_trip', :to => 'admin#cancel_trip'
+  get '/admin/pdf_download', :to => 'admin#pdf_download'
+  post '/admin/pdf_download', :to => 'admin#pdf_download'
+
   get '/admin/wa_index', :to => 'whatsapp#wa_index'
   get '/admin/wa_messenger', :to => 'whatsapp#wa_messenger'
   post 'admin/wa_messenger', :to => 'whatsapp#wa_messenger'
-
+  
   post '/admin_login', :to => 'sessions#login'
   delete '/admin_logout', :to => 'sessions#logout'
 
